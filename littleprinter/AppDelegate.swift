@@ -3,7 +3,7 @@
 //  littleprinter
 //
 //  Created by Michael Colville on 09/01/2018.
-//  Copyright © 2018 Michael Colville. All rights reserved.
+//  Copyright © 2018 Nord Projects Ltd. All rights reserved.
 //
 
 import UIKit

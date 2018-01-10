@@ -7,17 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B090CD220061F890005D841 /* AddPrinterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD120061F890005D841 /* AddPrinterViewController.swift */; };
+		9B090CD6200620710005D841 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD5200620710005D841 /* Printer.swift */; };
+		9B090CD8200622930005D841 /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD7200622930005D841 /* PrinterManager.swift */; };
+		9B090CDA200624430005D841 /* SiriusServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD9200624430005D841 /* SiriusServer.swift */; };
+		9B090CDC200625130005D841 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CDB200625130005D841 /* Result.swift */; };
+		9B090CE020062F430005D841 /* StubSiriusServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CDF20062F430005D841 /* StubSiriusServer.swift */; };
+		9B090CE2200631FE0005D841 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CE1200631FE0005D841 /* Utilities.swift */; };
+		9B090CE420065A830005D841 /* PrinterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */; };
 		9B2E02392004BECA0008AC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E02382004BECA0008AC1F /* AppDelegate.swift */; };
-		9B2E023B2004BECA0008AC1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E023A2004BECA0008AC1F /* ViewController.swift */; };
+		9B2E023B2004BECA0008AC1F /* PrinterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */; };
 		9B2E023E2004BECA0008AC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023C2004BECA0008AC1F /* Main.storyboard */; };
 		9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023F2004BECA0008AC1F /* Assets.xcassets */; };
 		9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B090CD120061F890005D841 /* AddPrinterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPrinterViewController.swift; sourceTree = "<group>"; };
+		9B090CD5200620710005D841 /* Printer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
+		9B090CD7200622930005D841 /* PrinterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterManager.swift; sourceTree = "<group>"; };
+		9B090CD9200624430005D841 /* SiriusServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriusServer.swift; sourceTree = "<group>"; };
+		9B090CDB200625130005D841 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		9B090CDF20062F430005D841 /* StubSiriusServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSiriusServer.swift; sourceTree = "<group>"; };
+		9B090CE1200631FE0005D841 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterListTableViewCell.swift; sourceTree = "<group>"; };
 		9B2E02352004BECA0008AC1F /* littleprinter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = littleprinter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2E02382004BECA0008AC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9B2E023A2004BECA0008AC1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterListViewController.swift; sourceTree = "<group>"; };
 		9B2E023D2004BECA0008AC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B2E023F2004BECA0008AC1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B2E02422004BECA0008AC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +51,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B090CD3200620400005D841 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9B2E023C2004BECA0008AC1F /* Main.storyboard */,
+				9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */,
+				9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */,
+				9B090CD120061F890005D841 /* AddPrinterViewController.swift */,
+				9B2E023F2004BECA0008AC1F /* Assets.xcassets */,
+				9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9B090CD4200620590005D841 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9B090CD5200620710005D841 /* Printer.swift */,
+				9B090CD7200622930005D841 /* PrinterManager.swift */,
+				9B090CD9200624430005D841 /* SiriusServer.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9B090CDD20062CD20005D841 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9B090CDB200625130005D841 /* Result.swift */,
+				9B090CE1200631FE0005D841 /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		9B090CDE20062F240005D841 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				9B090CDF20062F430005D841 /* StubSiriusServer.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
 		9B2E022C2004BECA0008AC1F = {
 			isa = PBXGroup;
 			children = (
@@ -55,10 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				9B2E02382004BECA0008AC1F /* AppDelegate.swift */,
-				9B2E023A2004BECA0008AC1F /* ViewController.swift */,
-				9B2E023C2004BECA0008AC1F /* Main.storyboard */,
-				9B2E023F2004BECA0008AC1F /* Assets.xcassets */,
-				9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */,
+				9B090CD3200620400005D841 /* UI */,
+				9B090CD4200620590005D841 /* Data */,
+				9B090CDD20062CD20005D841 /* Utilities */,
+				9B090CDE20062F240005D841 /* Stubs */,
 				9B2E02442004BECA0008AC1F /* Info.plist */,
 			);
 			path = littleprinter;
@@ -92,7 +148,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = "Michael Colville";
+				ORGANIZATIONNAME = "Nord Projects Ltd";
 				TargetAttributes = {
 					9B2E02342004BECA0008AC1F = {
 						CreatedOnToolsVersion = 9.2;
@@ -136,7 +192,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B2E023B2004BECA0008AC1F /* ViewController.swift in Sources */,
+				9B090CD8200622930005D841 /* PrinterManager.swift in Sources */,
+				9B090CE020062F430005D841 /* StubSiriusServer.swift in Sources */,
+				9B090CD6200620710005D841 /* Printer.swift in Sources */,
+				9B090CD220061F890005D841 /* AddPrinterViewController.swift in Sources */,
+				9B090CE420065A830005D841 /* PrinterListTableViewCell.swift in Sources */,
+				9B090CDA200624430005D841 /* SiriusServer.swift in Sources */,
+				9B090CDC200625130005D841 /* Result.swift in Sources */,
+				9B090CE2200631FE0005D841 /* Utilities.swift in Sources */,
+				9B2E023B2004BECA0008AC1F /* PrinterListViewController.swift in Sources */,
 				9B2E02392004BECA0008AC1F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
