@@ -45,6 +45,12 @@ class PrinterListViewController: UIViewController {
             self.refreshControl?.endRefreshing()
         }
     }
+    
+    func newMessagePressed(_ printer: Printer) {
+        let messageViewController = PlainTextMessageViewController()
+        messageViewController.recipient = printer
+        navigationController?.pushViewController(messageViewController, animated: true)
+    }
 }
 
 extension PrinterListViewController: UITableViewDataSource {
@@ -60,6 +66,7 @@ extension PrinterListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PrinterListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "PrinterListTableViewCell")! as! PrinterListTableViewCell
         cell.printer = PrinterManager.shared.printers[indexPath.row]
+        cell.controller = self
         return cell
     }
     

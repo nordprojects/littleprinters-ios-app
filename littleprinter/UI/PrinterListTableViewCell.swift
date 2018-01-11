@@ -14,6 +14,8 @@ class PrinterListTableViewCell: UITableViewCell {
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     
+    weak var controller: PrinterListViewController?
+    
     var printer: Printer? {
         didSet {
             if let info = printer?.info {
@@ -29,7 +31,11 @@ class PrinterListTableViewCell: UITableViewCell {
     }
     
     @IBAction func messagePressed(_ sender: Any) {
-        
+        guard let printer = printer else {
+            print("WARNING: No printer object on cell")
+            return
+        }
+        controller?.newMessagePressed(printer)
     }
     
 }

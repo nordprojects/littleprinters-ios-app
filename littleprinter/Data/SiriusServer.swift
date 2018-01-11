@@ -9,8 +9,28 @@
 import Foundation
 
 enum SiriusServerError: Error {
+    case UnknownError
     case InvalidURL
     case NoDataInResponse
+    case PrinterNotFound
+    case HttpErrorCode(Int)
+}
+
+extension SiriusServerError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .UnknownError:
+            return "Something happened that isn't handled. Sorry about that."
+        case .InvalidURL:
+            return "Unable to create a valid URL with that key"
+        case .NoDataInResponse:
+            return "There was no data in the response"
+        case .PrinterNotFound:
+            return "This printer key cannot be found, it may have been removed"
+        case .HttpErrorCode(let code):
+            return "Server responded with error code \(code)"
+        }
+    }
 }
 
 class SiriusServer {
@@ -27,16 +47,63 @@ class SiriusServer {
             DispatchQueue.main.async {
                 if let error = error {
                     completion(.failure(error))
-                } else if let data = data {
-                    completion(Result.success(data))
+                    return
+                }
+
+                if let httpResponse = response as? HTTPURLResponse {
+                    switch httpResponse.statusCode {
+                    case 200:
+                        if let data = data {
+                            let string = String(data: data, encoding: String.Encoding.utf8) as String!
+                            print("data: " + string!)
+                            completion(Result.success(data))
+                        } else {
+                            completion(.failure(SiriusServerError.NoDataInResponse))
+                        }
+                    case 404:
+                        completion(.failure(SiriusServerError.PrinterNotFound))
+                    default:
+                        completion(.failure(SiriusServerError.HttpErrorCode(httpResponse.statusCode)))
+                    }
                 } else {
-                    completion(.failure(SiriusServerError.NoDataInResponse))
+                    completion(.failure(SiriusServerError.UnknownError))
                 }
             }
         }.resume()
     }
     
-    func sendMessage(_ message: String, from username: String, to code: String, completion: @escaping (Error?) -> Void) {
+    func sendPlainText(_ message: String, from username: String, to key: String, completion: @escaping (Error?) -> Void) {
+        guard let url = URL(string: "https://littleprinter.nordprojects.co/printkey/" + key + "?from=" + username) else {
+            completion(SiriusServerError.InvalidURL)
+            return
+        }
         
+        var request = URLRequest(url: url)
+        
+        request.setValue("text/plain;charset=utf8", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = message.data(using: .utf8)
+
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            DispatchQueue.main.async {
+                if let error = error {
+                    completion(error)
+                    return
+                }
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    switch httpResponse.statusCode {
+                    case 200:
+                        completion(nil)
+                    case 404:
+                        completion(SiriusServerError.PrinterNotFound)
+                    default:
+                        completion(SiriusServerError.HttpErrorCode(httpResponse.statusCode))
+                    }
+                } else {
+                    completion(SiriusServerError.UnknownError)
+                }
+            }
+        }.resume()
     }
 }

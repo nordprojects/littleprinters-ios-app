@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		037ED1BE5596CA5FC4A688F5 /* Pods_littleprinter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */; };
 		9B090CD220061F890005D841 /* AddPrinterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD120061F890005D841 /* AddPrinterViewController.swift */; };
 		9B090CD6200620710005D841 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD5200620710005D841 /* Printer.swift */; };
 		9B090CD8200622930005D841 /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD7200622930005D841 /* PrinterManager.swift */; };
 		9B090CDA200624430005D841 /* SiriusServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD9200624430005D841 /* SiriusServer.swift */; };
 		9B090CDC200625130005D841 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CDB200625130005D841 /* Result.swift */; };
-		9B090CE020062F430005D841 /* StubSiriusServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CDF20062F430005D841 /* StubSiriusServer.swift */; };
 		9B090CE2200631FE0005D841 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CE1200631FE0005D841 /* Utilities.swift */; };
 		9B090CE420065A830005D841 /* PrinterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */; };
 		9B2E02392004BECA0008AC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E02382004BECA0008AC1F /* AppDelegate.swift */; };
@@ -20,15 +20,17 @@
 		9B2E023E2004BECA0008AC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023C2004BECA0008AC1F /* Main.storyboard */; };
 		9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023F2004BECA0008AC1F /* Assets.xcassets */; };
 		9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */; };
+		9BDE7D002007C0E60019AB81 /* PlainTextMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_littleprinter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AAABE1A763CB9BE1B5F1DBF /* Pods-littleprinter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprinter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter.debug.xcconfig"; sourceTree = "<group>"; };
 		9B090CD120061F890005D841 /* AddPrinterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPrinterViewController.swift; sourceTree = "<group>"; };
 		9B090CD5200620710005D841 /* Printer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 		9B090CD7200622930005D841 /* PrinterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterManager.swift; sourceTree = "<group>"; };
 		9B090CD9200624430005D841 /* SiriusServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriusServer.swift; sourceTree = "<group>"; };
 		9B090CDB200625130005D841 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		9B090CDF20062F430005D841 /* StubSiriusServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSiriusServer.swift; sourceTree = "<group>"; };
 		9B090CE1200631FE0005D841 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterListTableViewCell.swift; sourceTree = "<group>"; };
 		9B2E02352004BECA0008AC1F /* littleprinter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = littleprinter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +40,8 @@
 		9B2E023F2004BECA0008AC1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B2E02422004BECA0008AC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B2E02442004BECA0008AC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextMessageViewController.swift; sourceTree = "<group>"; };
+		DE014890CAD18D5ECA1559F5 /* Pods-littleprinter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprinter.release.xcconfig"; path = "Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				037ED1BE5596CA5FC4A688F5 /* Pods_littleprinter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +63,7 @@
 				9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */,
 				9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */,
 				9B090CD120061F890005D841 /* AddPrinterViewController.swift */,
+				9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */,
 				9B2E023F2004BECA0008AC1F /* Assets.xcassets */,
 				9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */,
 			);
@@ -86,7 +92,6 @@
 		9B090CDE20062F240005D841 /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
-				9B090CDF20062F430005D841 /* StubSiriusServer.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -96,6 +101,8 @@
 			children = (
 				9B2E02372004BECA0008AC1F /* littleprinter */,
 				9B2E02362004BECA0008AC1F /* Products */,
+				ADE565E6CFCA520D2DEF7013 /* Pods */,
+				CF6A4F7C3237D76AF072D919 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +127,23 @@
 			path = littleprinter;
 			sourceTree = "<group>";
 		};
+		ADE565E6CFCA520D2DEF7013 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9AAABE1A763CB9BE1B5F1DBF /* Pods-littleprinter.debug.xcconfig */,
+				DE014890CAD18D5ECA1559F5 /* Pods-littleprinter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF6A4F7C3237D76AF072D919 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,9 +151,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B2E02472004BECA0008AC1F /* Build configuration list for PBXNativeTarget "littleprinter" */;
 			buildPhases = (
+				4B1F478EF5FC9E69336C6508 /* [CP] Check Pods Manifest.lock */,
 				9B2E02312004BECA0008AC1F /* Sources */,
 				9B2E02322004BECA0008AC1F /* Frameworks */,
 				9B2E02332004BECA0008AC1F /* Resources */,
+				0A899B03B748B3668A1EFD45 /* [CP] Embed Pods Frameworks */,
+				ECB769B1AB7E8F85969270E3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,13 +214,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A899B03B748B3668A1EFD45 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B1F478EF5FC9E69336C6508 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-littleprinter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECB769B1AB7E8F85969270E3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9B2E02312004BECA0008AC1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9B090CD8200622930005D841 /* PrinterManager.swift in Sources */,
-				9B090CE020062F430005D841 /* StubSiriusServer.swift in Sources */,
 				9B090CD6200620710005D841 /* Printer.swift in Sources */,
 				9B090CD220061F890005D841 /* AddPrinterViewController.swift in Sources */,
 				9B090CE420065A830005D841 /* PrinterListTableViewCell.swift in Sources */,
@@ -202,6 +282,7 @@
 				9B090CE2200631FE0005D841 /* Utilities.swift in Sources */,
 				9B2E023B2004BECA0008AC1F /* PrinterListViewController.swift in Sources */,
 				9B2E02392004BECA0008AC1F /* AppDelegate.swift in Sources */,
+				9BDE7D002007C0E60019AB81 /* PlainTextMessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +417,7 @@
 		};
 		9B2E02482004BECA0008AC1F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AAABE1A763CB9BE1B5F1DBF /* Pods-littleprinter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -351,6 +433,7 @@
 		};
 		9B2E02492004BECA0008AC1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE014890CAD18D5ECA1559F5 /* Pods-littleprinter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

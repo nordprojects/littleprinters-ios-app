@@ -26,7 +26,7 @@ class AddPrinterViewController: UIViewController {
         
         guard let address = addressTextField.text,
             !address.isEmpty else {
-            let alert = UIAlertController(title: "We need the adresss", message:"Please paste the link into the text field")
+            let alert = UIAlertController(title: "We need the adresss", message:"Please paste the printer key into the text field")
             self.present(alert, animated: true, completion: nil)
             return
         }
