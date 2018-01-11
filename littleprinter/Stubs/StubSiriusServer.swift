@@ -10,11 +10,10 @@ import Foundation
 
 class StubSiriusServer: SiriusServer {
     
-    override func getPrinterInfo(code: String, completion: @escaping (Result<Data>) -> Void) {
+    override func getPrinterInfo(key: String, completion: @escaping (Result<Data>) -> Void) {
         let printerDict = [
             "name" : "minterprinter: \(arc4random())",
             "owner" : "@benpawle",
-            "code" : code,
             "status" : "online"
         ]
         

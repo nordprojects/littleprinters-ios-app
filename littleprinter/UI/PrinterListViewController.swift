@@ -11,19 +11,39 @@ import UIKit
 class PrinterListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+        refreshControl = UIRefreshControl()
+        if let refreshControl = refreshControl {
+            refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+            tableView.addSubview(refreshControl)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: .DidUpdatePrinters, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func reload() {
+        self.tableView.reloadData()
+    }
+    
+    @objc func refresh(sender:AnyObject) {
+        PrinterManager.shared.updatePrinters() // TODO - make this have a completion block once all updated
+        delay(1) {
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
     }
 }
 

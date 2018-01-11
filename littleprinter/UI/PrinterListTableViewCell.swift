@@ -16,10 +16,10 @@ class PrinterListTableViewCell: UITableViewCell {
     
     var printer: Printer? {
         didSet {
-            if let printer = printer {
-                nameLabel.text = printer.name
-                ownerLabel.text = "Owner: " + printer.owner
-                statusLabel.text = "Status: " + printer.status.rawValue
+            if let info = printer?.info {
+                nameLabel.text = info.name
+                ownerLabel.text = "Owner: @" + info.owner
+                statusLabel.text = "Status: " + info.status.rawValue
             }
         }
     }

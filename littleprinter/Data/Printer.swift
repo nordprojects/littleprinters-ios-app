@@ -14,15 +14,23 @@ enum PrinterStatus: String, Codable {
     case offline
 }
 
-struct Printer: Codable {
-    let name: String;
-    let code: String;
-    let owner: String;
-    let status: PrinterStatus;
+class Printer: Codable {
+    let key: String
+    var info: PrinterInfo
+    
+    init(key: String, info: PrinterInfo) {
+        self.key = key
+        self.info = info
+    }
+}
+
+struct PrinterInfo: Codable {
+    let name: String
+    let owner: String
+    let status: PrinterStatus
     
     init(name: String, code: String, owner: String, status: PrinterStatus) {
         self.name = name
-        self.code = code
         self.owner = owner
         self.status = status
     }
