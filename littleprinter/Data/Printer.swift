@@ -12,6 +12,7 @@ enum PrinterStatus: String, Codable {
     case unknown
     case online
     case offline
+    case error
 }
 
 class Printer: Codable {

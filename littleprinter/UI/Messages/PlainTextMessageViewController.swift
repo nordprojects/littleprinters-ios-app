@@ -57,7 +57,7 @@ class PlainTextMessageViewController: UIViewController {
     
     @objc func sendPressed() {
         if let printer = recipient {
-            SiriusServer.shared.sendPlainText(textField.text, to: printer.key, from: "TODO", completion: { (error) in
+            SiriusServer.shared.sendPlainText(textField.text, to: printer.key, from: User.shared.name ?? "anonymous", completion: { (error) in
                 if let error = error {
                     let alert = UIAlertController(title: "Unable to send message to: \(printer.info.owner)", error: error)
                     self.present(alert, animated: true, completion: nil)

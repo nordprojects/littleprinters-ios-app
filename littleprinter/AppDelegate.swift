@@ -13,9 +13,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let navigationController = UINavigationController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let printerListViewController = storyboard.instantiateViewController(withIdentifier: "PrinterListViewController")
+        navigationController.viewControllers = [printerListViewController]
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        
+        if User.shared.name == nil {
+            let chooseNameViewController = ChooseNameViewController()
+            printerListViewController.present(chooseNameViewController, animated: false, completion: nil)
+        }
+        
         return true
     }
 

@@ -59,7 +59,7 @@ class ImageMessageViewController: UIViewController {
     @objc func sendPressed() {
         if let printer = recipient,
             let image = imageView.image {
-            SiriusServer.shared.sendImage(image, to: printer.key, from: "TODO",  completion: { (error) in
+            SiriusServer.shared.sendImage(image, to: printer.key, from: User.shared.name ?? "anonymous",  completion: { (error) in
                 if let error = error {
                     let alert = UIAlertController(title: "Unable to send image to: \(printer.info.owner)", error: error)
                     self.present(alert, animated: true, completion: nil)
