@@ -20,6 +20,7 @@
 		9B2E023E2004BECA0008AC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023C2004BECA0008AC1F /* Main.storyboard */; };
 		9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023F2004BECA0008AC1F /* Assets.xcassets */; };
 		9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */; };
+		9B3F752F20091B29008379FC /* ShareSelectPrinterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F752E20091B29008379FC /* ShareSelectPrinterViewController.swift */; };
 		9BDE7D002007C0E60019AB81 /* PlainTextMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */; };
 		9BDE7D022008AE250019AB81 /* MessageTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D012008AE250019AB81 /* MessageTypeSelectViewController.swift */; };
 		9BDE7D042008B3020019AB81 /* HTMLMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */; };
@@ -27,7 +28,40 @@
 		9BDE7D092008DE700019AB81 /* PosterMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D082008DE700019AB81 /* PosterMessageViewController.swift */; };
 		9BDE7D0B2008EDDE0019AB81 /* ChooseNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D0A2008EDDE0019AB81 /* ChooseNameViewController.swift */; };
 		9BDE7D0D2008EF4D0019AB81 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D0C2008EF4D0019AB81 /* User.swift */; };
+		9BDE7D15200905CA0019AB81 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D14200905CA0019AB81 /* ShareViewController.swift */; };
+		9BDE7D18200905CA0019AB81 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BDE7D16200905CA0019AB81 /* MainInterface.storyboard */; };
+		9BDE7D1C200905CA0019AB81 /* share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9BDE7D12200905CA0019AB81 /* share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9BDE7D212009106B0019AB81 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D0C2008EF4D0019AB81 /* User.swift */; };
+		9BDE7D222009106B0019AB81 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD5200620710005D841 /* Printer.swift */; };
+		9BDE7D232009106B0019AB81 /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD7200622930005D841 /* PrinterManager.swift */; };
+		9BDE7D242009106B0019AB81 /* SiriusServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD9200624430005D841 /* SiriusServer.swift */; };
+		9BDE7D25200910CA0019AB81 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CDB200625130005D841 /* Result.swift */; };
+		9BDE7D26200910CA0019AB81 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CE1200631FE0005D841 /* Utilities.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9BDE7D1A200905CA0019AB81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B2E022D2004BECA0008AC1F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BDE7D11200905CA0019AB81;
+			remoteInfo = share;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9BDE7D20200905CA0019AB81 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9BDE7D1C200905CA0019AB81 /* share.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_littleprinter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +80,7 @@
 		9B2E023F2004BECA0008AC1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B2E02422004BECA0008AC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B2E02442004BECA0008AC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B3F752E20091B29008379FC /* ShareSelectPrinterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSelectPrinterViewController.swift; sourceTree = "<group>"; };
 		9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextMessageViewController.swift; sourceTree = "<group>"; };
 		9BDE7D012008AE250019AB81 /* MessageTypeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTypeSelectViewController.swift; sourceTree = "<group>"; };
 		9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLMessageViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +88,10 @@
 		9BDE7D082008DE700019AB81 /* PosterMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterMessageViewController.swift; sourceTree = "<group>"; };
 		9BDE7D0A2008EDDE0019AB81 /* ChooseNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNameViewController.swift; sourceTree = "<group>"; };
 		9BDE7D0C2008EF4D0019AB81 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9BDE7D12200905CA0019AB81 /* share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BDE7D14200905CA0019AB81 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		9BDE7D17200905CA0019AB81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		9BDE7D19200905CA0019AB81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE014890CAD18D5ECA1559F5 /* Pods-littleprinter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprinter.release.xcconfig"; path = "Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +101,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				037ED1BE5596CA5FC4A688F5 /* Pods_littleprinter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BDE7D0F200905CA0019AB81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				9B2E02372004BECA0008AC1F /* littleprinter */,
+				9BDE7D13200905CA0019AB81 /* share */,
 				9B2E02362004BECA0008AC1F /* Products */,
 				ADE565E6CFCA520D2DEF7013 /* Pods */,
 				CF6A4F7C3237D76AF072D919 /* Frameworks */,
@@ -124,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				9B2E02352004BECA0008AC1F /* littleprinter.app */,
+				9BDE7D12200905CA0019AB81 /* share.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +199,17 @@
 				9BDE7D082008DE700019AB81 /* PosterMessageViewController.swift */,
 			);
 			path = Messages;
+			sourceTree = "<group>";
+		};
+		9BDE7D13200905CA0019AB81 /* share */ = {
+			isa = PBXGroup;
+			children = (
+				9BDE7D14200905CA0019AB81 /* ShareViewController.swift */,
+				9B3F752E20091B29008379FC /* ShareSelectPrinterViewController.swift */,
+				9BDE7D16200905CA0019AB81 /* MainInterface.storyboard */,
+				9BDE7D19200905CA0019AB81 /* Info.plist */,
+			);
+			path = share;
 			sourceTree = "<group>";
 		};
 		ADE565E6CFCA520D2DEF7013 /* Pods */ = {
@@ -183,15 +242,34 @@
 				9B2E02332004BECA0008AC1F /* Resources */,
 				0A899B03B748B3668A1EFD45 /* [CP] Embed Pods Frameworks */,
 				ECB769B1AB7E8F85969270E3 /* [CP] Copy Pods Resources */,
+				9BDE7D20200905CA0019AB81 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9BDE7D1B200905CA0019AB81 /* PBXTargetDependency */,
 			);
 			name = littleprinter;
 			productName = littleprinter;
 			productReference = 9B2E02352004BECA0008AC1F /* littleprinter.app */;
 			productType = "com.apple.product-type.application";
+		};
+		9BDE7D11200905CA0019AB81 /* share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9BDE7D1D200905CA0019AB81 /* Build configuration list for PBXNativeTarget "share" */;
+			buildPhases = (
+				9BDE7D0E200905CA0019AB81 /* Sources */,
+				9BDE7D0F200905CA0019AB81 /* Frameworks */,
+				9BDE7D10200905CA0019AB81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = share;
+			productName = share;
+			productReference = 9BDE7D12200905CA0019AB81 /* share.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -204,6 +282,10 @@
 				ORGANIZATIONNAME = "Nord Projects Ltd";
 				TargetAttributes = {
 					9B2E02342004BECA0008AC1F = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					9BDE7D11200905CA0019AB81 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
@@ -223,6 +305,7 @@
 			projectRoot = "";
 			targets = (
 				9B2E02342004BECA0008AC1F /* littleprinter */,
+				9BDE7D11200905CA0019AB81 /* share */,
 			);
 		};
 /* End PBXProject section */
@@ -235,6 +318,14 @@
 				9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */,
 				9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */,
 				9B2E023E2004BECA0008AC1F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BDE7D10200905CA0019AB81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BDE7D18200905CA0019AB81 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +409,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9BDE7D0E200905CA0019AB81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BDE7D25200910CA0019AB81 /* Result.swift in Sources */,
+				9BDE7D242009106B0019AB81 /* SiriusServer.swift in Sources */,
+				9BDE7D26200910CA0019AB81 /* Utilities.swift in Sources */,
+				9BDE7D222009106B0019AB81 /* Printer.swift in Sources */,
+				9BDE7D212009106B0019AB81 /* User.swift in Sources */,
+				9BDE7D232009106B0019AB81 /* PrinterManager.swift in Sources */,
+				9BDE7D15200905CA0019AB81 /* ShareViewController.swift in Sources */,
+				9B3F752F20091B29008379FC /* ShareSelectPrinterViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9BDE7D1B200905CA0019AB81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9BDE7D11200905CA0019AB81 /* share */;
+			targetProxy = 9BDE7D1A200905CA0019AB81 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9B2E023C2004BECA0008AC1F /* Main.storyboard */ = {
@@ -335,6 +449,14 @@
 				9B2E02422004BECA0008AC1F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9BDE7D16200905CA0019AB81 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BDE7D17200905CA0019AB81 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -451,6 +573,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9AAABE1A763CB9BE1B5F1DBF /* Pods-littleprinter.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEDM35RUB2;
@@ -467,6 +590,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DE014890CAD18D5ECA1559F5 /* Pods-littleprinter.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEDM35RUB2;
@@ -476,6 +600,36 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		9BDE7D1E200905CA0019AB81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WEDM35RUB2;
+				INFOPLIST_FILE = share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikethings.littleprinter.share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9BDE7D1F200905CA0019AB81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WEDM35RUB2;
+				INFOPLIST_FILE = share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikethings.littleprinter.share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -496,6 +650,15 @@
 			buildConfigurations = (
 				9B2E02482004BECA0008AC1F /* Debug */,
 				9B2E02492004BECA0008AC1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9BDE7D1D200905CA0019AB81 /* Build configuration list for PBXNativeTarget "share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BDE7D1E200905CA0019AB81 /* Debug */,
+				9BDE7D1F200905CA0019AB81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
