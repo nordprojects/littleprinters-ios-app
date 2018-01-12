@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3UP-wN-EFr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="4Ae-Bs-K2P">
                                     <rect key="frame" x="0.0" y="162" width="375" height="134"/>
@@ -135,40 +135,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="zaW-xz-Z2k"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZuA-iY-iZM">
-                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7r-fP-5Sw">
-                                        <rect key="frame" x="119" y="8" width="137" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="137" id="gLN-My-JP6"/>
-                                            <constraint firstAttribute="height" constant="44" id="nUb-Sb-4Wi"/>
-                                        </constraints>
-                                        <state key="normal" title="New Message">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="giO-FZ-hAg" kind="show" id="eTG-Wx-pmH"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="S7r-fP-5Sw" firstAttribute="top" secondItem="ZuA-iY-iZM" secondAttribute="top" constant="8" id="DSP-ln-9t7"/>
-                                    <constraint firstItem="S7r-fP-5Sw" firstAttribute="centerX" secondItem="ZuA-iY-iZM" secondAttribute="centerX" id="SI7-mL-Lgf"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3UP-wN-EFr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IlC-k8-7mQ"/>
-                            <constraint firstAttribute="bottom" secondItem="ZuA-iY-iZM" secondAttribute="bottom" id="K9m-xS-Oqv"/>
-                            <constraint firstItem="ZuA-iY-iZM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-80" id="Njx-uS-jfp"/>
                             <constraint firstItem="3UP-wN-EFr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="awL-oe-GYa"/>
-                            <constraint firstItem="ZuA-iY-iZM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dDo-4s-87C"/>
                             <constraint firstItem="3UP-wN-EFr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="f3r-nG-dl5"/>
-                            <constraint firstItem="ZuA-iY-iZM" firstAttribute="top" secondItem="3UP-wN-EFr" secondAttribute="bottom" id="hqr-Uv-2eC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZuA-iY-iZM" secondAttribute="trailing" id="oWX-m9-Vhx"/>
+                            <constraint firstItem="3UP-wN-EFr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="rZC-6W-R6m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -267,24 +240,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mr9-H2-dhr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1253.5999999999999" y="-33.733133433283363"/>
-        </scene>
-        <!--New Message-->
-        <scene sceneID="1J9-nQ-ZpG">
-            <objects>
-                <viewController id="giO-FZ-hAg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QBj-Qc-so7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="Age-Jf-PVA"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="New Message" id="qdE-7M-9eh">
-                        <barButtonItem key="backBarButtonItem" title=" " id="c2b-EJ-dSY"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vAT-mv-kte" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1255" y="693"/>
         </scene>
     </scenes>
     <resources>

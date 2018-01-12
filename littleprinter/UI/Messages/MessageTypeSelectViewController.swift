@@ -12,7 +12,7 @@ class MessageTypeSelectViewController: UIViewController {
     
     lazy var tableView = UITableView()
     
-    let messageTypes = ["Plain Text", "HTML", "Image"]
+    let messageTypes = ["Poster", "Plain Text", "HTML", "Image"]
     
     var recipient: Printer?
 
@@ -60,12 +60,20 @@ extension MessageTypeSelectViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch messageTypes[indexPath.row] {
+        case "Poster":
+            let messageViewController = PosterMessageViewController()
+            messageViewController.recipient = recipient
+            navigationController?.pushViewController(messageViewController, animated: true)
         case "Plain Text":
             let messageViewController = PlainTextMessageViewController()
             messageViewController.recipient = recipient
             navigationController?.pushViewController(messageViewController, animated: true)
         case "HTML":
             let messageViewController = HTMLMessageViewController()
+            messageViewController.recipient = recipient
+            navigationController?.pushViewController(messageViewController, animated: true)
+        case "Image":
+            let messageViewController = ImageMessageViewController()
             messageViewController.recipient = recipient
             navigationController?.pushViewController(messageViewController, animated: true)
         default:

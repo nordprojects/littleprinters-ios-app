@@ -80,6 +80,10 @@ extension PrinterListViewController: UITableViewDataSource {
             tableView.deleteRows(at: [indexPath], with: .left)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        newMessagePressed(PrinterManager.shared.printers[indexPath.row])
+    }
 }
 
 extension PrinterListViewController: UITableViewDelegate {

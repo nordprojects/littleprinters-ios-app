@@ -6,7 +6,7 @@
 //  Copyright © 2018 Nord Projects Ltd. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum SiriusServerError: Error {
     case UnknownError
@@ -91,6 +91,15 @@ class SiriusServer {
         }
         
         sendData(data, to: key, from: username, contentType: "text/html", completion: completion)
+    }
+    
+    func sendImage(_ image: UIImage, to key: String, from username: String, completion: @escaping (Error?) -> Void) {
+        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
+            completion(SiriusServerError.InvalidData)
+            return
+        }
+        
+        sendData(data, to: key, from: username, contentType: "image/jpeg", completion: completion)
     }
     
     // MARK: Private
