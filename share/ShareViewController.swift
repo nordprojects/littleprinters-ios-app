@@ -19,8 +19,15 @@ class ShareViewController: SLComposeServiceViewController {
 
     var image: UIImage?
     
+    var selectedPrinter: Printer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if PrinterManager.shared.printers.count > 0 {
+            selectedPrinter = PrinterManager.shared.printers[0] // TODO - remeber previous selection as default
+
+        }
         
         let contentType = kUTTypeImage as String
         
@@ -62,8 +69,9 @@ class ShareViewController: SLComposeServiceViewController {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
     
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-        if let image = image {
-            SiriusServer.shared.sendImage(image, to: "htl89i3jio0vv3uv1rzx", from: "Mikey") { (error) in
+        if let image = image,
+            let printer = selectedPrinter {
+            SiriusServer.shared.sendImage(image, to: printer.key, from: User.shared.name ?? "anon") { (error) in
                 
                 if let error = error {
                     self.extensionContext!.cancelRequest(withError: error)
@@ -75,17 +83,23 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
 
+    func selectPrinter(_ printer: Printer) {
+        selectedPrinter = printer
+        reloadConfigurationItems()
+        popConfigurationViewController()
+    }
+    
     override func configurationItems() -> [Any]! {
         
         let selectPrinter = SLComposeSheetConfigurationItem()!
         selectPrinter.title = "Select Printer"
-        selectPrinter.value = "Mikey.." // TODO - remeber previous selectionb as default
+        selectPrinter.value = selectedPrinter?.info.name ?? "none"
         selectPrinter.tapHandler = {
             let selectViewController = ShareSelectPrinterViewController()
+            selectViewController.shareController = self
             self.pushConfigurationViewController(selectViewController)
         }
         return [selectPrinter]
-
     }
 
 }

@@ -24,3 +24,7 @@ extension UIAlertController {
         self.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     }
 }
+
+extension UserDefaults {
+    static let group = UserDefaults(suiteName: "group.co.nordprojects.littleprinter")!
+}

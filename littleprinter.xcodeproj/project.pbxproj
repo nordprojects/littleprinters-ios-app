@@ -81,6 +81,8 @@
 		9B2E02422004BECA0008AC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B2E02442004BECA0008AC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B3F752E20091B29008379FC /* ShareSelectPrinterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSelectPrinterViewController.swift; sourceTree = "<group>"; };
+		9B3F7530200922A1008379FC /* littleprinter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = littleprinter.entitlements; sourceTree = "<group>"; };
+		9B3F7531200922DC008379FC /* share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = share.entitlements; sourceTree = "<group>"; };
 		9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextMessageViewController.swift; sourceTree = "<group>"; };
 		9BDE7D012008AE250019AB81 /* MessageTypeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTypeSelectViewController.swift; sourceTree = "<group>"; };
 		9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLMessageViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		9B2E02372004BECA0008AC1F /* littleprinter */ = {
 			isa = PBXGroup;
 			children = (
+				9B3F7530200922A1008379FC /* littleprinter.entitlements */,
 				9B2E02382004BECA0008AC1F /* AppDelegate.swift */,
 				9B090CD3200620400005D841 /* UI */,
 				9B090CD4200620590005D841 /* Data */,
@@ -204,6 +207,7 @@
 		9BDE7D13200905CA0019AB81 /* share */ = {
 			isa = PBXGroup;
 			children = (
+				9B3F7531200922DC008379FC /* share.entitlements */,
 				9BDE7D14200905CA0019AB81 /* ShareViewController.swift */,
 				9B3F752E20091B29008379FC /* ShareSelectPrinterViewController.swift */,
 				9BDE7D16200905CA0019AB81 /* MainInterface.storyboard */,
@@ -284,10 +288,20 @@
 					9B2E02342004BECA0008AC1F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					9BDE7D11200905CA0019AB81 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -575,6 +589,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = littleprinter/littleprinter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEDM35RUB2;
 				INFOPLIST_FILE = littleprinter/Info.plist;
@@ -592,6 +607,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = littleprinter/littleprinter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEDM35RUB2;
 				INFOPLIST_FILE = littleprinter/Info.plist;
@@ -606,6 +622,7 @@
 		9BDE7D1E200905CA0019AB81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = share/share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEDM35RUB2;
 				INFOPLIST_FILE = share/Info.plist;
@@ -621,6 +638,7 @@
 		9BDE7D1F200905CA0019AB81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = share/share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WEDM35RUB2;
 				INFOPLIST_FILE = share/Info.plist;

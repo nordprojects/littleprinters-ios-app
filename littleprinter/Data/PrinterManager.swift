@@ -74,14 +74,14 @@ class PrinterManager {
     // MARK: Private
     
     private func loadSavedPrinters() {
-        if let data = UserDefaults.standard.value(forKey:"printers") as? Data,
+        if let data = UserDefaults.group.value(forKey:"printers") as? Data,
             let printers = try? PropertyListDecoder().decode(Array<Printer>.self, from: data) {
             self.printers = printers
         }
     }
     
     private func savePrinters() {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(printers), forKey:"printers")
+        UserDefaults.group.set(try? PropertyListEncoder().encode(printers), forKey:"printers")
         NotificationCenter.default.post(Notification(name: .DidUpdatePrinters, object: self))
     }
 }

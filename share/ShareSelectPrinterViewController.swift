@@ -10,11 +10,13 @@ import UIKit
 
 class ShareSelectPrinterViewController: UIViewController {
     
+    var shareController: ShareViewController?
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: self.view.frame)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.backgroundColor = .clear
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ShareSelectPrinterCell")
         return tableView
@@ -39,5 +41,11 @@ extension ShareSelectPrinterViewController: UITableViewDataSource {
         cell.backgroundColor = .clear
         return cell
     }
-    
+
+}
+
+extension ShareSelectPrinterViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        shareController?.selectPrinter(PrinterManager.shared.printers[indexPath.row])
+    }
 }

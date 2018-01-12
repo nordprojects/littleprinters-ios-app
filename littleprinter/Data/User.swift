@@ -23,12 +23,12 @@ class User {
     }
     
     func loadName() {
-        if let username = UserDefaults.standard.value(forKey: "username") as? String {
+        if let username = UserDefaults.group.value(forKey: "username") as? String {
             self.name = username
         }
     }
     
     func saveName() {
-        UserDefaults.standard.set(name, forKey: "username")
+        UserDefaults.group.set(name, forKey:"username")
     }
 }
