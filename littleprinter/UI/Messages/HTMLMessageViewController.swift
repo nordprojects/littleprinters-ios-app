@@ -1,15 +1,15 @@
 //
-//  PlainTextMessageViewController.swift
+//  HTMLMessageViewController.swift
 //  littleprinter
 //
-//  Created by Michael Colville on 11/01/2018.
+//  Created by Michael Colville on 12/01/2018.
 //  Copyright © 2018 Nord Projects Ltd. All rights reserved.
 //
 
 import UIKit
 import SnapKit
 
-class PlainTextMessageViewController: UIViewController {
+class HTMLMessageViewController: UIViewController {
     
     var recipient: Printer?
     
@@ -18,14 +18,21 @@ class PlainTextMessageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .white
+        
+        let label = UILabel()
+        label.text = "HTML"
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        view.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.top.left.equalTo(view.safeAreaLayoutGuide).offset(20)
+        }
         
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         view.addSubview(textField)
         textField.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(20)
+            make.top.equalTo(label.snp.bottom).offset(10)
             make.width.equalTo(view).offset(-40)
             make.height.equalTo(200)
             make.centerX.equalTo(view)
@@ -34,6 +41,8 @@ class PlainTextMessageViewController: UIViewController {
         sendButton.addTarget(self, action: #selector(sendPressed), for: .touchUpInside)
         sendButton.setTitle("Send", for: .normal)
         sendButton.setTitleColor(.black, for: .normal)
+        sendButton.layer.borderColor = UIColor.black.cgColor
+        sendButton.layer.borderWidth = 1
         view.addSubview(sendButton)
         sendButton.snp.makeConstraints { (make) in
             make.top.equalTo(textField.snp.bottom).offset(10)
@@ -42,13 +51,13 @@ class PlainTextMessageViewController: UIViewController {
             make.height.equalTo(40)
         }
         if let printer = recipient {
-            self.title = printer.info.owner
+            self.title = "@" + printer.info.owner
         }
     }
     
     @objc func sendPressed() {
         if let printer = recipient {
-            SiriusServer.shared.sendPlainText(textField.text, from: "TODO", to: printer.key, completion: { (error) in
+            SiriusServer.shared.sendHTML(textField.text, to: printer.key, from: "TODO",  completion: { (error) in
                 if let error = error {
                     let alert = UIAlertController(title: "Unable to send message to: \(printer.info.owner)", error: error)
                     self.present(alert, animated: true, completion: nil)

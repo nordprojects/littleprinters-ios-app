@@ -21,6 +21,8 @@
 		9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023F2004BECA0008AC1F /* Assets.xcassets */; };
 		9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */; };
 		9BDE7D002007C0E60019AB81 /* PlainTextMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */; };
+		9BDE7D022008AE250019AB81 /* MessageTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D012008AE250019AB81 /* MessageTypeSelectViewController.swift */; };
+		9BDE7D042008B3020019AB81 /* HTMLMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		9B2E02422004BECA0008AC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B2E02442004BECA0008AC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextMessageViewController.swift; sourceTree = "<group>"; };
+		9BDE7D012008AE250019AB81 /* MessageTypeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTypeSelectViewController.swift; sourceTree = "<group>"; };
+		9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLMessageViewController.swift; sourceTree = "<group>"; };
 		DE014890CAD18D5ECA1559F5 /* Pods-littleprinter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprinter.release.xcconfig"; path = "Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +67,7 @@
 				9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */,
 				9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */,
 				9B090CD120061F890005D841 /* AddPrinterViewController.swift */,
-				9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */,
+				9BDE7D052008BCFD0019AB81 /* Messages */,
 				9B2E023F2004BECA0008AC1F /* Assets.xcassets */,
 				9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */,
 			);
@@ -125,6 +129,16 @@
 				9B2E02442004BECA0008AC1F /* Info.plist */,
 			);
 			path = littleprinter;
+			sourceTree = "<group>";
+		};
+		9BDE7D052008BCFD0019AB81 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				9BDE7D012008AE250019AB81 /* MessageTypeSelectViewController.swift */,
+				9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */,
+				9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		ADE565E6CFCA520D2DEF7013 /* Pods */ = {
@@ -273,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BDE7D022008AE250019AB81 /* MessageTypeSelectViewController.swift in Sources */,
 				9B090CD8200622930005D841 /* PrinterManager.swift in Sources */,
 				9B090CD6200620710005D841 /* Printer.swift in Sources */,
 				9B090CD220061F890005D841 /* AddPrinterViewController.swift in Sources */,
@@ -283,6 +298,7 @@
 				9B2E023B2004BECA0008AC1F /* PrinterListViewController.swift in Sources */,
 				9B2E02392004BECA0008AC1F /* AppDelegate.swift in Sources */,
 				9BDE7D002007C0E60019AB81 /* PlainTextMessageViewController.swift in Sources */,
+				9BDE7D042008B3020019AB81 /* HTMLMessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

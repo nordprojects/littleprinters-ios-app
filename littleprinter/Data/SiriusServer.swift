@@ -11,6 +11,7 @@ import Foundation
 enum SiriusServerError: Error {
     case UnknownError
     case InvalidURL
+    case InvalidData
     case NoDataInResponse
     case PrinterNotFound
     case HttpErrorCode(Int)
@@ -22,7 +23,9 @@ extension SiriusServerError: LocalizedError {
         case .UnknownError:
             return "Something happened that isn't handled. Sorry about that."
         case .InvalidURL:
-            return "Unable to create a valid URL with that key"
+            return "Unable to create a valid URL with this key"
+        case .InvalidData:
+            return "Unable to create data with this message"
         case .NoDataInResponse:
             return "There was no data in the response"
         case .PrinterNotFound:
@@ -72,17 +75,36 @@ class SiriusServer {
         }.resume()
     }
     
-    func sendPlainText(_ message: String, from username: String, to key: String, completion: @escaping (Error?) -> Void) {
+    func sendPlainText(_ message: String, to key: String, from username: String, completion: @escaping (Error?) -> Void) {
+        guard let data = message.data(using: .utf8) else {
+            completion(SiriusServerError.InvalidData)
+            return
+        }
+        
+        sendData(data, to: key, from: username, contentType: "text/plain", completion: completion)
+    }
+    
+    func sendHTML(_ html: String, to key: String, from username: String, completion: @escaping (Error?) -> Void) {
+        guard let data = html.data(using: .utf8) else {
+            completion(SiriusServerError.InvalidData)
+            return
+        }
+        
+        sendData(data, to: key, from: username, contentType: "text/html", completion: completion)
+    }
+    
+    // MARK: Private
+
+    private func sendData(_ data: Data, to key: String, from username: String, contentType: String, completion: @escaping (Error?) -> Void) {
         guard let url = URL(string: "https://littleprinter.nordprojects.co/printkey/" + key + "?from=" + username) else {
             completion(SiriusServerError.InvalidURL)
             return
         }
         
         var request = URLRequest(url: url)
-        
-        request.setValue("text/plain;charset=utf8", forHTTPHeaderField: "Content-Type")
+        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        request.httpBody = message.data(using: .utf8)
+        request.httpBody = data
 
         URLSession.shared.dataTask(with: request) {(data, response, error) in
             DispatchQueue.main.async {

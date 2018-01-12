@@ -47,7 +47,7 @@ class PrinterListViewController: UIViewController {
     }
     
     func newMessagePressed(_ printer: Printer) {
-        let messageViewController = PlainTextMessageViewController()
+        let messageViewController = MessageTypeSelectViewController()
         messageViewController.recipient = printer
         navigationController?.pushViewController(messageViewController, animated: true)
     }
