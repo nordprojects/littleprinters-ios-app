@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		037ED1BE5596CA5FC4A688F5 /* Pods_littleprinter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */; };
+		56F031CE2009123D00543500 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F031CD2009123D00543500 /* Views.swift */; };
+		56F031D620092C3A00543500 /* BebasNeue Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56F031D420092C3900543500 /* BebasNeue Bold.ttf */; };
+		56F031D720092C3A00543500 /* BebasNeue Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56F031D520092C3A00543500 /* BebasNeue Regular.ttf */; };
 		9B090CD220061F890005D841 /* AddPrinterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD120061F890005D841 /* AddPrinterViewController.swift */; };
 		9B090CD6200620710005D841 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD5200620710005D841 /* Printer.swift */; };
 		9B090CD8200622930005D841 /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD7200622930005D841 /* PrinterManager.swift */; };
@@ -65,6 +68,9 @@
 
 /* Begin PBXFileReference section */
 		168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_littleprinter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56F031CD2009123D00543500 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		56F031D420092C3900543500 /* BebasNeue Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Bold.ttf"; sourceTree = "<group>"; };
+		56F031D520092C3A00543500 /* BebasNeue Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Regular.ttf"; sourceTree = "<group>"; };
 		9AAABE1A763CB9BE1B5F1DBF /* Pods-littleprinter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprinter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter.debug.xcconfig"; sourceTree = "<group>"; };
 		9B090CD120061F890005D841 /* AddPrinterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPrinterViewController.swift; sourceTree = "<group>"; };
 		9B090CD5200620710005D841 /* Printer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 			children = (
 				9B090CDB200625130005D841 /* Result.swift */,
 				9B090CE1200631FE0005D841 /* Utilities.swift */,
+				56F031CD2009123D00543500 /* Views.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -200,6 +207,8 @@
 				9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */,
 				9BDE7D062008C4A00019AB81 /* ImageMessageViewController.swift */,
 				9BDE7D082008DE700019AB81 /* PosterMessageViewController.swift */,
+				56F031D420092C3900543500 /* BebasNeue Bold.ttf */,
+				56F031D520092C3A00543500 /* BebasNeue Regular.ttf */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -330,6 +339,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */,
+				56F031D720092C3A00543500 /* BebasNeue Regular.ttf in Resources */,
+				56F031D620092C3A00543500 /* BebasNeue Bold.ttf in Resources */,
 				9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */,
 				9B2E023E2004BECA0008AC1F /* Main.storyboard in Resources */,
 			);
@@ -353,10 +364,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +430,7 @@
 				9B090CE420065A830005D841 /* PrinterListTableViewCell.swift in Sources */,
 				9B090CDA200624430005D841 /* SiriusServer.swift in Sources */,
 				9B090CDC200625130005D841 /* Result.swift in Sources */,
+				56F031CE2009123D00543500 /* Views.swift in Sources */,
 				9B090CE2200631FE0005D841 /* Utilities.swift in Sources */,
 				9B2E023B2004BECA0008AC1F /* PrinterListViewController.swift in Sources */,
 				9BDE7D0B2008EDDE0019AB81 /* ChooseNameViewController.swift in Sources */,
@@ -591,8 +609,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = littleprinter/littleprinter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WEDM35RUB2;
+				DEVELOPMENT_TEAM = BV77CB5Z2C;
 				INFOPLIST_FILE = littleprinter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikethings.littleprinter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -609,8 +628,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = littleprinter/littleprinter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WEDM35RUB2;
+				DEVELOPMENT_TEAM = BV77CB5Z2C;
 				INFOPLIST_FILE = littleprinter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikethings.littleprinter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
