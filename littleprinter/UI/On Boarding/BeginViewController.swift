@@ -16,7 +16,7 @@ class BeginViewController: UIViewController {
         view.backgroundColor = .white
         
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "splash")
+        imageView.image = UIImage(named: "splash")
         imageView.contentMode = .scaleAspectFill
         view.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in

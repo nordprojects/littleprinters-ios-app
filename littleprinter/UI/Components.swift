@@ -23,12 +23,14 @@ class ChunkyButton: UIButton {
     
     override var isHighlighted: Bool {
         didSet {
-            if isHighlighted {
-                contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-            } else {
-                contentEdgeInsets = UIEdgeInsetsMake(-2, 2, 2, -2)
-            }
+            contentEdgeInsets = isHighlighted ? .zero : UIEdgeInsetsMake(-2, 2, 2, -2)
             setNeedsDisplay()
+        }
+    }
+    
+    override var isEnabled: Bool {
+        didSet {
+            alpha = isEnabled ? 1.0 : 0.15
         }
     }
     
