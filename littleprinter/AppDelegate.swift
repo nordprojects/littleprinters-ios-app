@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let navigationController = UINavigationController()
@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         if User.shared.name == nil {
-            let chooseNameViewController = ChooseNameViewController()
-            printerListViewController.present(chooseNameViewController, animated: false, completion: nil)
+            let beginViewController = BeginViewController()
+            printerListViewController.present(beginViewController, animated: false, completion: nil)
         }
         
         return true

@@ -18,6 +18,8 @@
 		9B090CDC200625130005D841 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CDB200625130005D841 /* Result.swift */; };
 		9B090CE2200631FE0005D841 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CE1200631FE0005D841 /* Utilities.swift */; };
 		9B090CE420065A830005D841 /* PrinterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */; };
+		9B2845A920120D330061FB8D /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2845A820120D330061FB8D /* BeginViewController.swift */; };
+		9B2845AC201212AB0061FB8D /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2845AB201212AB0061FB8D /* Components.swift */; };
 		9B2E02392004BECA0008AC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E02382004BECA0008AC1F /* AppDelegate.swift */; };
 		9B2E023B2004BECA0008AC1F /* PrinterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */; };
 		9B2E023E2004BECA0008AC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023C2004BECA0008AC1F /* Main.storyboard */; };
@@ -79,6 +81,8 @@
 		9B090CDB200625130005D841 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		9B090CE1200631FE0005D841 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterListTableViewCell.swift; sourceTree = "<group>"; };
+		9B2845A820120D330061FB8D /* BeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
+		9B2845AB201212AB0061FB8D /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		9B2E02352004BECA0008AC1F /* littleprinter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = littleprinter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2E02382004BECA0008AC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterListViewController.swift; sourceTree = "<group>"; };
@@ -129,10 +133,11 @@
 				9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */,
 				9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */,
 				9B090CD120061F890005D841 /* AddPrinterViewController.swift */,
-				9BDE7D0A2008EDDE0019AB81 /* ChooseNameViewController.swift */,
+				9B2845AA201212860061FB8D /* On Boarding */,
 				9BDE7D052008BCFD0019AB81 /* Messages */,
 				9B2E023F2004BECA0008AC1F /* Assets.xcassets */,
 				9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */,
+				9B2845AB201212AB0061FB8D /* Components.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -163,6 +168,15 @@
 			children = (
 			);
 			path = Stubs;
+			sourceTree = "<group>";
+		};
+		9B2845AA201212860061FB8D /* On Boarding */ = {
+			isa = PBXGroup;
+			children = (
+				9B2845A820120D330061FB8D /* BeginViewController.swift */,
+				9BDE7D0A2008EDDE0019AB81 /* ChooseNameViewController.swift */,
+			);
+			path = "On Boarding";
 			sourceTree = "<group>";
 		};
 		9B2E022C2004BECA0008AC1F = {
@@ -422,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BDE7D022008AE250019AB81 /* MessageTypeSelectViewController.swift in Sources */,
+				9B2845AC201212AB0061FB8D /* Components.swift in Sources */,
 				9BDE7D092008DE700019AB81 /* PosterMessageViewController.swift in Sources */,
 				9B090CD8200622930005D841 /* PrinterManager.swift in Sources */,
 				9B090CD6200620710005D841 /* Printer.swift in Sources */,
@@ -433,6 +448,7 @@
 				56F031CE2009123D00543500 /* Views.swift in Sources */,
 				9B090CE2200631FE0005D841 /* Utilities.swift in Sources */,
 				9B2E023B2004BECA0008AC1F /* PrinterListViewController.swift in Sources */,
+				9B2845A920120D330061FB8D /* BeginViewController.swift in Sources */,
 				9BDE7D0B2008EDDE0019AB81 /* ChooseNameViewController.swift in Sources */,
 				9B2E02392004BECA0008AC1F /* AppDelegate.swift in Sources */,
 				9BDE7D002007C0E60019AB81 /* PlainTextMessageViewController.swift in Sources */,
