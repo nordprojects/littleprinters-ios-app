@@ -22,6 +22,10 @@ class PosterMessageViewController: UIViewController {
         view = UIView()
         view.backgroundColor = .white
         
+        if let printer = recipient {
+            self.title = "@" + printer.info.owner
+        }
+        
         let previewScrollView = UIScrollView()
         view.addSubview(previewScrollView)
         previewScrollView.backgroundColor = UIColor(patternImage: UIImage(named: "receipt-background")!)
