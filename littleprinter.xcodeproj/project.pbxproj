@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		037ED1BE5596CA5FC4A688F5 /* Pods_littleprinter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */; };
+		5641D3DF2012085F002A7D08 /* BebasNeueWhatever.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5641D3DE2012085F002A7D08 /* BebasNeueWhatever.ttf */; };
+		5641D3E220120DEB002A7D08 /* PosterMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5641D3E120120DEB002A7D08 /* PosterMessageViewController.swift */; };
+		5641D3E42012128B002A7D08 /* ReceiptPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5641D3E32012128B002A7D08 /* ReceiptPreviewView.swift */; };
 		56F031CE2009123D00543500 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F031CD2009123D00543500 /* Views.swift */; };
-		56F031D620092C3A00543500 /* BebasNeue Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56F031D420092C3900543500 /* BebasNeue Bold.ttf */; };
-		56F031D720092C3A00543500 /* BebasNeue Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56F031D520092C3A00543500 /* BebasNeue Regular.ttf */; };
 		9B090CD220061F890005D841 /* AddPrinterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD120061F890005D841 /* AddPrinterViewController.swift */; };
 		9B090CD6200620710005D841 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD5200620710005D841 /* Printer.swift */; };
 		9B090CD8200622930005D841 /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD7200622930005D841 /* PrinterManager.swift */; };
@@ -30,7 +31,6 @@
 		9BDE7D022008AE250019AB81 /* MessageTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D012008AE250019AB81 /* MessageTypeSelectViewController.swift */; };
 		9BDE7D042008B3020019AB81 /* HTMLMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */; };
 		9BDE7D072008C4A00019AB81 /* ImageMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D062008C4A00019AB81 /* ImageMessageViewController.swift */; };
-		9BDE7D092008DE700019AB81 /* PosterMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D082008DE700019AB81 /* PosterMessageViewController.swift */; };
 		9BDE7D0B2008EDDE0019AB81 /* ChooseNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D0A2008EDDE0019AB81 /* ChooseNameViewController.swift */; };
 		9BDE7D0D2008EF4D0019AB81 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D0C2008EF4D0019AB81 /* User.swift */; };
 		9BDE7D15200905CA0019AB81 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7D14200905CA0019AB81 /* ShareViewController.swift */; };
@@ -70,9 +70,10 @@
 
 /* Begin PBXFileReference section */
 		168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_littleprinter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5641D3DE2012085F002A7D08 /* BebasNeueWhatever.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BebasNeueWhatever.ttf; sourceTree = "<group>"; };
+		5641D3E120120DEB002A7D08 /* PosterMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterMessageViewController.swift; sourceTree = "<group>"; };
+		5641D3E32012128B002A7D08 /* ReceiptPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptPreviewView.swift; sourceTree = "<group>"; };
 		56F031CD2009123D00543500 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
-		56F031D420092C3900543500 /* BebasNeue Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Bold.ttf"; sourceTree = "<group>"; };
-		56F031D520092C3A00543500 /* BebasNeue Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Regular.ttf"; sourceTree = "<group>"; };
 		9AAABE1A763CB9BE1B5F1DBF /* Pods-littleprinter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprinter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter.debug.xcconfig"; sourceTree = "<group>"; };
 		9B090CD120061F890005D841 /* AddPrinterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPrinterViewController.swift; sourceTree = "<group>"; };
 		9B090CD5200620710005D841 /* Printer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		9BDE7D012008AE250019AB81 /* MessageTypeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTypeSelectViewController.swift; sourceTree = "<group>"; };
 		9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLMessageViewController.swift; sourceTree = "<group>"; };
 		9BDE7D062008C4A00019AB81 /* ImageMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMessageViewController.swift; sourceTree = "<group>"; };
-		9BDE7D082008DE700019AB81 /* PosterMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterMessageViewController.swift; sourceTree = "<group>"; };
 		9BDE7D0A2008EDDE0019AB81 /* ChooseNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNameViewController.swift; sourceTree = "<group>"; };
 		9BDE7D0C2008EF4D0019AB81 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9BDE7D12200905CA0019AB81 /* share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +209,7 @@
 				9B090CDD20062CD20005D841 /* Utilities */,
 				9B090CDE20062F240005D841 /* Stubs */,
 				9B2E02442004BECA0008AC1F /* Info.plist */,
+				5641D3DE2012085F002A7D08 /* BebasNeueWhatever.ttf */,
 			);
 			path = littleprinter;
 			sourceTree = "<group>";
@@ -220,9 +221,8 @@
 				9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */,
 				9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */,
 				9BDE7D062008C4A00019AB81 /* ImageMessageViewController.swift */,
-				9BDE7D082008DE700019AB81 /* PosterMessageViewController.swift */,
-				56F031D420092C3900543500 /* BebasNeue Bold.ttf */,
-				56F031D520092C3A00543500 /* BebasNeue Regular.ttf */,
+				5641D3E120120DEB002A7D08 /* PosterMessageViewController.swift */,
+				5641D3E32012128B002A7D08 /* ReceiptPreviewView.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -353,9 +353,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */,
-				56F031D720092C3A00543500 /* BebasNeue Regular.ttf in Resources */,
-				56F031D620092C3A00543500 /* BebasNeue Bold.ttf in Resources */,
 				9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */,
+				5641D3DF2012085F002A7D08 /* BebasNeueWhatever.ttf in Resources */,
 				9B2E023E2004BECA0008AC1F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,11 +435,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BDE7D022008AE250019AB81 /* MessageTypeSelectViewController.swift in Sources */,
-				9B2845AC201212AB0061FB8D /* Components.swift in Sources */,
 				9BDE7D092008DE700019AB81 /* PosterMessageViewController.swift in Sources */,
 				9B090CD8200622930005D841 /* PrinterManager.swift in Sources */,
 				9B090CD6200620710005D841 /* Printer.swift in Sources */,
 				9BDE7D0D2008EF4D0019AB81 /* User.swift in Sources */,
+				5641D3E42012128B002A7D08 /* ReceiptPreviewView.swift in Sources */,
 				9B090CD220061F890005D841 /* AddPrinterViewController.swift in Sources */,
 				9B090CE420065A830005D841 /* PrinterListTableViewCell.swift in Sources */,
 				9B090CDA200624430005D841 /* SiriusServer.swift in Sources */,
@@ -450,6 +449,7 @@
 				9B2E023B2004BECA0008AC1F /* PrinterListViewController.swift in Sources */,
 				9B2845A920120D330061FB8D /* BeginViewController.swift in Sources */,
 				9BDE7D0B2008EDDE0019AB81 /* ChooseNameViewController.swift in Sources */,
+				5641D3E220120DEB002A7D08 /* PosterMessageViewController.swift in Sources */,
 				9B2E02392004BECA0008AC1F /* AppDelegate.swift in Sources */,
 				9BDE7D002007C0E60019AB81 /* PlainTextMessageViewController.swift in Sources */,
 				9BDE7D072008C4A00019AB81 /* ImageMessageViewController.swift in Sources */,

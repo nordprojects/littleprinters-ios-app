@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
+        // uncomment for font list.
+        // print(UIFont.familyNames.sorted());
+        
         if User.shared.name == nil {
             let beginViewController = BeginViewController()
             printerListViewController.present(beginViewController, animated: false, completion: nil)
