@@ -14,21 +14,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
         
+        window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = NavigationController()
-        let printerListViewController = PrinterListViewController()
-        navigationController.viewControllers = [printerListViewController]
+        
+        if User.shared.name == nil {
+            let beginViewController = BeginViewController()
+            navigationController.viewControllers = [beginViewController]
+        } else {
+            let printerListViewController = PrinterListViewController()
+            navigationController.viewControllers = [printerListViewController]
+        }
+
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         // uncomment for font list.
         // print(UIFont.familyNames.sorted());
-        
-        if User.shared.name == nil {
-            let beginViewController = BeginViewController()
-            printerListViewController.present(beginViewController, animated: false, completion: nil)
-        }
         
         return true
     }

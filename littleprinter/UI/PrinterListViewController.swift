@@ -20,7 +20,7 @@ class PrinterListViewController: UIViewController {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "receipt-background")!)
         title = "Little Printers"
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-        let footer =  AddPrinterFooterView(frame: CGRect(x: 0, y: 0, width: 0, height: 140))
+        let footer =  AddPrinterFooterView(frame: CGRect(x: 0, y: 0, width: 100, height: 140))
         footer.delegate = self
         tableView.tableFooterView = footer
         tableView.delegate = self
@@ -39,6 +39,7 @@ class PrinterListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         tableView.reloadData()
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: .DidUpdatePrinters, object: nil)
     }

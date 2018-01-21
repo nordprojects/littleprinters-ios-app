@@ -32,7 +32,7 @@ class AddPrinterFooterView: UIView {
         addSubview(line)
         addSubview(addPrinterButton)
         line.snp.makeConstraints { (make) in
-            make.left.right.top.equalToSuperview().inset(25)
+            make.left.right.top.equalToSuperview().inset(25).priority(500)
             make.height.equalTo(3)
         }
         addPrinterButton.snp.makeConstraints { (make) in

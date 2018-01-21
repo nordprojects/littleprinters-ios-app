@@ -13,17 +13,32 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
     lazy var textField = UITextField()
     lazy var nextButton = ChunkyButton()
     
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "back"), for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+
         let imageView = UIImageView()
         imageView.image = UIImage(named: "static")
         imageView.contentMode = .scaleAspectFill
         view.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
+        }
+        
+        backButton.addTarget(self, action: #selector(backPressed), for: .touchUpInside)
+        view.addSubview(backButton)
+        backButton.snp.makeConstraints { (make) in
+            make.left.top.equalTo(view.safeAreaLayoutGuide)
+            make.width.equalTo(47)
+            make.height.equalTo(44)
         }
         
         let titleLabel = UILabel()
@@ -106,7 +121,6 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
             make.width.equalTo(104)
             make.height.equalTo(44)
         }
-        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -118,8 +132,13 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
         textField.placeholder = ""
     }
     
+    @objc func backPressed() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @objc func nextPressed() {
         User.shared.name = textField.text
-        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        let printerListViewController = PrinterListViewController()
+        navigationController?.setViewControllers([printerListViewController], animated: true)
     }
 }

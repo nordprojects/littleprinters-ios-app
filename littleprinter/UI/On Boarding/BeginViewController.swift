@@ -14,6 +14,7 @@ class BeginViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         
         let imageView = UIImageView()
         imageView.image = UIImage(named: "splash")
@@ -37,12 +38,16 @@ class BeginViewController: UIViewController {
             make.height.equalTo(44)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-66)
         }
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
     
     @objc func beginPressed() {
         let chooseNameViewController = ChooseNameViewController()
-        present(chooseNameViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(chooseNameViewController, animated: true)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
