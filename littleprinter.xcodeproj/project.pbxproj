@@ -23,7 +23,6 @@
 		9B2845A920120D330061FB8D /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2845A820120D330061FB8D /* BeginViewController.swift */; };
 		9B2E02392004BECA0008AC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E02382004BECA0008AC1F /* AppDelegate.swift */; };
 		9B2E023B2004BECA0008AC1F /* PrinterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */; };
-		9B2E023E2004BECA0008AC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023C2004BECA0008AC1F /* Main.storyboard */; };
 		9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023F2004BECA0008AC1F /* Assets.xcassets */; };
 		9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */; };
 		9B3F752F20091B29008379FC /* ShareSelectPrinterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F752E20091B29008379FC /* ShareSelectPrinterViewController.swift */; };
@@ -90,7 +89,6 @@
 		9B2E02352004BECA0008AC1F /* littleprinter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = littleprinter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2E02382004BECA0008AC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterListViewController.swift; sourceTree = "<group>"; };
-		9B2E023D2004BECA0008AC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B2E023F2004BECA0008AC1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B2E02422004BECA0008AC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B2E02442004BECA0008AC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 		9B090CD3200620400005D841 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				9B2E023C2004BECA0008AC1F /* Main.storyboard */,
 				9B8786C12012668000A32B8A /* NavigationController.swift */,
 				9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */,
 				9B090CE320065A820005D841 /* PrinterListTableViewCell.swift */,
@@ -361,7 +358,6 @@
 				9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */,
 				9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */,
 				5641D3DF2012085F002A7D08 /* BebasNeueWhatever.ttf in Resources */,
-				9B2E023E2004BECA0008AC1F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,14 +487,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9B2E023C2004BECA0008AC1F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9B2E023D2004BECA0008AC1F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

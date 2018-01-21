@@ -70,8 +70,7 @@ class PrinterListViewController: UIViewController {
     }
     
     func addPrinterPressed() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let addPrinterViewController = storyboard.instantiateViewController(withIdentifier: "AddPrinterViewController")
+        let addPrinterViewController = AddPrinterViewController()
         navigationController?.pushViewController(addPrinterViewController, animated: true)
     }
 }
