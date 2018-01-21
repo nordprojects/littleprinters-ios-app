@@ -1,148 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Little Printers-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="PrinterListViewController" id="BYZ-38-t0r" customClass="PrinterListViewController" customModule="littleprinter" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3UP-wN-EFr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="4Ae-Bs-K2P">
-                                    <rect key="frame" x="0.0" y="162" width="375" height="134"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus-face" translatesAutoresizingMaskIntoConstraints="NO" id="ipJ-fq-hN5">
-                                            <rect key="frame" x="28" y="27" width="80" height="80"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="cch-U8-QWt"/>
-                                                <constraint firstAttribute="height" constant="80" id="w4X-l1-AFi"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a new printer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6P-Ds-OnO">
-                                            <rect key="frame" x="133" y="57" width="166" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrk-ZM-G6k">
-                                            <rect key="frame" x="8" y="8" width="359" height="118"/>
-                                            <connections>
-                                                <segue destination="CRl-oc-Up7" kind="show" id="dfv-sc-ayv"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="hrk-ZM-G6k" firstAttribute="leading" secondItem="4Ae-Bs-K2P" secondAttribute="leading" constant="8" id="6Wf-2a-rdW"/>
-                                        <constraint firstItem="ipJ-fq-hN5" firstAttribute="centerY" secondItem="4Ae-Bs-K2P" secondAttribute="centerY" id="CvS-xO-lVZ"/>
-                                        <constraint firstItem="hrk-ZM-G6k" firstAttribute="top" secondItem="4Ae-Bs-K2P" secondAttribute="top" constant="8" id="h65-NJ-fq8"/>
-                                        <constraint firstAttribute="bottom" secondItem="hrk-ZM-G6k" secondAttribute="bottom" constant="8" id="to0-RA-PUo"/>
-                                        <constraint firstAttribute="trailing" secondItem="hrk-ZM-G6k" secondAttribute="trailing" constant="8" id="wwv-n6-ag5"/>
-                                        <constraint firstItem="ipJ-fq-hN5" firstAttribute="leading" secondItem="4Ae-Bs-K2P" secondAttribute="leading" constant="28" id="xcA-eK-Vko"/>
-                                    </constraints>
-                                </view>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PrinterListTableViewCell" rowHeight="134" id="zOO-Ak-Rfl" customClass="PrinterListTableViewCell" customModule="littleprinter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="134"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zOO-Ak-Rfl" id="302-xt-w3X" customClass="PrinterListTableViewCell" customModule="littleprinter" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="133.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="face" translatesAutoresizingMaskIntoConstraints="NO" id="Kzo-qO-Vtu">
-                                                    <rect key="frame" x="28" y="26" width="80" height="80"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="minterprinter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xug-gJ-bMU">
-                                                    <rect key="frame" x="128" y="26" width="195" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="owner: @benpawle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2L-LC-ydq">
-                                                    <rect key="frame" x="128" y="55" width="175" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="status: online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVR-g3-eYc">
-                                                    <rect key="frame" x="128" y="84" width="175" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovt-cx-SjE">
-                                                    <rect key="frame" x="271" y="93" width="62" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Message"/>
-                                                    <connections>
-                                                        <action selector="messagePressed:" destination="zOO-Ak-Rfl" eventType="touchUpInside" id="EGx-mT-Baf"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbN-UF-dIc">
-                                                    <rect key="frame" x="331" y="21" width="38" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="share"/>
-                                                    <connections>
-                                                        <action selector="sharePressed:" destination="zOO-Ak-Rfl" eventType="touchUpInside" id="x5K-cv-Qgo"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="nameLabel" destination="xug-gJ-bMU" id="WKA-6T-i0C"/>
-                                            <outlet property="ownerLabel" destination="x2L-LC-ydq" id="3w1-NR-0XN"/>
-                                            <outlet property="statusLabel" destination="pVR-g3-eYc" id="RL1-M8-k50"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="F3M-3u-hs1"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="zaW-xz-Z2k"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="3UP-wN-EFr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IlC-k8-7mQ"/>
-                            <constraint firstItem="3UP-wN-EFr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="awL-oe-GYa"/>
-                            <constraint firstItem="3UP-wN-EFr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="f3r-nG-dl5"/>
-                            <constraint firstItem="3UP-wN-EFr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="rZC-6W-R6m"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Little Printers" id="2Ih-Cc-53z">
-                        <barButtonItem key="backBarButtonItem" title=" " id="LpW-3Z-FvN"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="3UP-wN-EFr" id="Z5c-di-4O6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="272.80000000000001" y="192.05397301349328"/>
-        </scene>
         <!--Add a printer-->
         <scene sceneID="XMS-In-Uo2">
             <objects>
-                <viewController id="CRl-oc-Up7" customClass="AddPrinterViewController" customModule="littleprinter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddPrinterViewController" id="CRl-oc-Up7" customClass="AddPrinterViewController" customModule="littleprinter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iuF-4B-igq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -225,8 +95,4 @@
             <point key="canvasLocation" x="1215" y="192"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="face" width="80" height="80"/>
-        <image name="plus-face" width="80" height="80"/>
-    </resources>
 </document>

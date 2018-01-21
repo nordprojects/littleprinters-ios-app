@@ -17,8 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let navigationController = NavigationController()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let printerListViewController = storyboard.instantiateViewController(withIdentifier: "PrinterListViewController")
+        let printerListViewController = PrinterListViewController()
         navigationController.viewControllers = [printerListViewController]
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

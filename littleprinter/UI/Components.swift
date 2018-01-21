@@ -34,17 +34,23 @@ class ChunkyButton: UIButton {
         }
     }
     
+    var topColor: UIColor = .white
+    var borderColor: UIColor = .black
+    var shadowColor: UIColor = .black
+    
     override func draw(_ rect: CGRect) {
         let insetRect = rect.insetBy(dx: 2, dy: 2)
         let shadowRect = insetRect.offsetBy(dx: -2, dy: 2)
         let borderRect = (state == .highlighted) ? insetRect : insetRect.offsetBy(dx: 2, dy: -2)
         let topRect = borderRect.insetBy(dx: 2, dy: 2)
         
-        UIColor.black.set()
+        shadowColor.set()
         UIBezierPath(rect: shadowRect).fill()
+        
+        borderColor.set()
         UIBezierPath(rect: borderRect).fill()
 
-        UIColor.white.set()
+        topColor.set()
         UIBezierPath(rect: topRect).fill()
     }
 }

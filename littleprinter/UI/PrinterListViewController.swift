@@ -7,20 +7,34 @@
 //
 
 import UIKit
+import SnapKit
 
 class PrinterListViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    var refreshControl: UIRefreshControl?
+    lazy var tableView = UITableView()
+    lazy var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        refreshControl = UIRefreshControl()
-        if let refreshControl = refreshControl {
-            refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
-            tableView.addSubview(refreshControl)
+        
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "receipt-background")!)
+        title = "Little Printers"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        let footer =  AddPrinterFooterView(frame: CGRect(x: 0, y: 0, width: 0, height: 140))
+        footer.delegate = self
+        tableView.tableFooterView = footer
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .clear
+        tableView.register(PrinterListTableViewCell.self, forCellReuseIdentifier: "PrinterListTableViewCell")
+        tableView.separatorStyle = .none
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
         }
+        
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,14 +56,22 @@ class PrinterListViewController: UIViewController {
         PrinterManager.shared.updatePrinters() // TODO - make this have a completion block once all updated
         delay(1) {
             self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
+            self.refreshControl.endRefreshing()
         }
     }
+    
+    // MARK: public delegate methods
     
     func newMessagePressed(_ printer: Printer) {
         let messageViewController = MessageTypeSelectViewController()
         messageViewController.recipient = printer
         navigationController?.pushViewController(messageViewController, animated: true)
+    }
+    
+    func addPrinterPressed() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let addPrinterViewController = storyboard.instantiateViewController(withIdentifier: "AddPrinterViewController")
+        navigationController?.pushViewController(addPrinterViewController, animated: true)
     }
 }
 
@@ -80,16 +102,10 @@ extension PrinterListViewController: UITableViewDataSource {
             tableView.deleteRows(at: [indexPath], with: .left)
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        newMessagePressed(PrinterManager.shared.printers[indexPath.row])
-    }
 }
 
 extension PrinterListViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 134
+        return 150
     }
 }
-

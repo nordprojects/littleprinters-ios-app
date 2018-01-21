@@ -16,7 +16,7 @@ class NavigationController: UINavigationController {
         navigationBar.titleTextAttributes = [NSAttributedStringKey.font : UIFont(name: "Avenir-Heavy", size: 20)!,
                                              NSAttributedStringKey.kern : 0.4]
         navigationBar.tintColor = .black
-        navigationBar.backIndicatorImage = #imageLiteral(resourceName: "back")
-        navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "back")
+        navigationBar.backIndicatorImage = UIImage(named: "back")
+        navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
     }
 }
