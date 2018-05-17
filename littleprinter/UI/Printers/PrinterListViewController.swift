@@ -69,6 +69,12 @@ class PrinterListViewController: UIViewController {
         navigationController?.pushViewController(messageViewController, animated: true)
     }
     
+    func sharePrinterPressed(_ printer: Printer) {
+        let sharePrinterViewController = SharePrinterViewController()
+        sharePrinterViewController.printer = printer
+        navigationController?.pushViewController(sharePrinterViewController, animated: true)
+    }
+    
     func addPrinterPressed() {
         let addPrinterViewController = AddPrinterViewController()
         navigationController?.pushViewController(addPrinterViewController, animated: true)
@@ -98,6 +104,7 @@ extension PrinterListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            // TODO - show confirmation alert before deleting
             PrinterManager.shared.removePrinter(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
         }

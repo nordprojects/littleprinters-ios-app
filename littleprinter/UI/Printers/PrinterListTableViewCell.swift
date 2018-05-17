@@ -85,6 +85,7 @@ class PrinterListTableViewCell: UITableViewCell {
         contentView.backgroundColor = .clear
         
         messageButton.addTarget(self, action: #selector(messagePressed(_:)), for: .touchUpInside)
+        shareButton.addTarget(self, action: #selector(sharePressed(_:)), for: .touchUpInside)
         
         contentView.addSubview(cardImageView)
         contentView.addSubview(thumbnail)
@@ -137,7 +138,11 @@ class PrinterListTableViewCell: UITableViewCell {
     }
     
     @objc func sharePressed(_ sender: Any) {
-        
+        guard let printer = printer else {
+            print("WARNING: No printer object on cell")
+            return
+        }
+        controller?.sharePrinterPressed(printer)
     }
     
     @objc func messagePressed(_ sender: Any) {

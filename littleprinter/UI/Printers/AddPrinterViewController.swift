@@ -69,7 +69,7 @@ class AddPrinterViewController: UIViewController {
         closeKeyboardControl.addTarget(self, action: #selector(closeKeyboard), for: .touchUpInside)
         addButton.addTarget(self, action: #selector(addPrinterPressed(_:)), for: .touchUpInside)
         noKeyButton.addTarget(self, action: #selector(learnMorePressed(_:)), for: .touchUpInside)
-        
+
         view.addSubview(closeKeyboardControl)
         view.addSubview(messageLabel)
         view.addSubview(keyTextField)
