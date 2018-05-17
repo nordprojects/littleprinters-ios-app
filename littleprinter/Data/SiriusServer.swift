@@ -57,7 +57,7 @@ class SiriusServer {
                     switch httpResponse.statusCode {
                     case 200:
                         if let data = data {
-                            let string = String(data: data, encoding: String.Encoding.utf8) as String!
+                            let string = String(data: data, encoding: String.Encoding.utf8) as String?
                             print("data: " + string!)
                             completion(Result.success(data))
                         } else {
