@@ -71,6 +71,23 @@ class PrinterManager {
         }
     }
     
+    var lastUsedPrinter: Printer? {
+        get {
+            guard let key = UserDefaults.group.string(forKey: "lastUsedPrinterKey") else {
+                return nil
+            }
+            
+            return printer(withKey: key)
+        }
+        set {
+            UserDefaults.group.set(newValue?.key, forKey: "lastUsedPrinterKey")
+        }
+    }
+    
+    func printer(withKey key: String) -> Printer? {
+        return printers.first(where: { $0.key == key })
+    }
+    
     // MARK: Private
     
     private func loadSavedPrinters() {

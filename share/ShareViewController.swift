@@ -11,12 +11,12 @@ import Social
 import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
-
+    
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         return true
     }
-
+    
     var pageFragments: [String] = []
     var selectedPrinter: Printer?
     
@@ -24,8 +24,7 @@ class ShareViewController: SLComposeServiceViewController {
         super.viewDidLoad()
         
         if PrinterManager.shared.printers.count > 0 {
-            selectedPrinter = PrinterManager.shared.printers[0] // TODO - remeber previous selection as default
-
+            selectedPrinter = PrinterManager.shared.lastUsedPrinter ?? PrinterManager.shared.printers.first
         }
         
         guard let items = extensionContext?.inputItems else {
@@ -82,10 +81,10 @@ class ShareViewController: SLComposeServiceViewController {
                                     print("Unexpected data:", type(of: data))
                                     return
                                 }
-
+                                
                                 // resize image to 384 width
                                 attachedImage = attachedImage?.scaledImage(toWidth: 384)
-
+                                
                                 guard let data = UIImageJPEGRepresentation(attachedImage!, 0.7) else {
                                     print("failed to encode image")
                                     return
@@ -110,6 +109,7 @@ class ShareViewController: SLComposeServiceViewController {
                             }
                         }
                     }
+                    
                 }
             }
         }
@@ -118,16 +118,21 @@ class ShareViewController: SLComposeServiceViewController {
     
     override func didSelectPost() {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-    
+        
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
+        guard let items = extensionContext?.inputItems else {
+            return
+        }
         
         if contentText.count > 0 {
             pageFragments.insert("<p>\(contentText!)</p>", at: 0)
         }
         
         let html = pageFragments.joined()
-
+        
         if let printer = selectedPrinter {
+            PrinterManager.shared.lastUsedPrinter = printer
+
             SiriusServer.shared.sendHTML(html, to: printer.key, from: User.shared.name ?? "anon") { (error) in
                 if let error = error {
                     self.extensionContext!.cancelRequest(withError: error)
@@ -140,7 +145,7 @@ class ShareViewController: SLComposeServiceViewController {
             self.extensionContext!.cancelRequest(withError: ShareError.NoPrinterSelected)
         }
     }
-
+    
     func selectPrinter(_ printer: Printer) {
         selectedPrinter = printer
         reloadConfigurationItems()
@@ -159,9 +164,16 @@ class ShareViewController: SLComposeServiceViewController {
         }
         return [selectPrinter]
     }
-
+    
     enum ShareError: Error {
         case NoPrinterSelected
+    }
+    
+}
+
+fileprivate extension String {
+    static var propertyList: String {
+        return kUTTypePropertyList as String
     }
 }
 
@@ -170,11 +182,11 @@ extension NSAttributedString {
         let htmlData = try self.data(from: NSMakeRange(0, self.length),
                                      documentAttributes: [.documentType: NSAttributedString.DocumentType.html,
                                                           .characterEncoding: NSNumber(value: Int8(String.Encoding.utf8.rawValue))])
-
+        
         guard let result = String(data: htmlData, encoding: .utf8) else {
             throw EncodingError.error
         }
-
+        
         return result
     }
     
@@ -191,13 +203,13 @@ extension UIImage {
         let newWidth = size.width * scaleFactor
         
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight));
-
+        
         draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let result = UIGraphicsGetImageFromCurrentImageContext();
         
         UIGraphicsEndImageContext();
         
         return result!;
-
+        
     }
 }
