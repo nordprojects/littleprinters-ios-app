@@ -24,10 +24,10 @@
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict>
-			<key>NSExtensionActivationDictionaryVersion</key>
-			<integer>2</integer>
 			<key>NSExtensionActivationRule</key>
 			<dict>
+				<key>NSExtensionActivationDictionaryVersion</key>
+				<integer>2</integer>
 				<key>NSExtensionActivationSupportsImageWithMaxCount</key>
 				<integer>10</integer>
 				<key>NSExtensionActivationSupportsText</key>
