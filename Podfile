@@ -6,4 +6,10 @@ target 'littleprinter' do
   pod 'SnapKit', '~> 4.0.0'
   pod 'ReactiveSwift'
   pod 'ReactiveCocoa'
+  pod 'HTMLString', '~> 4.0'
+end
+
+target 'littleprintershare' do
+    use_frameworks!
+    pod 'HTMLString', '~> 4.0'
 end
