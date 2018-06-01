@@ -9,6 +9,7 @@
 import UIKit
 import Social
 import MobileCoreServices
+import HTMLString
 
 class ShareViewController: SLComposeServiceViewController {
     
@@ -17,7 +18,27 @@ class ShareViewController: SLComposeServiceViewController {
         return true
     }
     
-    var pageFragments: [String] = []
+    var page: [PageFragment] = []
+    
+    class PageFragment {
+        var html: String = ""
+        var loadingComplete = false
+
+        init() {}
+
+        init(text: String) {
+            html = "<p>\(text.addingASCIIEntities)</p>"
+            loadingComplete = true
+        }
+        init(header: String) {
+            html = "<h1>\(header.addingASCIIEntities)</h1>"
+            loadingComplete = true
+        }
+        init(html: String) {
+            self.html = html
+            loadingComplete = true
+        }
+    }
     var selectedPrinter: Printer?
     
     override func viewDidLoad() {
@@ -27,31 +48,74 @@ class ShareViewController: SLComposeServiceViewController {
             selectedPrinter = PrinterManager.shared.lastUsedPrinter ?? PrinterManager.shared.printers.first
         }
         
+        buildPageFromExtensionItems()
+    }
+    
+    override func didSelectPost() {
+        if contentText.count > 0 {
+            page.append(PageFragment(text: contentText))
+        }
+        
+        let html = page.map { $0.html }.joined(separator: "\n")
+        
+        if let printer = selectedPrinter {
+            PrinterManager.shared.lastUsedPrinter = printer
+
+            SiriusServer.shared.sendHTML(html, to: printer.key, from: User.shared.name ?? "anon") { (error) in
+                if let error = error {
+                    self.extensionContext!.cancelRequest(withError: error)
+                    return
+                }
+                
+                self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+            }
+        } else {
+            self.extensionContext!.cancelRequest(withError: ShareError.NoPrinterSelected)
+        }
+    }
+    
+    func selectPrinter(_ printer: Printer) {
+        selectedPrinter = printer
+        reloadConfigurationItems()
+        popConfigurationViewController()
+    }
+    
+    override func configurationItems() -> [Any]! {
+        let selectPrinter = SLComposeSheetConfigurationItem()!
+        selectPrinter.title = "Select Printer"
+        selectPrinter.value = selectedPrinter?.info.name ?? "none"
+        selectPrinter.tapHandler = {
+            let selectViewController = ShareSelectPrinterViewController()
+            selectViewController.shareController = self
+            self.pushConfigurationViewController(selectViewController)
+        }
+        return [selectPrinter]
+    }
+    
+    private func buildPageFromExtensionItems() {
         guard let items = extensionContext?.inputItems else {
             return
         }
-        
-        print("items: \(items)")
         
         for item in items {
             guard let item = item as? NSExtensionItem else { continue }
             
             if let title = item.attributedTitle {
                 do {
-                    pageFragments.append("<h1>\(try title.htmlString())</h1>")
+                    page.append(PageFragment(html: "<h1>\(try title.htmlString())</h1>"))
                 }
                 catch {
                     print("html encoding of content failed.", error)
-                    pageFragments.append("<h1>\(title.string)</h1>")
+                    page.append(PageFragment(header: title.string))
                 }
             }
             if let content = item.attributedContentText {
                 do {
-                    pageFragments.append("<p>\(try content.htmlString())</p>")
+                    page.append(PageFragment(html: "<p>\(try content.htmlString())</p>"))
                 }
                 catch {
                     print("html encoding of content failed.", error)
-                    pageFragments.append("<p>\(content.string)</p>")
+                    page.append(PageFragment(text: content.string))
                 }
             }
             
@@ -59,7 +123,11 @@ class ShareViewController: SLComposeServiceViewController {
                 for attachment in attachments {
                     let imageType = kUTTypeImage as String
                     if attachment.hasItemConformingToTypeIdentifier(imageType) {
+                        let pageFragment = PageFragment()
+                        page.append(pageFragment)
+                        
                         attachment.loadItem(forTypeIdentifier: imageType, options: [:]) { (data, error) in
+                            pageFragment.loadingComplete = true
                             if let error = error {
                                 print("Failed to load item in \(attachment). \(error)")
                                 return
@@ -92,7 +160,7 @@ class ShareViewController: SLComposeServiceViewController {
                                 
                                 let base64DataString = data.base64EncodedString()
                                 
-                                self.pageFragments.append("<img src=\"data:image/jpeg;base64,\(base64DataString)\" style=\"width: 100%\">")
+                                pageFragment.html = "<img src=\"data:image/jpeg;base64,\(base64DataString)\" style=\"width: 100%\">"
                             }
                         }
                     }
@@ -102,73 +170,21 @@ class ShareViewController: SLComposeServiceViewController {
                         attachment.loadItem(forTypeIdentifier: plainTextType, options: [:]) { (data, error) in
                             switch data {
                             case let text as String:
-                                self.pageFragments.append("<p>\(text)</p>")
+                                self.page.append(PageFragment(text: text))
                             default:
                                 print("Unexpected data:", type(of: data))
                                 return
                             }
                         }
                     }
-                    
                 }
             }
         }
-    }
-    
-    
-    override func didSelectPost() {
-        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-        
-        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-        guard let items = extensionContext?.inputItems else {
-            return
-        }
-        
-        if contentText.count > 0 {
-            pageFragments.insert("<p>\(contentText!)</p>", at: 0)
-        }
-        
-        let html = pageFragments.joined()
-        
-        if let printer = selectedPrinter {
-            PrinterManager.shared.lastUsedPrinter = printer
-
-            SiriusServer.shared.sendHTML(html, to: printer.key, from: User.shared.name ?? "anon") { (error) in
-                if let error = error {
-                    self.extensionContext!.cancelRequest(withError: error)
-                    return
-                }
-                
-                self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-            }
-        } else {
-            self.extensionContext!.cancelRequest(withError: ShareError.NoPrinterSelected)
-        }
-    }
-    
-    func selectPrinter(_ printer: Printer) {
-        selectedPrinter = printer
-        reloadConfigurationItems()
-        popConfigurationViewController()
-    }
-    
-    override func configurationItems() -> [Any]! {
-        
-        let selectPrinter = SLComposeSheetConfigurationItem()!
-        selectPrinter.title = "Select Printer"
-        selectPrinter.value = selectedPrinter?.info.name ?? "none"
-        selectPrinter.tapHandler = {
-            let selectViewController = ShareSelectPrinterViewController()
-            selectViewController.shareController = self
-            self.pushConfigurationViewController(selectViewController)
-        }
-        return [selectPrinter]
     }
     
     enum ShareError: Error {
         case NoPrinterSelected
     }
-    
 }
 
 fileprivate extension String {
@@ -213,3 +229,4 @@ extension UIImage {
         
     }
 }
+
