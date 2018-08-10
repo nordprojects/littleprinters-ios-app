@@ -20,6 +20,10 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>6</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Littleprinter uses the camera to let you send photos to printers.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Littleprinter uses your photo library to let you send photos to printers.</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>

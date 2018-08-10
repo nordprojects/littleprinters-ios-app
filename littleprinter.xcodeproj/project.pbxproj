@@ -46,6 +46,8 @@
 		9BDE7D242009106B0019AB81 /* SiriusServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CD9200624430005D841 /* SiriusServer.swift */; };
 		9BDE7D25200910CA0019AB81 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CDB200625130005D841 /* Result.swift */; };
 		9BDE7D26200910CA0019AB81 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CE1200631FE0005D841 /* Utilities.swift */; };
+		A67C58CB211DF35C00E7CDF3 /* PermanentMarker.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A67C58CA211DF35B00E7CDF3 /* PermanentMarker.ttf */; };
+		A67C58CD211DF7F100E7CDF3 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67C58CC211DF7F100E7CDF3 /* PhotoPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		9BDE7D14200905CA0019AB81 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		9BDE7D17200905CA0019AB81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		9BDE7D19200905CA0019AB81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A67C58CA211DF35B00E7CDF3 /* PermanentMarker.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PermanentMarker.ttf; sourceTree = "<group>"; };
+		A67C58CC211DF7F100E7CDF3 /* PhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		B79A12B938AB7EFBF90EDCC9 /* Pods-littleprintershare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprintershare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-littleprintershare/Pods-littleprintershare.debug.xcconfig"; sourceTree = "<group>"; };
 		D65C9079B518A328D8044A26 /* Pods-littleprintershare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprintershare.release.xcconfig"; path = "Pods/Target Support Files/Pods-littleprintershare/Pods-littleprintershare.release.xcconfig"; sourceTree = "<group>"; };
 		DE014890CAD18D5ECA1559F5 /* Pods-littleprinter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprinter.release.xcconfig"; path = "Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter.release.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 				9B090CDD20062CD20005D841 /* Utilities */,
 				9B090CDE20062F240005D841 /* Stubs */,
 				9B2E02442004BECA0008AC1F /* Info.plist */,
+				A67C58CA211DF35B00E7CDF3 /* PermanentMarker.ttf */,
 				5641D3DE2012085F002A7D08 /* BebasNeueWhatever.ttf */,
 			);
 			path = littleprinter;
@@ -243,6 +248,7 @@
 				9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */,
 				9BDE7D032008B3020019AB81 /* HTMLMessageViewController.swift */,
 				9BDE7D062008C4A00019AB81 /* ImageMessageViewController.swift */,
+				A67C58CC211DF7F100E7CDF3 /* PhotoPicker.swift */,
 				5641D3E120120DEB002A7D08 /* PosterMessageViewController.swift */,
 				5641D3E32012128B002A7D08 /* ReceiptPreviewView.swift */,
 			);
@@ -380,6 +386,7 @@
 				9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */,
 				9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */,
 				5641D3DF2012085F002A7D08 /* BebasNeueWhatever.ttf in Resources */,
+				A67C58CB211DF35C00E7CDF3 /* PermanentMarker.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +491,7 @@
 				9BDE7D002007C0E60019AB81 /* PlainTextMessageViewController.swift in Sources */,
 				9B8786C02012629E00A32B8A /* Components.swift in Sources */,
 				9B26404A20133AAE00C75412 /* AddPrinterFooterView.swift in Sources */,
+				A67C58CD211DF7F100E7CDF3 /* PhotoPicker.swift in Sources */,
 				9BDE7D072008C4A00019AB81 /* ImageMessageViewController.swift in Sources */,
 				9B8786C22012668000A32B8A /* NavigationController.swift in Sources */,
 				9BDE7D042008B3020019AB81 /* HTMLMessageViewController.swift in Sources */,
