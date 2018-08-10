@@ -79,6 +79,21 @@ class PrinterListViewController: UIViewController {
         let addPrinterViewController = AddPrinterViewController()
         navigationController?.pushViewController(addPrinterViewController, animated: true)
     }
+    
+    func deletePrinterPressed(cell: PrinterListTableViewCell) {
+        if let indexPath = self.tableView.indexPath(for: cell) {
+            let alert = UIAlertController(title: "Remove \"" + ((cell.printer?.info.name) ?? "printer") + "\"?",
+                                          message: "Removing this printer cannot be undone and you will no longer be able to send it messages.",
+                                          preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let delete = UIAlertAction(title: "Remove", style: .destructive) { (action) in
+                PrinterManager.shared.removePrinter(at: indexPath.row)
+            }
+            alert.addAction(cancel)
+            alert.addAction(delete)
+            present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
 extension PrinterListViewController: UITableViewDataSource {
@@ -95,19 +110,8 @@ extension PrinterListViewController: UITableViewDataSource {
         let cell: PrinterListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "PrinterListTableViewCell")! as! PrinterListTableViewCell
         cell.printer = PrinterManager.shared.printers[indexPath.row]
         cell.controller = self
+        cell.hideDeleteButton()
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // TODO - show confirmation alert before deleting
-            PrinterManager.shared.removePrinter(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .left)
-        }
     }
 }
 

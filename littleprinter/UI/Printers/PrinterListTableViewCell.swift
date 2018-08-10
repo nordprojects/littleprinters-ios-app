@@ -57,6 +57,13 @@ class PrinterListTableViewCell: UITableViewCell {
         return button
     }()
     
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "delete"), for: .normal)
+        button.alpha = 0
+        return button
+    }()
+    
     weak var controller: PrinterListViewController?
     
     var printer: Printer? {
@@ -84,8 +91,15 @@ class PrinterListTableViewCell: UITableViewCell {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
         
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        contentView.addGestureRecognizer(longGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapPress))
+        contentView.addGestureRecognizer(tapGesture)
+        
         messageButton.addTarget(self, action: #selector(messagePressed(_:)), for: .touchUpInside)
         shareButton.addTarget(self, action: #selector(sharePressed(_:)), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(deletePressed(_:)), for: .touchUpInside)
         
         contentView.addSubview(cardImageView)
         contentView.addSubview(thumbnail)
@@ -94,6 +108,7 @@ class PrinterListTableViewCell: UITableViewCell {
         contentView.addSubview(statusLabel)
         contentView.addSubview(messageButton)
         contentView.addSubview(shareButton)
+        contentView.addSubview(deleteButton)
         
         cardImageView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(25)
@@ -135,6 +150,13 @@ class PrinterListTableViewCell: UITableViewCell {
             make.top.right.equalTo(cardImageView)
             make.width.height.equalTo(40)
         }
+        
+        deleteButton.snp.makeConstraints { (make) in
+            make.centerX.equalTo(cardImageView.snp.left)
+            make.centerY.equalTo(cardImageView.snp.top)
+            make.width.equalTo(46)
+            make.height.equalTo(44)
+        }
     }
     
     @objc func sharePressed(_ sender: Any) {
@@ -143,6 +165,7 @@ class PrinterListTableViewCell: UITableViewCell {
             return
         }
         controller?.sharePrinterPressed(printer)
+        hideDeleteButton()
     }
     
     @objc func messagePressed(_ sender: Any) {
@@ -151,6 +174,25 @@ class PrinterListTableViewCell: UITableViewCell {
             return
         }
         controller?.newMessagePressed(printer)
+        hideDeleteButton()
     }
     
+    @objc func deletePressed(_ sender: Any) {
+        controller?.deletePrinterPressed(cell: self)
+        hideDeleteButton()
+    }
+    
+    @objc func longPress() {
+        UIView.animate(withDuration: 0.25) {
+            self.deleteButton.alpha = 1.0
+        }
+    }
+
+    @objc func tapPress() {
+        hideDeleteButton()
+    }
+    
+    func hideDeleteButton() {
+        deleteButton.alpha = 0
+    }
 }
