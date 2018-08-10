@@ -57,17 +57,27 @@ class HTMLMessageViewController: UIViewController {
     
     @objc func sendPressed() {
         if let printer = recipient {
-            SiriusServer.shared.sendHTML(textField.text, to: printer.key, from: User.shared.name ?? "anonymous", completion: { (error) in
-                if let error = error {
-                    let alert = UIAlertController(title: "Unable to send message to: \(printer.info.owner)", error: error)
-                    self.present(alert, animated: true, completion: nil)
-                    return
-                }
-                let alert = UIAlertController(title: "Message Sent", message: "🙌")
-                self.present(alert, animated: true, completion: {
-                    self.navigationController?.popViewController(animated: true)
+            do {
+                let message = try SiriusMessage(html: textField.text, to: printer.key, from: User.shared.name ?? "anonymous")
+                SiriusServer.shared.sendMessage(message, completion: { (error) in
+                    if let error = error {
+                        self.sendFailed(error: error)
+                        return
+                    }
+                    let alert = UIAlertController(title: "Message Sent", message: "🙌")
+                    self.present(alert, animated: true, completion: {
+                        self.navigationController?.popViewController(animated: true)
+                    })
                 })
-            })
+            }
+            catch {
+                sendFailed(error: error)
+            }
         }
+    }
+    
+    func sendFailed(error: Error) {
+        let alert = UIAlertController(title: "Unable to send message to: \(recipient?.info.owner ?? "nil")", error: error)
+        self.present(alert, animated: true, completion: nil)
     }
 }

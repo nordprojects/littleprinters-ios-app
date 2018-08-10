@@ -40,13 +40,16 @@ class SiriusServer {
     
     static let shared = SiriusServer()
     
+    let foregroundURLSession = URLSession.shared
+    let backgroundURLSession = URLSession(configuration: URLSessionConfiguration.background(withIdentifier: "sirius"))
+    
     func getPrinterInfo(key: String, completion: @escaping (Result<Data>) -> Void) {
         guard let url = URL(string: "https://littleprinter.nordprojects.co/printkey/" + key) else {
             completion(.failure(SiriusServerError.InvalidURL))
             return
         }
         
-        URLSession.shared.dataTask(with: url) {(data, response, error) in
+        foregroundURLSession.dataTask(with: url) {(data, response, error) in
             DispatchQueue.main.async {
                 if let error = error {
                     completion(.failure(error))
@@ -75,47 +78,10 @@ class SiriusServer {
         }.resume()
     }
     
-    func sendPlainText(_ message: String, to key: String, from username: String, completion: @escaping (Error?) -> Void) {
-        guard let data = message.data(using: .utf8) else {
-            completion(SiriusServerError.InvalidData)
-            return
-        }
-        
-        sendData(data, to: key, from: username, contentType: "text/plain", completion: completion)
-    }
-    
-    func sendHTML(_ html: String, to key: String, from username: String, completion: @escaping (Error?) -> Void) {
-        guard let data = html.data(using: .utf8) else {
-            completion(SiriusServerError.InvalidData)
-            return
-        }
-        
-        sendData(data, to: key, from: username, contentType: "text/html", completion: completion)
-    }
-    
-    func sendImage(_ image: UIImage, to key: String, from username: String, completion: @escaping (Error?) -> Void) {
-        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
-            completion(SiriusServerError.InvalidData)
-            return
-        }
-        
-        sendData(data, to: key, from: username, contentType: "image/jpeg", completion: completion)
-    }
-    
-    // MARK: Private
+    func sendMessage(_ message: SiriusMessage, session: URLSession? = nil, completion: @escaping (Error?) -> Void) {
+        let session = session ?? foregroundURLSession
 
-    private func sendData(_ data: Data, to key: String, from username: String, contentType: String, completion: @escaping (Error?) -> Void) {
-        guard let url = URL(string: "https://littleprinter.nordprojects.co/printkey/" + key + "?from=" + username) else {
-            completion(SiriusServerError.InvalidURL)
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        request.httpBody = data
-
-        URLSession.shared.dataTask(with: request) {(data, response, error) in
+        session.dataTask(with: message.request) {(data, response, error) in
             DispatchQueue.main.async {
                 if let error = error {
                     completion(error)
@@ -136,5 +102,45 @@ class SiriusServer {
                 }
             }
         }.resume()
+    }
+}
+
+class SiriusMessage {
+    let request: URLRequest
+    
+    init(data: Data, to key: String, from username: String, contentType: String) throws {
+        guard let url = URL(string: "https://littleprinter.nordprojects.co/printkey/" + key + "?from=" + username) else {
+            throw SiriusServerError.InvalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = data
+        self.request = request
+    }
+    
+    convenience init(text: String, to key: String, from username: String) throws {
+        guard let data = text.data(using: .utf8) else {
+            throw SiriusServerError.InvalidData
+        }
+        
+        try self.init(data: data, to: key, from: username, contentType: "text/plain")
+    }
+    
+    convenience init(html: String, to key: String, from username: String) throws {
+        guard let data = html.data(using: .utf8) else {
+            throw SiriusServerError.InvalidData
+        }
+        
+        try self.init(data: data, to: key, from: username, contentType: "text/html")
+    }
+    
+    convenience init(image: UIImage, to key: String, from username: String) throws {
+        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
+            throw SiriusServerError.InvalidData
+        }
+        
+        try self.init(data: data, to: key, from: username, contentType: "image/jpeg")
     }
 }

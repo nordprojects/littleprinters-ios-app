@@ -58,19 +58,29 @@ class ShareViewController: SLComposeServiceViewController {
         
         let html = page.map { $0.html }.joined(separator: "\n")
         
-        if let printer = selectedPrinter {
-            PrinterManager.shared.lastUsedPrinter = printer
-
-            SiriusServer.shared.sendHTML(html, to: printer.key, from: User.shared.name ?? "anon") { (error) in
-                if let error = error {
-                    self.extensionContext!.cancelRequest(withError: error)
-                    return
-                }
-                
-                self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-            }
-        } else {
+        guard let printer = selectedPrinter else {
             self.extensionContext!.cancelRequest(withError: ShareError.NoPrinterSelected)
+            return
+        }
+        
+        PrinterManager.shared.lastUsedPrinter = printer
+        
+        var message: SiriusMessage?
+        do {
+            message = try SiriusMessage(html: html, to: printer.key, from: User.shared.name ?? "anon")
+        }
+        catch {
+            self.extensionContext!.cancelRequest(withError: error)
+            return
+        }
+
+        SiriusServer.shared.sendMessage(message!, session: SiriusServer.shared.backgroundURLSession) { (error) in
+            if let error = error {
+                self.extensionContext!.cancelRequest(withError: error)
+                return
+            }
+            
+            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
         }
     }
     

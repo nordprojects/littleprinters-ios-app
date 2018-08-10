@@ -46,3 +46,12 @@ extension UIColor {
         self.init(red: (hex >> 16) & 0xFF, green: (hex >> 8) & 0xFF, blue: hex & 0xFF, hexAlpha: alpha)
     }
 }
+
+protocol HasAlso { }
+extension HasAlso {
+    func also(closure:(Self) -> ()) -> Self {
+        closure(self)
+        return self
+    }
+}
+extension NSObject: HasAlso { }
