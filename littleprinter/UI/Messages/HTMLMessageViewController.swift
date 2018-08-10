@@ -51,7 +51,7 @@ class HTMLMessageViewController: UIViewController {
             make.height.equalTo(40)
         }
         if let printer = recipient {
-            self.title = "@" + printer.info.owner
+            self.title = printer.info.name
         }
     }
     

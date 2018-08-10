@@ -21,7 +21,7 @@ class MessageTypeSelectViewController: UIViewController {
         view.backgroundColor = .white
         
         if let printer = recipient {
-            self.title = "@" + printer.info.owner
+            self.title = printer.info.name
         }
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
 

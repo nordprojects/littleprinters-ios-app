@@ -23,7 +23,7 @@ class PosterMessageViewController: UIViewController {
         view.backgroundColor = .white
         
         if let printer = recipient {
-            self.title = "@" + printer.info.owner
+            self.title = printer.info.name
         }
         
         let previewScrollView = UIScrollView()

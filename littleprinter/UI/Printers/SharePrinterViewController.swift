@@ -95,7 +95,7 @@ class SharePrinterViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         view.backgroundColor = UIColor(patternImage: UIImage(named: "receipt-background")!)
-        title = "Share"
+        title = printer!.info.name
         
         view.addSubview(titleLabel)
         view.addSubview(tellLabel)
