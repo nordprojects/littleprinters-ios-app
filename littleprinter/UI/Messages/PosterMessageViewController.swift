@@ -98,25 +98,17 @@ class PosterMessageViewController: UIViewController {
     @objc func sendButtonPressed() {
         let image = PosterTextView.renderText(text: posterTextView.text)
         let fromName = User.shared.name ?? "App"
+
         do {
             let message = try SiriusMessage(image: image, to: recipient.key, from: fromName)
-            SiriusServer.shared.sendMessage(message, completion: { (error) in
-                if let error = error {
-                    self.sendFailed(error: error)
-                    return
-                }
-                
-                self.navigationController?.popToRootViewController(animated: true)
-            })
+            navigationController?.pushViewController(
+                MessageSendingViewController(message: message, printer: recipient!),
+                animated: true)
         }
         catch {
-            sendFailed(error: error)
+            let alert = UIAlertController(title: "Failed to send message", error: error)
+            self.present(alert, animated: true, completion: nil)
         }
-    }
-    
-    private func sendFailed(error: Error) {
-        let alert = UIAlertController(title: "Failed to send message", error: error)
-        self.present(alert, animated: true, completion: nil)
     }
 }
 

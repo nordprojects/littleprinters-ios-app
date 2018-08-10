@@ -14,12 +14,11 @@ func delay(_ delay: Double, closure: @escaping () -> Void) {
 }
 
 extension UIAlertController {
-    convenience init(title: String, error: Error) {
-        self.init(title: title, message: error.localizedDescription, preferredStyle: .alert)
-        self.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    convenience init(title: String, error: Error, handler: ((UIAlertAction) -> Void)? = nil) {
+        self.init(title: title, message: error.localizedDescription, handler: handler)
     }
     
-    convenience init(title: String, message: String) {
+    convenience init(title: String, message: String, handler: ((UIAlertAction) -> Void)? = nil) {
         self.init(title: title, message: message, preferredStyle: .alert)
         self.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     }

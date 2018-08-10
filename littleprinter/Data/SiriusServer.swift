@@ -78,10 +78,10 @@ class SiriusServer {
         }.resume()
     }
     
-    func sendMessage(_ message: SiriusMessage, session: URLSession? = nil, completion: @escaping (Error?) -> Void) {
+    func sendMessage(_ message: SiriusMessage, session: URLSession? = nil, completion: @escaping (Error?) -> Void) -> URLSessionTask {
         let session = session ?? foregroundURLSession
 
-        session.dataTask(with: message.request) {(data, response, error) in
+        let task = session.dataTask(with: message.request) {(data, response, error) in
             DispatchQueue.main.async {
                 if let error = error {
                     completion(error)
@@ -101,7 +101,11 @@ class SiriusServer {
                     completion(SiriusServerError.UnknownError)
                 }
             }
-        }.resume()
+        }
+        
+        task.resume()
+        
+        return task
     }
 }
 
