@@ -57,29 +57,20 @@ class ImageMessageViewController: UIViewController {
     }
     
     @objc func sendPressed() {
+        let fromName = User.shared.name ?? "App"
+
         if let printer = recipient,
             let image = imageView.image {
             do {
-                let message = try SiriusMessage(image: image, to: printer.key, from: User.shared.name ?? "anonymous")
-                SiriusServer.shared.sendMessage(message, completion: { (error) in
-                    if let error = error {
-                        self.sendFailed(error: error)
-                        return
-                    }
-                    let alert = UIAlertController(title: "Image Sent", message: "🙌")
-                    self.present(alert, animated: true, completion: {
-                        self.navigationController?.popViewController(animated: true)
-                    })
-                })
+                let message = try SiriusMessage(image: image, to: printer.key, from: fromName)
+                navigationController?.pushViewController(
+                    MessageSendingViewController(message: message, printer: recipient!),
+                    animated: true)
             }
             catch {
-                sendFailed(error: error)
+                let alert = UIAlertController(title: "Unable to send image to: \(recipient?.info.owner ?? "nil")", error: error)
+                self.present(alert, animated: true, completion: nil)
             }
         }
-    }
-    
-    private func sendFailed(error: Error) {
-        let alert = UIAlertController(title: "Unable to send image to: \(recipient?.info.owner ?? "nil")", error: error)
-        self.present(alert, animated: true, completion: nil)
     }
 }
