@@ -83,7 +83,7 @@ class PrinterListViewController: UIViewController {
     func deletePrinterPressed(cell: PrinterListTableViewCell) {
         if let indexPath = self.tableView.indexPath(for: cell) {
             let alert = UIAlertController(title: "Remove \"" + ((cell.printer?.info.name) ?? "printer") + "\"?",
-                                          message: "Removing this printer cannot be undone and you will no longer be able to send it messages.",
+                                          message: "By removing this printer you will no longer be able to send it messages.",
                                           preferredStyle: .alert)
             let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let delete = UIAlertAction(title: "Remove", style: .destructive) { (action) in
