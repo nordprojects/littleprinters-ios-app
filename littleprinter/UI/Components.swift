@@ -54,3 +54,97 @@ class ChunkyButton: UIButton {
         UIBezierPath(rect: topRect).fill()
     }
 }
+
+protocol MessagingToolBarDelegate {
+    func textFieldDidChange()
+    func sendPressed()
+}
+
+class MessagingToolBar: UIView {
+    
+    lazy var messageTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Enter your message"
+        textField.autocapitalizationType = .allCharacters
+        textField.borderStyle = .none
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        return textField
+    }()
+    
+    lazy var sendButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(#imageLiteral(resourceName: "send"), for: .normal)
+        button.addTarget(self, action: #selector(sendPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var outline: UIView = {
+        let view = UIView()
+        view.layer.borderColor = UIColor(hex: 0xC8C8CD).cgColor
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 18
+        return view
+    }()
+    
+    var delegate: MessagingToolBarDelegate?
+    
+    var text: String? {
+        get {
+            return messageTextField.text
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = .white
+        
+        addSubview(outline)
+        addSubview(messageTextField)
+        addSubview(sendButton)
+        
+        outline.snp.makeConstraints { (make) in
+            make.height.equalTo(34)
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().offset(-30)
+        }
+        
+        messageTextField.snp.makeConstraints { (make) in
+            make.left.equalTo(outline).offset(12)
+            make.centerY.equalToSuperview()
+        }
+        
+        sendButton.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.left.equalTo(messageTextField.snp.right).offset(12)
+            make.width.height.equalTo(26)
+            make.right.equalToSuperview().offset(-20)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func textFieldDidChange() {
+        delegate?.textFieldDidChange()
+    }
+    
+    @objc func sendPressed() {
+        delegate?.sendPressed()
+    }
+    
+    override var isFirstResponder: Bool {
+        get {
+            return messageTextField.isFirstResponder
+        }
+    }
+    
+    @discardableResult override func becomeFirstResponder() -> Bool {
+        return messageTextField.becomeFirstResponder()
+    }
+    
+    @discardableResult override func resignFirstResponder() -> Bool {
+        return messageTextField.resignFirstResponder()
+    }
+}

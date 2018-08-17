@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         // uncomment for font list.
-        print(UIFont.familyNames.sorted());
+        // print(UIFont.familyNames.sorted());
         
         return true
     }

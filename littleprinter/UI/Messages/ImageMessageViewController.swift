@@ -12,12 +12,13 @@ protocol PhotoPickerDelegate {
     func pickerDidReturn(_ image: UIImage)
 }
 
-class ImageMessageViewController: UIViewController {
+class ImageMessageViewController: UIViewController, MessagingToolBarDelegate {
     
     var recipient: Printer?
     
     lazy var imageTemplateView: ImageTemplateView = {
         let view = ImageTemplateView()
+        view.delegate = self
         return view
     }()
     
@@ -25,33 +26,30 @@ class ImageMessageViewController: UIViewController {
         let view = ReceiptPreviewView(innerView: imageTemplateView)
         return view
     }()
-
-    lazy var messageTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Enter your message"
-        textField.autocapitalizationType = .allCharacters
-        textField.borderStyle = .roundedRect
-        textField.addTarget(self, action: #selector(textFiedlDidChange), for: .editingChanged)
-        return textField
-    }()
     
     lazy var previewScrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        //scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "receipt-background")!)
         scrollView.backgroundColor = .clear
         scrollView.isDirectionalLockEnabled = true
         scrollView.contentInset = UIEdgeInsets.zero
         return scrollView
     }()
     
+    lazy var messagingToolbar: MessagingToolBar = {
+        let toolBar = MessagingToolBar()
+        toolBar.delegate = self
+        return toolBar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: UIImage(named: "receipt-background")!)
-        
-        imageTemplateView.delegate = self
+        title = recipient?.info.name ?? ""
         
         view.addSubview(previewScrollView)
         previewScrollView.addSubview(receiptPreviewView)
+        view.addSubview(messagingToolbar)
+
         
         previewScrollView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(view)
@@ -63,34 +61,10 @@ class ImageMessageViewController: UIViewController {
             make.bottom.equalTo(previewScrollView)
         }
         
-        if let printer = recipient {
-            self.title = printer.info.name
-        }
-        
-        // MESSAGE TOOLBAR
-        
-        let messagingToolbar = UIView()
-        view.addSubview(messagingToolbar)
         messagingToolbar.snp.makeConstraints { (make) in
-            make.leftMargin.rightMargin.equalTo(view)
+            make.left.right.equalTo(view)
             make.top.equalTo(previewScrollView.snp.bottom)
-        }
-
-        messagingToolbar.addSubview(messageTextField)
-        
-        messageTextField.snp.makeConstraints { (make) in
-            make.left.top.bottom.equalTo(messagingToolbar)
-        }
-        
-        let sendButton = UIButton(type: .system)
-        sendButton.setTitle("  Send  ", for: .normal)
-        sendButton.addTarget(self, action: #selector(sendPressed), for: .touchUpInside)
-        sendButton.setContentCompressionResistancePriority(.required, for: .horizontal)
-        messagingToolbar.addSubview(sendButton)
-        sendButton.snp.makeConstraints { (make) in
-            make.left.equalTo(messageTextField.snp.right)
-            make.width.equalTo(50)
-            make.top.bottom.right.equalTo(messagingToolbar)
+            make.height.equalTo(44)
         }
         
         let keyboardLayoutView = KeyboardLayoutView()
@@ -107,16 +81,16 @@ class ImageMessageViewController: UIViewController {
     }
     
     @objc func captionTapped() {
-        if messageTextField.isFirstResponder {
-            messageTextField.resignFirstResponder()
+        if messagingToolbar.isFirstResponder {
+            messagingToolbar.resignFirstResponder()
         } else {
-            messageTextField.becomeFirstResponder()
+            messagingToolbar.becomeFirstResponder()
             scrollToBottom()
         }
     }
     
-    @objc func textFiedlDidChange() {
-        imageTemplateView.caption = messageTextField.text ?? ""
+    func textFieldDidChange() {
+        imageTemplateView.caption = messagingToolbar.text ?? ""
         scrollToBottom()
     }
     
@@ -125,7 +99,7 @@ class ImageMessageViewController: UIViewController {
         previewScrollView.setContentOffset(CGPoint(x: 0, y: bottom), animated: true)
     }
     
-    @objc func sendPressed() {
+    func sendPressed() {
         if imageTemplateView.image == nil {
             let alert = UIAlertController(title: "Missing Image", message: "You need to choose an image.")
             self.present(alert, animated: true, completion: nil)
@@ -240,10 +214,6 @@ class ImageTemplateView: UIView, UITextViewDelegate {
         fuzzImageView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
             make.height.equalTo(fuzzImageView.snp.width).multipliedBy(0.75)
-        }
-        
-        imageView.snp.makeConstraints { (make) in
-            //make.height.equalTo(fuzzImageView)
         }
         
         captionLabel.snp.makeConstraints { (make) in
