@@ -16,8 +16,8 @@ class PosterMessageViewController: UIViewController {
     var recipient: Printer!
 
     var posterTextView: PosterTextView!
-    var messageTextField: UITextField!
-
+    var messagingToolbar: MessagingToolbar!
+    
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
@@ -45,30 +45,13 @@ class PosterMessageViewController: UIViewController {
             make.bottom.equalTo(previewScrollView).inset(10)
         }
         
-        let messagingToolbar = UIView()
+        messagingToolbar = MessagingToolbar()
+        messagingToolbar.delegate = self
         view.addSubview(messagingToolbar)
         messagingToolbar.snp.makeConstraints { (make) in
-            make.leftMargin.rightMargin.equalTo(view)
+            make.left.right.equalTo(view)
+            make.height.equalTo(44)
             make.top.equalTo(previewScrollView.snp.bottom)
-        }
-        
-        messageTextField = UITextField()
-        messageTextField.placeholder = "Enter your message"
-        messageTextField.autocapitalizationType = .allCharacters
-        messageTextField.borderStyle = .roundedRect
-        messagingToolbar.addSubview(messageTextField)
-        messageTextField.snp.makeConstraints { (make) in
-            make.left.top.bottom.equalTo(messagingToolbar)
-        }
-        
-        let sendButton = UIButton(type: .system)
-        sendButton.setTitle("  Send  ", for: .normal)
-        sendButton.addTarget(self, action: #selector(sendButtonPressed), for: .touchUpInside)
-        sendButton.setContentCompressionResistancePriority(.required, for: .horizontal)
-        messagingToolbar.addSubview(sendButton)
-        sendButton.snp.makeConstraints { (make) in
-            make.left.equalTo(messageTextField.snp.right)
-            make.top.bottom.right.equalTo(messagingToolbar)
         }
         
         let keyboardLayoutView = KeyboardLayoutView()
@@ -79,8 +62,8 @@ class PosterMessageViewController: UIViewController {
             make.top.equalTo(messagingToolbar.snp.bottom)
         }
         
-        posterTextView.reactive.text <~ messageTextField.reactive.continuousTextValues.map({ $0 ?? ""})
-        messageTextField.reactive.continuousTextValues.observeValues { event in
+        posterTextView.reactive.text <~ messagingToolbar.messageTextField.reactive.continuousTextValues.map({ $0 ?? ""})
+        messagingToolbar.messageTextField.reactive.continuousTextValues.observeValues { event in
             let targetContentOffset = self.posterTextView.bounds.height - previewScrollView.bounds.size.height
             // only scroll down, not up
             if targetContentOffset > previewScrollView.contentOffset.y {
@@ -92,13 +75,15 @@ class PosterMessageViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        messageTextField.becomeFirstResponder()
+        messagingToolbar.becomeFirstResponder()
     }
-    
-    @objc func sendButtonPressed() {
+}
+
+extension PosterMessageViewController: MessagingToolbarDelegate {
+    func sendPressed() {
         let image = PosterTextView.renderText(text: posterTextView.text)
         let fromName = User.shared.name ?? "App"
-
+        
         do {
             let message = try SiriusMessage(image: image, to: recipient.key, from: fromName)
             navigationController?.pushViewController(
@@ -109,6 +94,10 @@ class PosterMessageViewController: UIViewController {
             let alert = UIAlertController(title: "Failed to send message", error: error)
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func textFieldDidChange() {
+        // hmmm
     }
 }
 

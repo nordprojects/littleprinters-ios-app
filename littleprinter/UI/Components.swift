@@ -55,12 +55,12 @@ class ChunkyButton: UIButton {
     }
 }
 
-protocol MessagingToolBarDelegate {
+protocol MessagingToolbarDelegate {
     func textFieldDidChange()
     func sendPressed()
 }
 
-class MessagingToolBar: UIView {
+class MessagingToolbar: UIView {
     
     lazy var messageTextField: UITextField = {
         let textField = UITextField()
@@ -86,7 +86,7 @@ class MessagingToolBar: UIView {
         return view
     }()
     
-    var delegate: MessagingToolBarDelegate?
+    var delegate: MessagingToolbarDelegate?
     
     var text: String? {
         get {

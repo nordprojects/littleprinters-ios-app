@@ -12,7 +12,7 @@ protocol PhotoPickerDelegate {
     func pickerDidReturn(_ image: UIImage)
 }
 
-class ImageMessageViewController: UIViewController, MessagingToolBarDelegate {
+class ImageMessageViewController: UIViewController, MessagingToolbarDelegate {
     
     var recipient: Printer?
     
@@ -35,8 +35,8 @@ class ImageMessageViewController: UIViewController, MessagingToolBarDelegate {
         return scrollView
     }()
     
-    lazy var messagingToolbar: MessagingToolBar = {
-        let toolBar = MessagingToolBar()
+    lazy var messagingToolbar: MessagingToolbar = {
+        let toolBar = MessagingToolbar()
         toolBar.delegate = self
         return toolBar
     }()
