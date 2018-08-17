@@ -126,6 +126,12 @@ class ImageMessageViewController: UIViewController {
     }
     
     @objc func sendPressed() {
+        if imageTemplateView.image == nil {
+            let alert = UIAlertController(title: "Missing Image", message: "You need to choose an image.")
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         guard let recipient = recipient else { return }
         guard let image = imageTemplateView.render() else { return }
         let fromName = User.shared.name ?? "App"
@@ -278,6 +284,11 @@ class ImageTemplateView: UIView, UITextViewDelegate {
     }
     
     func render() -> UIImage? {
+        
+        if caption == "" {
+            captionLabel.alpha = 0.0
+        }
+        
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
         defer { UIGraphicsEndImageContext() }
         if let context = UIGraphicsGetCurrentContext() {
