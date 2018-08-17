@@ -51,7 +51,7 @@ class ReceiptPreviewView: UIView {
         innerView.snp.makeConstraints { (make) in
             make.top.equalTo(headerLabel.snp.bottom).offset(24)
             make.left.right.equalTo(self).inset(16)
-            make.bottom.equalTo(self).inset(40)
+            make.bottom.equalTo(self).inset(20)
         }
     }
 }

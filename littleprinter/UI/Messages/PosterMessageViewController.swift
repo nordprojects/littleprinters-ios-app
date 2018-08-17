@@ -168,6 +168,7 @@ class PosterMessageViewController: UIViewController {
             height += ascent * fontAscentAdjustmentFactor
             height += lineSeparation
         }
+        height += 20 // Bottom margin
         return CGSize(width: UIViewNoIntrinsicMetric, height: height)
     }
     override func contentCompressionResistancePriority(for axis: UILayoutConstraintAxis) -> UILayoutPriority {
