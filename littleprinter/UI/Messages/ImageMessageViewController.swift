@@ -126,27 +126,27 @@ class ImageMessageViewController: UIViewController {
     }
     
     @objc func sendPressed() {
+        guard let recipient = recipient else { return }
+        guard let image = imageTemplateView.render() else { return }
         let fromName = User.shared.name ?? "App"
-
-        if let printer = recipient,
-            let image = imageTemplateView.imageView.image {
-            do {
-                let message = try SiriusMessage(image: image, to: printer.key, from: fromName)
-                navigationController?.pushViewController(
-                    MessageSendingViewController(message: message, printer: recipient!),
-                    animated: true)
-            }
-            catch {
-                let alert = UIAlertController(title: "Unable to send image to: \(recipient?.info.owner ?? "nil")", error: error)
-                self.present(alert, animated: true, completion: nil)
-            }
+        
+        do {
+            let message = try SiriusMessage(image: image, to: recipient.key, from: fromName)
+            navigationController?.pushViewController(
+                MessageSendingViewController(message: message, printer: recipient),
+                animated: true)
+        }
+        catch {
+            let alert = UIAlertController(title: "Unable to send image to: \(recipient.info.owner)", error: error)
+            self.present(alert, animated: true, completion: nil)
         }
     }
+    
 }
 
 extension ImageMessageViewController: PhotoPickerDelegate {
     func pickerDidReturn(_ image: UIImage) {
-        imageTemplateView.imageView.image = image
+        imageTemplateView.image = image
         imageTemplateView.hideChooseButton()
     }
 }
@@ -163,7 +163,7 @@ class ImageTemplateView: UIView, UITextViewDelegate {
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -205,8 +205,26 @@ class ImageTemplateView: UIView, UITextViewDelegate {
         }
     }
     
+    var image: UIImage? = nil {
+        didSet {
+            if let image = image {
+                imageView.image = image
+                let aspect = image.size.height / image.size.width
+                imageView.snp.makeConstraints { (make) in
+                    make.top.left.right.equalToSuperview()
+                    make.height.equalTo(imageView.snp.width).multipliedBy(aspect)
+                }
+                fuzzImageView.snp.remakeConstraints { (make) in
+                    make.height.equalTo(0)
+                }
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        backgroundColor = .white
         
         addSubview(fuzzImageView)
         addSubview(imageView)
@@ -219,14 +237,14 @@ class ImageTemplateView: UIView, UITextViewDelegate {
         }
         
         imageView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
-            make.height.equalTo(fuzzImageView)
+            //make.height.equalTo(fuzzImageView)
         }
         
         captionLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.top.equalTo(fuzzImageView.snp.bottom).offset(6)
+            make.top.greaterThanOrEqualTo(fuzzImageView.snp.bottom).offset(6)
+            make.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(6)
             make.height.greaterThanOrEqualTo(31)
         }
         
@@ -259,19 +277,35 @@ class ImageTemplateView: UIView, UITextViewDelegate {
         chooseImageButton.isHidden = true
     }
     
-//    // Hack in placeholder
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        if textView.textColor == UIColor(white: 0.0, alpha: 0.15) {
-//            textView.text = nil
-//            textView.textColor = .black
-//        }
-//    }
-//
-//    func textViewDidEndEditing(_ textView: UITextView) {
-//        if textView.text.isEmpty {
-//            textView.text = "tap to add caption"
-//            textView.textColor = UIColor(white: 0.0, alpha: 0.15)
-//        }
-//    }
+    func render() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
+        defer { UIGraphicsEndImageContext() }
+        if let context = UIGraphicsGetCurrentContext() {
+            layer.render(in: context)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            let downsizeImage = image?.resizeWithWidth(width: 384)
+            return downsizeImage
+        }
+        return nil
+    }
 }
 
+extension UIImage {
+    func resizeWithWidth(width: CGFloat) -> UIImage? {
+        // Create an ImageView to render into
+        let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = self
+        
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, 1.0)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        
+        // Nearest neighbour so nice and pixely
+        context.interpolationQuality = .none
+        imageView.layer.render(in: context)
+        
+        guard let result = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        UIGraphicsEndImageContext()
+        return result
+    }
+}
