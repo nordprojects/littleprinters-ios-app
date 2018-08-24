@@ -73,15 +73,21 @@ class ShareViewController: SLComposeServiceViewController {
             self.extensionContext!.cancelRequest(withError: error)
             return
         }
-
-        SiriusServer.shared.sendMessage(message!, session: SiriusServer.shared.backgroundURLSession) { (error) in
+        
+        
+        retryUntilSuccessful(timeout: 60.0, retryDelay: 2.0, do: { (completion) in
+            print("Share sheet message sending...")
+            _ = SiriusServer.shared.sendMessage(message!, completion: completion)
+        }, completion: { (error) in
             if let error = error {
+                print("Share sheet message send failed!", error)
                 self.extensionContext!.cancelRequest(withError: error)
                 return
             }
-            
+            print("Share sheet message sent successfully.")
             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-        }
+        })
+
     }
     
     func selectPrinter(_ printer: Printer) {
@@ -161,9 +167,9 @@ class ShareViewController: SLComposeServiceViewController {
                                 }
                                 
                                 // resize image to 384 width
-                                attachedImage = attachedImage?.scaledImage(toWidth: 384)
+                                attachedImage = attachedImage?.ditheredImage(withWidth: 384)
                                 
-                                guard let data = UIImageJPEGRepresentation(attachedImage!, 0.7) else {
+                                guard let data = UIImagePNGRepresentation(attachedImage!) else {
                                     print("failed to encode image")
                                     return
                                 }

@@ -36,12 +36,15 @@ extension SiriusServerError: LocalizedError {
     }
 }
 
-class SiriusServer {
+class SiriusServer: NSObject, URLSessionDelegate {
     
     static let shared = SiriusServer()
     
     let foregroundURLSession = URLSession.shared
-    let backgroundURLSession = URLSession(configuration: URLSessionConfiguration.background(withIdentifier: "sirius"))
+    lazy var backgroundURLSession: URLSession = URLSession(
+        configuration: URLSessionConfiguration.background(withIdentifier: "sirius"),
+        delegate: self, delegateQueue: nil
+    )
     
     func getPrinterInfo(key: String, completion: @escaping (Result<Data>) -> Void) {
         guard let url = URL(string: "https://littleprinter.nordprojects.co/printkey/" + key) else {
@@ -78,10 +81,8 @@ class SiriusServer {
         }.resume()
     }
     
-    func sendMessage(_ message: SiriusMessage, session: URLSession? = nil, completion: @escaping (Error?) -> Void) -> URLSessionTask {
-        let session = session ?? foregroundURLSession
-
-        let task = session.dataTask(with: message.request) {(data, response, error) in
+    func sendMessage(_ message: SiriusMessage, completion: @escaping (Error?) -> Void) -> URLSessionTask {
+        let task = foregroundURLSession.dataTask(with: message.request) {(data, response, error) in
             DispatchQueue.main.async {
                 if let error = error {
                     completion(error)
@@ -106,6 +107,15 @@ class SiriusServer {
         task.resume()
         
         return task
+    }
+    
+    func sendMessageInBackground(_ message: SiriusMessage) {
+        let task = backgroundURLSession.dataTask(with: message.request)
+        task.resume()
+    }
+    
+    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        print("Background events finished.")
     }
 }
 

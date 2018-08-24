@@ -73,3 +73,37 @@ extension HasAlso {
     }
 }
 extension NSObject: HasAlso { }
+
+/**
+ * Calls `inner` repeatedly until the callback is called without an error.
+ *
+ * After the timeout expires, the next failure will be passed back to `completion`.
+ */
+func retryUntilSuccessful(timeout: TimeInterval,
+                          retryDelay: TimeInterval = 0.5,
+                          do inner: @escaping (_ completion: @escaping (Error?) -> Void) -> Void,
+                          completion: @escaping (Error?) -> Void) {
+    let giveUpTime = DispatchTime.now() + timeout
+    
+    var innerCompletion: ((Error?) -> Void)? = nil
+    
+    innerCompletion = { (error: Error?) in
+        if error == nil {
+            // success
+            completion(nil)
+            return
+        } else {
+            if DispatchTime.now() > giveUpTime {
+                // give up
+                completion(error)
+            } else {
+                // retry
+                delay(retryDelay) {
+                    inner(innerCompletion!)
+                }
+            }
+        }
+    }
+    
+    inner(innerCompletion!)
+}

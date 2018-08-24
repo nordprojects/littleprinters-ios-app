@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		037ED1BE5596CA5FC4A688F5 /* Pods_littleprinter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */; };
 		51DC8175840731AD13673571 /* Pods_littleprintershare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853F3B232D59121113CD19C6 /* Pods_littleprintershare.framework */; };
+		560D47D02130601E00C36528 /* UIImage+Dither.m in Sources */ = {isa = PBXBuildFile; fileRef = 56776615213017A00086DE2C /* UIImage+Dither.m */; };
 		56204CC3211DAEAB0002E3C1 /* MessageSendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56204CC2211DAEAB0002E3C1 /* MessageSendingViewController.swift */; };
 		5641D3DF2012085F002A7D08 /* BebasNeueWhatever.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5641D3DE2012085F002A7D08 /* BebasNeueWhatever.ttf */; };
 		5641D3E220120DEB002A7D08 /* PosterMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5641D3E120120DEB002A7D08 /* PosterMessageViewController.swift */; };
@@ -515,6 +516,7 @@
 				9BDE7D242009106B0019AB81 /* SiriusServer.swift in Sources */,
 				9BDE7D26200910CA0019AB81 /* Utilities.swift in Sources */,
 				9BDE7D222009106B0019AB81 /* Printer.swift in Sources */,
+				560D47D02130601E00C36528 /* UIImage+Dither.m in Sources */,
 				9BDE7D212009106B0019AB81 /* User.swift in Sources */,
 				9BDE7D232009106B0019AB81 /* PrinterManager.swift in Sources */,
 				9BDE7D15200905CA0019AB81 /* ShareViewController.swift in Sources */,
@@ -719,6 +721,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.nordprojects.littleprinter.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "littleprinter/Utilities/littleprinter-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -737,6 +740,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.nordprojects.littleprinter.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "littleprinter/Utilities/littleprinter-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
