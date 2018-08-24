@@ -65,6 +65,7 @@ class ImageMessageViewController: UIViewController, MessagingToolbarDelegate {
             make.left.right.equalTo(view)
             make.top.equalTo(previewScrollView.snp.bottom)
             make.height.equalTo(44)
+            make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
         let keyboardLayoutView = KeyboardLayoutView()
