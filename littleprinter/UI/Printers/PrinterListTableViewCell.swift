@@ -8,6 +8,11 @@
 
 import UIKit
 
+extension Notification.Name {
+    static let clearDelete = Notification.Name("clearDelete")
+    static let enableDelete = Notification.Name("enableDelete")
+}
+
 class PrinterListTableViewCell: UITableViewCell {
     
     lazy var cardImageView: UIImageView = {
@@ -157,6 +162,9 @@ class PrinterListTableViewCell: UITableViewCell {
             make.width.equalTo(46)
             make.height.equalTo(44)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(hideDeleteButton), name: .clearDelete, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showDeleteButton), name: .enableDelete, object: nil)
     }
     
     @objc func sharePressed(_ sender: Any) {
@@ -183,16 +191,19 @@ class PrinterListTableViewCell: UITableViewCell {
     }
     
     @objc func longPress() {
-        UIView.animate(withDuration: 0.25) {
-            self.deleteButton.alpha = 1.0
-        }
+        NotificationCenter.default.post(name: .enableDelete, object: nil)
     }
 
     @objc func tapPress() {
-        hideDeleteButton()
+        NotificationCenter.default.post(name: .clearDelete, object: nil)
     }
     
-    func hideDeleteButton() {
+    @objc func showDeleteButton() {
+        UIView.animate(withDuration: 0.25) {
+            self.deleteButton.alpha = 1.0
+        }    }
+    
+    @objc func hideDeleteButton() {
         deleteButton.alpha = 0
     }
 }

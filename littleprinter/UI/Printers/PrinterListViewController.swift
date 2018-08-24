@@ -35,6 +35,9 @@ class PrinterListViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
+        view.addGestureRecognizer(tap)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +62,10 @@ class PrinterListViewController: UIViewController {
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
         }
+    }
+    
+    @objc func backgroundTapped() {
+        NotificationCenter.default.post(name: .clearDelete, object: nil)
     }
     
     // MARK: public delegate methods
