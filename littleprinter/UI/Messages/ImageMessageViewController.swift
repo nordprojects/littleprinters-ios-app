@@ -262,31 +262,16 @@ class ImageTemplateView: UIView, UITextViewDelegate {
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
         defer { UIGraphicsEndImageContext() }
         if let context = UIGraphicsGetCurrentContext() {
+
+            // Draw view into image
             layer.render(in: context)
             let image = UIGraphicsGetImageFromCurrentImageContext()
-            let downsizeImage = image?.resizeWithWidth(width: 384)
+            
+            // Scale image to printer width
+            let downsizeImage = image?.scaledImage(toWidth: 384)
+            
             return downsizeImage
         }
         return nil
-    }
-}
-
-extension UIImage {
-    func resizeWithWidth(width: CGFloat) -> UIImage? {
-        // Create an ImageView to render into
-        let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = self
-        
-        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, 1.0)
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        
-        // Nearest neighbour so nice and pixely
-        context.interpolationQuality = .none
-        imageView.layer.render(in: context)
-        
-        guard let result = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
-        UIGraphicsEndImageContext()
-        return result
     }
 }
