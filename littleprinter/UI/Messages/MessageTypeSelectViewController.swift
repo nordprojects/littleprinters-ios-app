@@ -44,6 +44,7 @@ class MessageTypeSelectViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.register(MessageTypeTableViewCell.self, forCellReuseIdentifier: "MessageTypeSelectCell")
         tableView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0)
+        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(10, 0, 10, 0)
         tableView.alwaysBounceVertical = false
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
@@ -70,7 +71,7 @@ class MessageTypeSelectViewController: UIViewController {
 
 extension MessageTypeSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 286
+        return UIScreen.main.bounds.size.width * 0.76
     }
 }
 
@@ -161,8 +162,8 @@ class MessageTypeTableViewCell: UITableViewCell {
         contentView.addSubview(useButton)
         
         cardView.snp.makeConstraints { (make) in
-            make.width.equalTo(280)
-            make.height.equalTo(250)
+            make.width.equalToSuperview().multipliedBy(0.75)
+            make.height.equalTo(cardView.snp.width).multipliedBy(0.89)
             make.top.equalToSuperview().offset(12)
             make.centerX.equalToSuperview()
         }
