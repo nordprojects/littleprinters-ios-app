@@ -19,16 +19,20 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>7</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Littleprinter uses the camera to let you send photos to printers.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Littleprinter uses your photo library to let you send photos to printers.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>BebasNeueWhatever.ttf</string>
-        <string>PermanentMarker.ttf</string>
-    </array>
+		<string>PermanentMarker.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -48,9 +52,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSCameraUsageDescription</key>
-    <string>Littleprinter uses the camera to let you send photos to printers.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Littleprinter uses your photo library to let you send photos to printers.</string>
 </dict>
 </plist>
