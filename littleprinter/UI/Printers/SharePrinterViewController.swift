@@ -41,6 +41,11 @@ class SharePrinterViewController: UIViewController {
         return textView
     }()
     
+    lazy var keyControl: UIControl = {
+        let control = UIControl()
+        return control
+    }()
+    
     lazy var 👉Label: UILabel = {
         let label = UILabel()
         label.text = "👉"
@@ -100,6 +105,7 @@ class SharePrinterViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(tellLabel)
         view.addSubview(keyTextView)
+        view.addSubview(keyControl)
         view.addSubview(👉Label)
         view.addSubview(👈Label)
         view.addSubview(line)
@@ -125,7 +131,7 @@ class SharePrinterViewController: UIViewController {
             make.top.equalTo(tellLabel.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
         }
-        
+
         👉Label.snp.makeConstraints { (make) in
             make.firstBaseline.equalTo(keyTextView.snp.firstBaseline)
             make.right.equalTo(keyTextView.snp.left).offset(-12)
@@ -185,7 +191,7 @@ class SharePrinterViewController: UIViewController {
     
     @objc func sharePressed() {
         let key = printer?.key ?? "hmmm.... no key found"
-        let text = "Connect to my Little Printer! Add this key: " + key
+        let text = "Connect to my Little Printer! http://littleprinter.nordprojects.co/printkey/" + key
         let textShare = [ text ]
         let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
