@@ -115,6 +115,7 @@ typedef struct {
     }
     
     CGColorSpaceRef cgColorSpace = CGImageGetColorSpace(resizedImage);
+    CGDataProviderRef ditheredImageDataProvider = CGDataProviderCreateWithCFData(rawData);
     
     CGImageRef ditheredCGImage = CGImageCreate(/*size_t width*/ w,
                                                /*size_t height*/ h,
@@ -123,15 +124,13 @@ typedef struct {
                                                /*size_t bytesPerRow*/ 4*w,
                                                /*CGColorSpaceRef  _Nullable space*/ cgColorSpace,
                                                /*CGBitmapInfo bitmapInfo*/ (CGBitmapInfo)kCGImageAlphaPremultipliedFirst,
-                                               /*CGDataProviderRef  _Nullable provider*/
-                                               CGDataProviderCreateWithData(NULL, buf, length, NULL),
+                                               /*CGDataProviderRef  _Nullable provider*/ ditheredImageDataProvider,
                                                /*const CGFloat * _Nullable decode*/ NULL,
                                                /*bool shouldInterpolate*/ false,
                                                /*CGColorRenderingIntent intent*/ kCGRenderingIntentDefault);
-    
     UIImage *ditheredImage = [UIImage imageWithCGImage:ditheredCGImage];
     
-    CFRelease(cgColorSpace);
+    CFRelease(ditheredImageDataProvider);
     CFRelease(ditheredCGImage);
     CFRelease(resizedImage);
     CFRelease(rawData);
