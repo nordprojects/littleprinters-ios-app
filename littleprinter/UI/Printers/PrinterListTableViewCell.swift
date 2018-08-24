@@ -97,6 +97,7 @@ class PrinterListTableViewCell: UITableViewCell {
         contentView.backgroundColor = .clear
         
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        longGesture.delegate = self
         contentView.addGestureRecognizer(longGesture)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapPress))
@@ -173,7 +174,7 @@ class PrinterListTableViewCell: UITableViewCell {
             return
         }
         controller?.sharePrinterPressed(printer)
-        hideDeleteButton()
+        NotificationCenter.default.post(name: .clearDelete, object: nil)
     }
     
     @objc func messagePressed(_ sender: Any) {
@@ -182,12 +183,12 @@ class PrinterListTableViewCell: UITableViewCell {
             return
         }
         controller?.newMessagePressed(printer)
-        hideDeleteButton()
+        NotificationCenter.default.post(name: .clearDelete, object: nil)
     }
     
     @objc func deletePressed(_ sender: Any) {
         controller?.deletePrinterPressed(cell: self)
-        hideDeleteButton()
+        NotificationCenter.default.post(name: .clearDelete, object: nil)
     }
     
     @objc func longPress() {
@@ -205,5 +206,12 @@ class PrinterListTableViewCell: UITableViewCell {
     
     @objc func hideDeleteButton() {
         deleteButton.alpha = 0
+    }
+    
+    override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view?.isKind(of: UIButton.self) ?? false {
+            return false
+        }
+        return true
     }
 }
