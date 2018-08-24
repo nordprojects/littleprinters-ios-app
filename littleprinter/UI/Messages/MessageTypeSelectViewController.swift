@@ -8,36 +8,69 @@
 
 import UIKit
 
+enum MessageType {
+    case poster
+    case dithergram
+    case selfie
+    case quickDraw
+    
+    func imageName() -> String {
+        switch self {
+        case .poster: return "message-poster"
+        case .dithergram: return "message-dithergram"
+        case .selfie: return "message-selfie"
+        case .quickDraw: return "message-quick-draw"
+        }
+    }
+}
+
 class MessageTypeSelectViewController: UIViewController {
     
     lazy var tableView = UITableView()
     
-    let messageTypes = ["Poster", "Plain Text", "HTML", "Image"]
+    let messageTypes: [MessageType] = [.poster, .dithergram]
     
     var recipient: Printer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        if let printer = recipient {
-            self.title = printer.info.name
-        }
+        view.backgroundColor =  UIColor(patternImage: UIImage(named: "receipt-background")!)
+        self.title = "New message"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MessageTypeSelectCell")
+        tableView.backgroundColor = UIColor.clear
+        tableView.separatorStyle = .none
+        tableView.register(MessageTypeTableViewCell.self, forCellReuseIdentifier: "MessageTypeSelectCell")
+        tableView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0)
+        tableView.alwaysBounceVertical = false
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
+        }
+    }
+    
+    func messageTypeSelected(_ messageType: MessageType) {
+        switch messageType {
+        case .poster:
+            let messageViewController = PosterMessageViewController()
+            messageViewController.recipient = recipient
+            navigationController?.pushViewController(messageViewController, animated: true)
+        case .dithergram:
+            let messageViewController = ImageMessageViewController()
+            messageViewController.recipient = recipient
+            navigationController?.pushViewController(messageViewController, animated: true)
+        default:
+            let alert = UIAlertController(title:"Nope", message: "Message type not implemented yet")
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
 
 extension MessageTypeSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 286
     }
 }
 
@@ -51,36 +84,106 @@ extension MessageTypeSelectViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "MessageTypeSelectCell")!
-        cell.accessoryType = .disclosureIndicator
-        cell.selectionStyle = .none
-        cell.textLabel?.text = messageTypes[indexPath.row]
+        let cell: MessageTypeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MessageTypeSelectCell")! as! MessageTypeTableViewCell
+        cell.messageType = messageTypes[indexPath.row]
+        cell.controller = self
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch messageTypes[indexPath.row] {
-        case "Poster":
-            let messageViewController = PosterMessageViewController()
-            messageViewController.recipient = recipient
-            navigationController?.pushViewController(messageViewController, animated: true)
-        case "Plain Text":
-            let messageViewController = PlainTextMessageViewController()
-            messageViewController.recipient = recipient
-            navigationController?.pushViewController(messageViewController, animated: true)
-        case "HTML":
-            let messageViewController = HTMLMessageViewController()
-            messageViewController.recipient = recipient
-            navigationController?.pushViewController(messageViewController, animated: true)
-        case "Image":
-            let messageViewController = ImageMessageViewController()
-            messageViewController.recipient = recipient
-            navigationController?.pushViewController(messageViewController, animated: true)
-        default:
-            let alert = UIAlertController(title:"Nope", message: "Message type not implemented yet")
-            self.present(alert, animated: true, completion: nil)
-        }
-
+        messageTypeSelected(messageTypes[indexPath.row])
     }
+    
+    // TODO - hide html somewhere
+    /*
+     let messageViewController = HTMLMessageViewController()
+     messageViewController.recipient = recipient
+     navigationController?.pushViewController(messageViewController, animated: true)
+     */
 }
 
+class MessageTypeTableViewCell: UITableViewCell {
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    lazy var cardView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.shadowColor = UIColor(hex: 0x8F8F8F).cgColor
+        view.layer.shadowOpacity = 0.22
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        view.layer.shadowRadius = 4
+        return view
+    }()
+    
+    lazy var messageImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    lazy var useButton: ChunkyButton = {
+        let button = ChunkyButton()
+        button.topColor = UIColor(hex: 0x89BEFE)
+        button.borderColor = UIColor(hex: 0x89BEFE)
+        button.shadowColor = UIColor(hex: 0x4177AF)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir-Black", size: 14)
+        button.setTitle("Use", for: .normal)
+        return button
+    }()
+    
+    var messageType: MessageType? {
+        didSet {
+            if let messageType = messageType {
+                messageImageView.image = UIImage(named: messageType.imageName())
+            }
+        }
+    }
+    
+    var controller: MessageTypeSelectViewController?
+    
+    private func setup() {
+        selectionStyle = .none
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+    
+        contentView.addSubview(cardView)
+        cardView.addSubview(messageImageView)
+        contentView.addSubview(useButton)
+        
+        cardView.snp.makeConstraints { (make) in
+            make.width.equalTo(280)
+            make.height.equalTo(250)
+            make.top.equalToSuperview().offset(12)
+            make.centerX.equalToSuperview()
+        }
+        
+        messageImageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        useButton.snp.makeConstraints { (make) in
+            make.width.equalTo(74)
+            make.height.equalTo(36)
+            make.centerX.equalToSuperview().offset(-2)
+            make.centerY.equalTo(cardView.snp.bottom).offset(-2)
+        }
+        
+        useButton.addTarget(self, action: #selector(usePressed), for: .touchUpInside)
+    }
+    
+    @objc func usePressed() {
+        if let messageType = messageType {
+            controller?.messageTypeSelected(messageType)
+        }
+    }
+}
