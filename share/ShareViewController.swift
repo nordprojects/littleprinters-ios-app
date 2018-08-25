@@ -166,7 +166,6 @@ class ShareViewController: SLComposeServiceViewController {
                                     return
                                 }
                                 
-                                // resize image to 384 width
                                 attachedImage = attachedImage?.ditheredImage(withWidth: 384)
                                 
                                 guard let data = UIImagePNGRepresentation(attachedImage!) else {
