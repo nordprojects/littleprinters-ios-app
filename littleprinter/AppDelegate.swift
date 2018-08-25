@@ -33,8 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // uncomment for font list.
         // print(UIFont.familyNames.sorted());
         
-        navigationController.pushViewController(QuickDrawViewController(), animated: false)
-        
         return true
     }
 
