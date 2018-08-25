@@ -20,7 +20,7 @@ extension UIAlertController {
     
     convenience init(title: String, message: String, handler: ((UIAlertAction) -> Void)? = nil) {
         self.init(title: title, message: message, preferredStyle: .alert)
-        self.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.addAction(UIAlertAction(title: "OK", style: .default, handler: handler))
     }
 }
 

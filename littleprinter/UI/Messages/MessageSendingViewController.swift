@@ -14,6 +14,7 @@ class MessageSendingViewController: UIViewController {
         $0.layer.compositingFilter = "multiplyBlendMode";
     }
     let sentIndicator = UIImageView(image: UIImage(named: "sending-done-tick"))
+    let errorIndicator = UIImageView(image: UIImage(named: "fail-cross"))
     let littlePrinterGraphic = UIImageView(image: UIImage(named: "little-printer-graphic"))
     let statusText = UILabel().also {
         $0.font = UIFont(name: "Avenir-Heavy", size: 17)
@@ -24,7 +25,12 @@ class MessageSendingViewController: UIViewController {
     
     let printer: Printer
     let message: SiriusMessage
-    var isSent = false
+    enum State : String {
+        case sending
+        case sent
+        case error
+    }
+    var state = State.sending
     var networkTask: URLSessionTask?
     
     init(message: SiriusMessage, printer: Printer) {
@@ -50,6 +56,7 @@ class MessageSendingViewController: UIViewController {
         
         view.addSubview(loadingIndicator)
         view.addSubview(sentIndicator)
+        view.addSubview(errorIndicator)
         view.addSubview(littlePrinterGraphic)
         view.addSubview(statusText)
         
@@ -62,6 +69,9 @@ class MessageSendingViewController: UIViewController {
             make.bottom.equalTo(littlePrinterGraphic.snp.top).offset(-10)
         }
         sentIndicator.snp.makeConstraints { (make) in
+            make.center.equalTo(loadingIndicator)
+        }
+        errorIndicator.snp.makeConstraints { make in
             make.center.equalTo(loadingIndicator)
         }
         statusText.snp.makeConstraints { make in
@@ -89,12 +99,14 @@ class MessageSendingViewController: UIViewController {
                 let alert = UIAlertController(title: "Failed to send message", error: error, handler: { _ in
                     self.navigationController?.popViewController(animated: true)
                 })
-                
+                self.state = .error
+                self.update()
                 self.present(alert, animated: true, completion: nil)
+                return
             }
             
-            self.isSent = true
-            self.navigationItem.leftBarButtonItem = nil
+            self.state = .sent
+            self.navigationItem.leftBarButtonItem?.isEnabled = false
             self.update()
             
             delay(2.0) {
@@ -104,15 +116,29 @@ class MessageSendingViewController: UIViewController {
     }
     
     private func update() {
-        loadingIndicator.alpha = (isSent ? 0.0 : 1.0)
-        sentIndicator.alpha = (isSent ? 1.0 : 0.0)
+        loadingIndicator.alpha = (state == .sending ? 1.0 : 0.0)
+        sentIndicator.alpha = (state == .sent ? 1.0 : 0.0)
+        errorIndicator.alpha = (state == .error ? 1.0 : 0.0)
         
         statusText.text = {
-            if (isSent) {
-                return "Message sent to \n\(printer.info.name)!"
-            } else {
+            switch state {
+            case .sending:
                 return "Sending…"
+            case .sent:
+                return "Message sent to \n\(printer.info.name)!"
+            case .error:
+                return "Failed to send\nmessage!"
             }
         }()
+        
+        littlePrinterGraphic.image = {
+            if state == .error {
+                return UIImage(named: "little-printer-graphic-sad")
+            } else {
+                return UIImage(named: "little-printer-graphic")
+            }
+        }()
+        
+        
     }
 }
