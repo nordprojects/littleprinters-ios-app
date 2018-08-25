@@ -3,3 +3,4 @@
 //
 
 #import "UIImage+Dither.h"
+#import "UIImage+Trim.h"

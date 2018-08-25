@@ -10,6 +10,8 @@
 		037ED1BE5596CA5FC4A688F5 /* Pods_littleprinter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */; };
 		51DC8175840731AD13673571 /* Pods_littleprintershare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853F3B232D59121113CD19C6 /* Pods_littleprintershare.framework */; };
 		560D47D02130601E00C36528 /* UIImage+Dither.m in Sources */ = {isa = PBXBuildFile; fileRef = 56776615213017A00086DE2C /* UIImage+Dither.m */; };
+		560D47D521308ABA00C36528 /* QuickDrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D47D421308ABA00C36528 /* QuickDrawViewController.swift */; };
+		560D47D821317EC900C36528 /* UIImage+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = 560D47D721317EC900C36528 /* UIImage+Trim.m */; };
 		56204CC3211DAEAB0002E3C1 /* MessageSendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56204CC2211DAEAB0002E3C1 /* MessageSendingViewController.swift */; };
 		5641D3DF2012085F002A7D08 /* BebasNeueWhatever.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5641D3DE2012085F002A7D08 /* BebasNeueWhatever.ttf */; };
 		5641D3E220120DEB002A7D08 /* PosterMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5641D3E120120DEB002A7D08 /* PosterMessageViewController.swift */; };
@@ -78,6 +80,9 @@
 
 /* Begin PBXFileReference section */
 		168B07F7D758A4A0F7A9C2B2 /* Pods_littleprinter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_littleprinter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		560D47D421308ABA00C36528 /* QuickDrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickDrawViewController.swift; sourceTree = "<group>"; };
+		560D47D621317EC900C36528 /* UIImage+Trim.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Trim.h"; sourceTree = "<group>"; };
+		560D47D721317EC900C36528 /* UIImage+Trim.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Trim.m"; sourceTree = "<group>"; };
 		56204CC2211DAEAB0002E3C1 /* MessageSendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSendingViewController.swift; sourceTree = "<group>"; };
 		5641D3DE2012085F002A7D08 /* BebasNeueWhatever.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BebasNeueWhatever.ttf; sourceTree = "<group>"; };
 		5641D3E120120DEB002A7D08 /* PosterMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterMessageViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +184,8 @@
 				56F031CD2009123D00543500 /* Views.swift */,
 				56776614213017A00086DE2C /* UIImage+Dither.h */,
 				56776615213017A00086DE2C /* UIImage+Dither.m */,
+				560D47D621317EC900C36528 /* UIImage+Trim.h */,
+				560D47D721317EC900C36528 /* UIImage+Trim.m */,
 				567766132130179F0086DE2C /* littleprinter-Bridging-Header.h */,
 			);
 			path = Utilities;
@@ -259,6 +266,7 @@
 				A67C58CC211DF7F100E7CDF3 /* PhotoPicker.swift */,
 				5641D3E120120DEB002A7D08 /* PosterMessageViewController.swift */,
 				5641D3E32012128B002A7D08 /* ReceiptPreviewView.swift */,
+				560D47D421308ABA00C36528 /* QuickDrawViewController.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -501,8 +509,10 @@
 				56776616213017A00086DE2C /* UIImage+Dither.m in Sources */,
 				9B8786C02012629E00A32B8A /* Components.swift in Sources */,
 				9B26404A20133AAE00C75412 /* AddPrinterFooterView.swift in Sources */,
+				560D47D521308ABA00C36528 /* QuickDrawViewController.swift in Sources */,
 				A67C58CD211DF7F100E7CDF3 /* PhotoPicker.swift in Sources */,
 				9BDE7D072008C4A00019AB81 /* ImageMessageViewController.swift in Sources */,
+				560D47D821317EC900C36528 /* UIImage+Trim.m in Sources */,
 				9B8786C22012668000A32B8A /* NavigationController.swift in Sources */,
 				9BDE7D042008B3020019AB81 /* HTMLMessageViewController.swift in Sources */,
 			);

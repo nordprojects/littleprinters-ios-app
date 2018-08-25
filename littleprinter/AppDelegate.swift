@@ -25,12 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let printerListViewController = PrinterListViewController()
             navigationController.viewControllers = [printerListViewController]
         }
+        
 
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         // uncomment for font list.
         // print(UIFont.familyNames.sorted());
+        
+        navigationController.pushViewController(QuickDrawViewController(), animated: false)
         
         return true
     }

@@ -28,7 +28,7 @@ class MessageTypeSelectViewController: UIViewController {
     
     lazy var tableView = UITableView()
     
-    let messageTypes: [MessageType] = [.poster, .dithergram]
+    let messageTypes: [MessageType] = [.poster, .dithergram, .quickDraw]
     
     var recipient: Printer?
 
@@ -60,6 +60,10 @@ class MessageTypeSelectViewController: UIViewController {
             navigationController?.pushViewController(messageViewController, animated: true)
         case .dithergram:
             let messageViewController = ImageMessageViewController()
+            messageViewController.recipient = recipient
+            navigationController?.pushViewController(messageViewController, animated: true)
+        case .quickDraw:
+            let messageViewController = QuickDrawViewController()
             messageViewController.recipient = recipient
             navigationController?.pushViewController(messageViewController, animated: true)
         default:

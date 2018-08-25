@@ -107,3 +107,16 @@ func retryUntilSuccessful(timeout: TimeInterval,
     
     inner(innerCompletion!)
 }
+
+extension UIView {
+    func renderToImage() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
+        defer { UIGraphicsEndImageContext() }
+        
+        let context = UIGraphicsGetCurrentContext()!
+
+        // Draw view into image
+        layer.render(in: context)
+        return UIGraphicsGetImageFromCurrentImageContext()!
+    }
+}

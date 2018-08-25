@@ -16,6 +16,8 @@ enum PrinterStatus: String, Codable {
 }
 
 class Printer: Codable {
+    static let drawWidth = 384
+    
     let key: String
     var info: PrinterInfo
     

@@ -43,6 +43,7 @@ class MessageSendingViewController: UIViewController {
         }
         self.view = view
         
+        navigationItem.hidesBackButton = true;
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                            target: self,
                                                            action: #selector(cancelButtonPressed))
@@ -93,6 +94,7 @@ class MessageSendingViewController: UIViewController {
             }
             
             self.isSent = true
+            self.navigationItem.leftBarButtonItem = nil
             self.update()
             
             delay(2.0) {
