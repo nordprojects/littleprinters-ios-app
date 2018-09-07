@@ -41,8 +41,7 @@ class PosterMessageViewController: UIViewController {
         previewScrollView.addSubview(receiptPreviewView)
         receiptPreviewView.snp.makeConstraints { (make) in
             make.top.equalTo(previewScrollView)
-            make.centerX.equalTo(previewScrollView)
-            //make.left.right.equalTo(previewScrollView).inset(24)
+            make.left.right.equalTo(view).inset(24)
             make.bottom.equalTo(previewScrollView).inset(10)
         }
         
