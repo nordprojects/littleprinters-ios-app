@@ -46,25 +46,6 @@ extension UIColor {
     }
 }
 
-extension UIImage {
-    func scaledImage(toWidth width: CGFloat) -> UIImage {
-        let scaleFactor = width / size.width
-        
-        let newHeight = size.height * scaleFactor
-        let newWidth = size.width * scaleFactor
-        
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight));
-        
-        draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let result = UIGraphicsGetImageFromCurrentImageContext();
-        
-        UIGraphicsEndImageContext();
-        
-        return result!;
-        
-    }
-}
-
 protocol HasAlso { }
 extension HasAlso {
     func also(closure:(Self) -> ()) -> Self {

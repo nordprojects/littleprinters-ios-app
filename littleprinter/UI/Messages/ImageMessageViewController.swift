@@ -189,7 +189,7 @@ class ImageTemplateView: UIView, UITextViewDelegate {
     var image: UIImage? = nil {
         didSet {
             if let image = image {
-                imageView.image = image
+                imageView.image = image.ditheredImage(withWidth: 384)
                 let aspect = image.size.height / image.size.width
                 imageView.snp.makeConstraints { (make) in
                     make.top.left.right.equalToSuperview()
@@ -260,6 +260,9 @@ class ImageTemplateView: UIView, UITextViewDelegate {
             captionLabel.alpha = 0.0
         }
         
+        // reset dither
+        imageView.image = image
+        
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
         defer { UIGraphicsEndImageContext() }
         if let context = UIGraphicsGetCurrentContext() {
@@ -269,7 +272,7 @@ class ImageTemplateView: UIView, UITextViewDelegate {
             let image = UIGraphicsGetImageFromCurrentImageContext()
             
             // Scale image to printer width
-            let downsizeImage = image?.scaledImage(toWidth: 384)
+            let downsizeImage = image?.ditheredImage(withWidth: 384)
             
             return downsizeImage
         }
