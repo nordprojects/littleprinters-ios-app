@@ -81,6 +81,7 @@ class SiriusServer: NSObject, URLSessionDelegate {
         }.resume()
     }
     
+    @discardableResult
     func sendMessage(_ message: SiriusMessage, completion: @escaping (Error?) -> Void) -> URLSessionTask {
         let task = foregroundURLSession.dataTask(with: message.request) {(data, response, error) in
             DispatchQueue.main.async {

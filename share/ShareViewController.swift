@@ -77,7 +77,7 @@ class ShareViewController: SLComposeServiceViewController {
         
         retryUntilSuccessful(timeout: 60.0, retryDelay: 2.0, do: { (completion) in
             print("Share sheet message sending...")
-            _ = SiriusServer.shared.sendMessage(message!, completion: completion)
+            SiriusServer.shared.sendMessage(message!, completion: completion)
         }, completion: { (error) in
             if let error = error {
                 print("Share sheet message send failed!", error)
