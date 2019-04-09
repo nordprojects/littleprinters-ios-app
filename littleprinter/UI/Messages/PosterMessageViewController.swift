@@ -88,8 +88,9 @@ extension PosterMessageViewController: MessagingToolbarDelegate {
     
     func textFieldDidChange() {
         posterTextView.text = messagingToolbar.text ?? ""
-        posterTextView.setNeedsLayout()
-        posterTextView.layoutIfNeeded()
+        
+        receiptPreviewView.setNeedsLayout()
+        receiptPreviewView.layoutIfNeeded()
         
         let targetContentOffset = (self.receiptPreviewView.bounds.height + 10 - self.previewScrollView.bounds.size.height)
         // only scroll down, not up
