@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import ReactiveSwift
-import ReactiveCocoa
 import SnapKit
 import CoreText
 
@@ -17,6 +15,8 @@ class PosterMessageViewController: UIViewController {
 
     var posterTextView: PosterTextView!
     var messagingToolbar: MessagingToolbar!
+    var previewScrollView: UIScrollView!
+    var receiptPreviewView: ReceiptPreviewView!
     
     override func loadView() {
         view = UIView()
@@ -26,7 +26,7 @@ class PosterMessageViewController: UIViewController {
             self.title = printer.info.name
         }
         
-        let previewScrollView = UIScrollView()
+        previewScrollView = UIScrollView()
         view.addSubview(previewScrollView)
         previewScrollView.backgroundColor = UIColor(patternImage: UIImage(named: "receipt-background")!)
         previewScrollView.isDirectionalLockEnabled = true
@@ -37,7 +37,7 @@ class PosterMessageViewController: UIViewController {
         
         posterTextView = PosterTextView()
         
-        let receiptPreviewView = ReceiptPreviewView(innerView: posterTextView)
+        receiptPreviewView = ReceiptPreviewView(innerView: posterTextView)
         previewScrollView.addSubview(receiptPreviewView)
         receiptPreviewView.snp.makeConstraints { (make) in
             make.top.equalTo(previewScrollView)
@@ -61,17 +61,6 @@ class PosterMessageViewController: UIViewController {
             make.bottom.equalTo(view)
             make.left.equalTo(view)
             make.top.equalTo(messagingToolbar.snp.bottom)
-        }
-        
-        posterTextView.reactive.text <~ messagingToolbar.messageTextField.reactive.continuousTextValues.map({ $0 ?? ""})
-        messagingToolbar.messageTextField.reactive.continuousTextValues.observeValues { event in
-            let targetContentOffset = self.posterTextView.bounds.height - previewScrollView.bounds.size.height
-            // only scroll down, not up
-            if targetContentOffset > previewScrollView.contentOffset.y {
-                previewScrollView.setContentOffset(
-                    CGPoint(x: 0, y: targetContentOffset),
-                    animated: false)
-            }
         }
     }
     
@@ -98,7 +87,17 @@ extension PosterMessageViewController: MessagingToolbarDelegate {
     }
     
     func textFieldDidChange() {
-        // hmmm
+        posterTextView.text = messagingToolbar.text ?? ""
+        posterTextView.setNeedsLayout()
+        posterTextView.layoutIfNeeded()
+        
+        let targetContentOffset = (self.receiptPreviewView.bounds.height + 10 - self.previewScrollView.bounds.size.height)
+        // only scroll down, not up
+        if targetContentOffset > self.previewScrollView.contentOffset.y {
+            self.previewScrollView.setContentOffset(
+                CGPoint(x: 0, y: targetContentOffset),
+                animated: false)
+        }
     }
 }
 
@@ -263,12 +262,5 @@ extension PosterMessageViewController: MessagingToolbarDelegate {
         }
         
         return lines
-    }
-}
-
-extension Reactive where Base: PosterTextView {
-    /// Sets the text of the text field.
-    internal var text: BindingTarget<String> {
-        return makeBindingTarget { $0.text = $1 }
     }
 }
