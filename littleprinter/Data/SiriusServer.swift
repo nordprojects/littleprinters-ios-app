@@ -47,11 +47,11 @@ class SiriusServer: NSObject, URLSessionDelegate {
     )
     
     func getPrinterInfo(key: String, completion: @escaping (Result<Data>) -> Void) {
-        guard let url = URL(string: "https://littleprinter.nordprojects.co/printkey/" + key) else {
+        guard let url = URL(string: key) else {
             completion(.failure(SiriusServerError.InvalidURL))
             return
         }
-        
+
         foregroundURLSession.dataTask(with: url) {(data, response, error) in
             DispatchQueue.main.async {
                 if let error = error {
@@ -124,7 +124,7 @@ class SiriusMessage {
     let request: URLRequest
     
     init(data: Data, to key: String, from username: String, contentType: String) throws {
-        guard let url = URL(string: "https://littleprinter.nordprojects.co/printkey/" + key + "?from=" + username) else {
+        guard let url = URL(string: key + "?from=" + username) else {
             throw SiriusServerError.InvalidURL
         }
         

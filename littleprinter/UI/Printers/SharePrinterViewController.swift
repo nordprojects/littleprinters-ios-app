@@ -130,6 +130,7 @@ class SharePrinterViewController: UIViewController {
         keyTextView.snp.makeConstraints { (make) in
             make.top.equalTo(tellLabel.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
+            make.width.equalToSuperview().offset(-140)
         }
 
         👉Label.snp.makeConstraints { (make) in
@@ -191,7 +192,7 @@ class SharePrinterViewController: UIViewController {
     
     @objc func sharePressed() {
         let key = printer?.key ?? "hmmm.... no key found"
-        let text = "Connect to my Little Printer! http://littleprinter.nordprojects.co/printkey/" + key
+        let text = "Connect to my Little Printer! " + key
         let textShare = [ text ]
         let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view

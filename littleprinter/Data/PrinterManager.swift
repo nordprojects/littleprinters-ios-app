@@ -18,6 +18,7 @@ class PrinterManager {
     var printers: [Printer] = []
     
     init() {
+        migratePrinters()
         loadSavedPrinters()
         updatePrinters()
     }
@@ -25,10 +26,7 @@ class PrinterManager {
     // MARK: Public
 
     func addPrinterForAddress(_ address: String, completion: @escaping (Error?) -> Void) {
-        // TODO: get key from address
-        let key = address
-        
-        SiriusServer.shared.getPrinterInfo(key: key) { (result) in
+        SiriusServer.shared.getPrinterInfo(key: address) { (result) in
             
             switch result {
             case .failure(let error):
@@ -36,7 +34,7 @@ class PrinterManager {
             case .success(let value):
                 do {
                     let printerInfo = try JSONDecoder().decode(PrinterInfo.self, from: value)
-                    let printer = Printer(key: key, info: printerInfo)
+                    let printer = Printer(key: address, info: printerInfo)
                     self.printers.append(printer)
                     self.savePrinters()
                     completion(nil)
@@ -89,7 +87,6 @@ class PrinterManager {
     }
     
     // MARK: Private
-    
     private func loadSavedPrinters() {
         if let data = UserDefaults.group.value(forKey:"printers") as? Data,
             let printers = try? PropertyListDecoder().decode(Array<Printer>.self, from: data) {
@@ -100,5 +97,23 @@ class PrinterManager {
     private func savePrinters() {
         UserDefaults.group.set(try? PropertyListEncoder().encode(printers), forKey:"printers")
         NotificationCenter.default.post(Notification(name: .DidUpdatePrinters, object: self))
+    }
+    
+    private func migratePrinters() {
+        // Printer keys were originally stored as 'abc123abc123abc' but are now stored as urls, 'https://server.co/abc123abc123abc'
+        // migratePrinters() converts any old keys to urls
+        if let data = UserDefaults.group.value(forKey:"printers") as? Data,
+            let printers = try? PropertyListDecoder().decode(Array<Printer>.self, from: data) {
+            let migratedPrinters = printers.map { (printer) -> Printer in
+                if let potentialURL = URL(string: printer.key),
+                    let _ = potentialURL.scheme {
+                    return printer
+                } else {
+                    print("Migrating printer: \(printer.key)")
+                    return Printer(key: "https://littleprinter.nordprojects.co/printkey/" + printer.key, info: printer.info)
+                }
+            }
+            UserDefaults.group.set(try? PropertyListEncoder().encode(migratedPrinters), forKey:"printers")
+        }
     }
 }
