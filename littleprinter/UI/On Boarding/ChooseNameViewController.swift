@@ -79,8 +79,10 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         textField.tintColor = .black
-        textField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([NSAttributedString.Key.underlineStyle.rawValue : NSUnderlineStyle.single.rawValue,
-                                           NSAttributedString.Key.font.rawValue : UIFont(name: "Avenir-Heavy", size: 24)!])
+        textField.defaultTextAttributes = [
+            .underlineStyle : NSUnderlineStyle.single.rawValue,
+            .font : UIFont(name: "Avenir-Heavy", size: 24)!
+        ]
         container.addSubview(textField)
         textField.snp.makeConstraints { (make) in
             make.top.equalTo(messageLabel.snp.bottom).offset(60)
@@ -141,9 +143,4 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
         let printerListViewController = PrinterListViewController()
         navigationController?.setViewControllers([printerListViewController], animated: true)
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }
