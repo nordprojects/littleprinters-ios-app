@@ -43,8 +43,8 @@ class MessageTypeSelectViewController: UIViewController {
         tableView.backgroundColor = UIColor.clear
         tableView.separatorStyle = .none
         tableView.register(MessageTypeTableViewCell.self, forCellReuseIdentifier: "MessageTypeSelectCell")
-        tableView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0)
-        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(10, 0, 10, 0)
+        tableView.contentInset = UIEdgeInsets.init(top: 10, left: 0, bottom: 10, right: 0)
+        tableView.scrollIndicatorInsets = UIEdgeInsets.init(top: 10, left: 0, bottom: 10, right: 0)
         tableView.alwaysBounceVertical = false
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
@@ -109,7 +109,7 @@ extension MessageTypeSelectViewController: UITableViewDataSource {
 
 class MessageTypeTableViewCell: UITableViewCell {
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }

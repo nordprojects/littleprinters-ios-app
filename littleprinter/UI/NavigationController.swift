@@ -13,8 +13,8 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         navigationBar.setBackgroundImage(UIImage(named: "navbar"), for: .default)
         navigationBar.shadowImage = UIImage(named: "navshadow")
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.font : UIFont(name: "Avenir-Heavy", size: 20)!,
-                                             NSAttributedStringKey.kern : 0.4]
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "Avenir-Heavy", size: 20)!,
+                                             NSAttributedString.Key.kern : 0.4]
         navigationBar.tintColor = .black
         navigationBar.backIndicatorImage = UIImage(named: "back")
         navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")

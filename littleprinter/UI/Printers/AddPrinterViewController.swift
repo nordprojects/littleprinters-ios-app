@@ -54,7 +54,7 @@ class AddPrinterViewController: UIViewController {
         let button = UIButton()
         button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 15)
         let attr = NSMutableAttributedString(string: "Don’t have a Printer Key?")
-        attr.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 0, length: attr.length))
+        attr.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: attr.length))
         attr.addAttribute(.foregroundColor, value: UIColor(hex: 0xFE7B17), range: NSRange(location: 0, length: attr.length))
         button.setAttributedTitle(attr, for: .normal)
         return button
@@ -131,6 +131,11 @@ class AddPrinterViewController: UIViewController {
     
     @objc func learnMorePressed(_ sender: Any) {
         let url = URL(string: "http://littleprinter.nordprojects.co/")!
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

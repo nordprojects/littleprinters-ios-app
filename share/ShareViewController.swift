@@ -135,7 +135,7 @@ class ShareViewController: SLComposeServiceViewController {
                 }
             }
             
-            if let attachments = item.attachments as? [NSItemProvider] {
+            if let attachments = item.attachments {
                 for attachment in attachments {
                     let imageType = kUTTypeImage as String
                     if attachment.hasItemConformingToTypeIdentifier(imageType) {
@@ -168,7 +168,7 @@ class ShareViewController: SLComposeServiceViewController {
                                 
                                 attachedImage = attachedImage?.ditheredImage(withWidth: 384)
                                 
-                                guard let data = UIImagePNGRepresentation(attachedImage!) else {
+                                guard let data = attachedImage!.pngData() else {
                                     print("failed to encode image")
                                     return
                                 }

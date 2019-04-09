@@ -18,12 +18,12 @@ class ChunkyButton: UIButton {
         setup()
     }
     func setup() {
-        contentEdgeInsets = UIEdgeInsetsMake(-2, 2, 2, -2)
+        contentEdgeInsets = UIEdgeInsets.init(top: -2, left: 2, bottom: 2, right: -2)
     }
     
     override var isHighlighted: Bool {
         didSet {
-            contentEdgeInsets = isHighlighted ? .zero : UIEdgeInsetsMake(-2, 2, 2, -2)
+            contentEdgeInsets = isHighlighted ? .zero : UIEdgeInsets.init(top: -2, left: 2, bottom: 2, right: -2)
             setNeedsDisplay()
         }
     }

@@ -16,7 +16,7 @@ class QuickDrawViewController: UIViewController {
     lazy var drawButton: UIButton = UIButton(type: .custom).also { view in
         view.contentVerticalAlignment = .center
         view.contentHorizontalAlignment = .center
-        view.addTarget(self, action: #selector(drawButtonPressed), for: UIControlEvents.touchUpInside)
+        view.addTarget(self, action: #selector(drawButtonPressed), for: UIControl.Event.touchUpInside)
         view.snp.makeConstraints { make in
             make.width.equalTo(82)
             make.height.equalTo(41)
@@ -25,7 +25,7 @@ class QuickDrawViewController: UIViewController {
     lazy var eraseButton: UIButton = UIButton(type: .custom).also { view in
         view.contentVerticalAlignment = .center
         view.contentHorizontalAlignment = .center
-        view.addTarget(self, action: #selector(eraseButtonPressed), for: UIControlEvents.touchUpInside)
+        view.addTarget(self, action: #selector(eraseButtonPressed), for: UIControl.Event.touchUpInside)
         view.snp.makeConstraints { make in
             make.width.equalTo(82)
             make.height.equalTo(41)

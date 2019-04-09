@@ -174,7 +174,7 @@ class SharePrinterViewController: UIViewController {
         let text = printer?.key ?? "hmmm.... no key found"
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        keyTextView.attributedText = NSAttributedString(string: text, attributes: [.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
+        keyTextView.attributedText = NSAttributedString(string: text, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue,
                                                                                    .foregroundColor: keyTextView.textColor!,
                                                                                    .font: keyTextView.font!,
                                                                                    .paragraphStyle: style])

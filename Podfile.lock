@@ -1,20 +1,31 @@
 PODS:
-  - HTMLString (4.0.1)
-  - SnapKit (4.0.0)
+  - HTMLString (4.0.2)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
-  - HTMLString (~> 4.0)
-  - SnapKit (~> 4.0.0)
+  - HTMLString (from `https://github.com/alexaubry/HTMLString.git`, branch `swift5`)
+  - SnapKit (from `https://github.com/SnapKit/SnapKit.git`, branch `develop`)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - HTMLString
-    - SnapKit
+EXTERNAL SOURCES:
+  HTMLString:
+    :branch: swift5
+    :git: https://github.com/alexaubry/HTMLString.git
+  SnapKit:
+    :branch: develop
+    :git: https://github.com/SnapKit/SnapKit.git
+
+CHECKOUT OPTIONS:
+  HTMLString:
+    :commit: ab7aaa9b54fbc22771eaea71748a829812911b83
+    :git: https://github.com/alexaubry/HTMLString.git
+  SnapKit:
+    :commit: eea05d74f073696202cd0bb8e744e4c89781a414
+    :git: https://github.com/SnapKit/SnapKit.git
 
 SPEC CHECKSUMS:
-  HTMLString: 8d9a8a8aaf63dd52c5b8cd9a38e14da52f753210
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  HTMLString: d346ba551d1b7e687190c948ec0c2ddaf4057544
+  SnapKit: ae1cdee794f6a7b8e909092c5244a79b9d1c9e26
 
-PODFILE CHECKSUM: fd02f4187c0028d7bc695a629861c865ce14ac28
+PODFILE CHECKSUM: f18f4527a39ac0a9af19b32d9d471e3bb9e32f7e
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.6.1

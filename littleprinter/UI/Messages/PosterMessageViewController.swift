@@ -159,14 +159,16 @@ extension PosterMessageViewController: MessagingToolbarDelegate {
             height += lineSeparation
         }
         height += 20 // Bottom margin
-        return CGSize(width: UIViewNoIntrinsicMetric, height: height)
+        return CGSize(width: UIView.noIntrinsicMetric, height: height)
     }
-    override func contentCompressionResistancePriority(for axis: UILayoutConstraintAxis) -> UILayoutPriority {
+    override func contentCompressionResistancePriority(for axis: NSLayoutConstraint.Axis) -> UILayoutPriority {
         switch axis {
         case .horizontal:
             return super.contentCompressionResistancePriority(for: axis)
         case .vertical:
             return .defaultHigh
+        @unknown default:
+            return super.contentCompressionResistancePriority(for: axis)
         }
     }
     
@@ -220,7 +222,7 @@ extension PosterMessageViewController: MessagingToolbarDelegate {
     
     private func lineStringsForText(_ text: String) -> [String] {
         let textAttributes = [
-            NSAttributedStringKey.font: font
+            NSAttributedString.Key.font: font
         ]
         
         // calculate line break width

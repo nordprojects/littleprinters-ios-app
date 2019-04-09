@@ -152,7 +152,7 @@ class SiriusMessage {
     }
     
     convenience init(image: UIImage, to key: String, from username: String) throws {
-        guard let data = UIImagePNGRepresentation(image) else {
+        guard let data = image.pngData() else {
             throw SiriusServerError.InvalidData
         }
         

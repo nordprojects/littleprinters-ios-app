@@ -79,8 +79,8 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         textField.tintColor = .black
-        textField.defaultTextAttributes = [NSAttributedStringKey.underlineStyle.rawValue : NSUnderlineStyle.styleSingle.rawValue,
-                                           NSAttributedStringKey.font.rawValue : UIFont(name: "Avenir-Heavy", size: 24)!]
+        textField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([NSAttributedString.Key.underlineStyle.rawValue : NSUnderlineStyle.single.rawValue,
+                                           NSAttributedString.Key.font.rawValue : UIFont(name: "Avenir-Heavy", size: 24)!])
         container.addSubview(textField)
         textField.snp.makeConstraints { (make) in
             make.top.equalTo(messageLabel.snp.bottom).offset(60)
@@ -92,7 +92,7 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
         let atLabel = UILabel()
         atLabel.font = UIFont(name: "Avenir-Heavy", size: 24)
         let attributedAt = NSMutableAttributedString(string: "@")
-        attributedAt.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 0, length: attributedAt.length))
+        attributedAt.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: attributedAt.length))
         atLabel.attributedText = attributedAt
         container.addSubview(atLabel)
         atLabel.snp.makeConstraints { (make) in
@@ -141,4 +141,9 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
         let printerListViewController = PrinterListViewController()
         navigationController?.setViewControllers([printerListViewController], animated: true)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

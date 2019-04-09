@@ -357,7 +357,7 @@
 				TargetAttributes = {
 					9B2E02342004BECA0008AC1F = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -367,6 +367,7 @@
 					};
 					9BDE7D11200905CA0019AB81 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -424,7 +425,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-littleprinter/Pods-littleprinter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/HTMLString/HTMLString.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
@@ -435,7 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-littleprinter/Pods-littleprinter-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4B1F478EF5FC9E69336C6508 /* [CP] Check Pods Manifest.lock */ = {
@@ -686,7 +687,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "littleprinter/Utilities/littleprinter-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -707,7 +708,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.nordprojects.littleprinter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "littleprinter/Utilities/littleprinter-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -726,7 +727,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "littleprinter/Utilities/littleprinter-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -745,7 +746,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "littleprinter/Utilities/littleprinter-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
