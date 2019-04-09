@@ -38,6 +38,7 @@ class SharePrinterViewController: UIViewController {
         textView.backgroundColor = .clear
         textView.isScrollEnabled = false
         textView.textColor = UIColor(hex: 0x89BEFE)
+        textView.isSelectable = false
         return textView
     }()
     
@@ -57,6 +58,16 @@ class SharePrinterViewController: UIViewController {
         let label = UILabel()
         label.text = "👈"
         label.font = UIFont.systemFont(ofSize: 18)
+        return label
+    }()
+    
+    lazy var copiedLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Heavy", size: 17)
+        label.text = "Copied!"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.alpha = 0;
         return label
     }()
     
@@ -108,6 +119,7 @@ class SharePrinterViewController: UIViewController {
         view.addSubview(keyControl)
         view.addSubview(👉Label)
         view.addSubview(👈Label)
+        view.addSubview(copiedLabel)
         view.addSubview(line)
         view.addSubview(altLabel)
         view.addSubview(shareButton)
@@ -132,15 +144,24 @@ class SharePrinterViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().offset(-140)
         }
+        
+        keyControl.snp.makeConstraints { (make) in
+            make.edges.equalTo(keyTextView)
+        }
 
         👉Label.snp.makeConstraints { (make) in
-            make.firstBaseline.equalTo(keyTextView.snp.firstBaseline)
+            make.centerY.equalTo(keyTextView)
             make.right.equalTo(keyTextView.snp.left).offset(-12)
         }
         
         👈Label.snp.makeConstraints { (make) in
-            make.firstBaseline.equalTo(keyTextView.snp.firstBaseline)
+            make.centerY.equalTo(keyTextView)
             make.left.equalTo(keyTextView.snp.right).offset(12)
+        }
+        
+        copiedLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(keyTextView.snp.bottom).offset(12)
+            make.centerX.equalToSuperview()
         }
         
         line.snp.makeConstraints { (make) in
@@ -172,7 +193,8 @@ class SharePrinterViewController: UIViewController {
             make.width.equalTo(300)
         }
         
-        let text = printer?.key ?? "hmmm.... no key found"
+        var text = printer?.key ?? "hmmm.... no key found"
+        text = text.replacingOccurrences(of: "https://", with: "", options: [], range: nil)
         let style = NSMutableParagraphStyle()
         style.alignment = .center
         keyTextView.attributedText = NSAttributedString(string: text, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue,
@@ -180,14 +202,24 @@ class SharePrinterViewController: UIViewController {
                                                                                    .font: keyTextView.font!,
                                                                                    .paragraphStyle: style])
         
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(backgroundTapped))
-        view.addGestureRecognizer(tap)
-        
         shareButton.addTarget(self, action: #selector(sharePressed), for: .touchUpInside)
+        keyControl.addTarget(self, action: #selector(copyTapped), for: .touchUpInside)
+
     }
     
-    @objc func backgroundTapped() {
-        keyTextView.resignFirstResponder()
+    @objc func copyTapped() {
+        if let key = printer?.key {
+            let pasteBoard = UIPasteboard.general
+            pasteBoard.string = key
+
+            UIView.animate(withDuration: 0.25, animations: {
+                self.copiedLabel.alpha = 1.0;
+            }, completion: { (true) in
+                UIView.animate(withDuration: 0.5, delay: 1.5, options: [], animations: {
+                    self.copiedLabel.alpha = 0.0;
+                }, completion: nil)
+            })
+        }
     }
     
     @objc func sharePressed() {
