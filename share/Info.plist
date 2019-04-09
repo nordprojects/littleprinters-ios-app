@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>12</string>
+	<string>14</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Littleprinter uses the camera to let you send photos to printers.</string>
 	<key>NSExtension</key>
