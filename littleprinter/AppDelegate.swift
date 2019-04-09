@@ -35,6 +35,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
+            let params = components.queryItems,
+            let path = components.path else {
+                print("Invalid URL: \(url)")
+                return false
+        }
+        
+        if (path == "/printers") {
+            if let key = params.first(where: { $0.name == "add" })?.value {
+                handleAddPrinterAction(key: key)
+                return true
+            }
+        }
+
+        return false
+    }
+    
+    func handleAddPrinterAction(key: String) {
+        print("Adding printer from url: \(key)")
+        let addController = AddPrinterViewController()
+        addController.printerKey = key
+        if let navController = window?.rootViewController as? NavigationController {
+            navController.pushViewController(addController, animated: false)
+        }
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

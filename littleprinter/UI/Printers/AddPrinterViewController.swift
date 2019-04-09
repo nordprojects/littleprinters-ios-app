@@ -60,6 +60,8 @@ class AddPrinterViewController: UIViewController {
         return button
     }()
     
+    var printerKey: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
@@ -70,6 +72,8 @@ class AddPrinterViewController: UIViewController {
         addButton.addTarget(self, action: #selector(addPrinterPressed(_:)), for: .touchUpInside)
         noKeyButton.addTarget(self, action: #selector(learnMorePressed(_:)), for: .touchUpInside)
 
+        keyTextField.text = printerKey
+        
         view.addSubview(closeKeyboardControl)
         view.addSubview(messageLabel)
         view.addSubview(keyTextField)
