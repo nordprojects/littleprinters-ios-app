@@ -110,7 +110,7 @@ class PrinterManager {
                     return printer
                 } else {
                     print("Migrating printer: \(printer.key)")
-                    return Printer(key: "https://littleprinter.nordprojects.co/printkey/" + printer.key, info: printer.info)
+                    return Printer(key: "https://device.li/" + printer.key, info: printer.info)
                 }
             }
             UserDefaults.group.set(try? PropertyListEncoder().encode(migratedPrinters), forKey:"printers")

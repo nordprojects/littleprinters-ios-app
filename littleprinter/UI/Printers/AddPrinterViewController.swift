@@ -28,7 +28,7 @@ class AddPrinterViewController: UIViewController {
     
     lazy var keyTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "e.g littleprinter.nordprojects.co/printkey/acb123abc123abc123"
+        textField.placeholder = "e.g device.li/acb123abc123"
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.borderWidth = 2
         textField.textAlignment = .center
@@ -129,7 +129,7 @@ class AddPrinterViewController: UIViewController {
             let _ = url.scheme {
             convertedAddres = address
         } else {
-            convertedAddres = "https://littleprinter.nordprojects.co/printkey/" + address
+            convertedAddres = "https://device.li/" + address
         }
         
         PrinterManager.shared.addPrinterForAddress(convertedAddres) { (error) in
