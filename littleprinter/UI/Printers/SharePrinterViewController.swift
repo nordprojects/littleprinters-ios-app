@@ -230,4 +230,23 @@ class SharePrinterViewController: UIViewController {
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
     }
+    
+    @objc func printQRPressed() {
+        let fromName = User.shared.name ?? "App"
+
+        if let printer = printer,
+            let qrCode = qrCodeFromText(printer.key) {
+            do {
+                let message = try SiriusMessage(image: qrCode, to: printer.key, from: fromName)
+                navigationController?.pushViewController(
+                    MessageSendingViewController(message: message, printer: printer),
+                    animated: true)
+            }
+            catch {
+                let alert = UIAlertController(title: "Unable to send QR Code to: \(printer.info.owner)", error: error)
+                self.present(alert, animated: true, completion: nil)
+            }
+    
+        }
+    }
 }

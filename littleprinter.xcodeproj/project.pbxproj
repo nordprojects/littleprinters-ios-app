@@ -33,6 +33,8 @@
 		9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023F2004BECA0008AC1F /* Assets.xcassets */; };
 		9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */; };
 		9B3F752F20091B29008379FC /* ShareSelectPrinterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F752E20091B29008379FC /* ShareSelectPrinterViewController.swift */; };
+		9B6E4787225DF6CF00739FFF /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E4786225DF6CF00739FFF /* QRCode.swift */; };
+		9B6E4788225DF6CF00739FFF /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E4786225DF6CF00739FFF /* QRCode.swift */; };
 		9B8786C02012629E00A32B8A /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2845AB201212AB0061FB8D /* Components.swift */; };
 		9B8786C22012668000A32B8A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8786C12012668000A32B8A /* NavigationController.swift */; };
 		9BDE7D002007C0E60019AB81 /* PlainTextMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */; };
@@ -113,6 +115,7 @@
 		9B3F752E20091B29008379FC /* ShareSelectPrinterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSelectPrinterViewController.swift; sourceTree = "<group>"; };
 		9B3F7530200922A1008379FC /* littleprinter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = littleprinter.entitlements; sourceTree = "<group>"; };
 		9B3F7531200922DC008379FC /* share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = share.entitlements; sourceTree = "<group>"; };
+		9B6E4786225DF6CF00739FFF /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		9B8786C12012668000A32B8A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		9BDE7CFF2007C0E60019AB81 /* PlainTextMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextMessageViewController.swift; sourceTree = "<group>"; };
 		9BDE7D012008AE250019AB81 /* MessageTypeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTypeSelectViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 		9B090CDD20062CD20005D841 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9B6E4786225DF6CF00739FFF /* QRCode.swift */,
 				9B090CDB200625130005D841 /* Result.swift */,
 				9B090CE1200631FE0005D841 /* Utilities.swift */,
 				56F031CD2009123D00543500 /* Views.swift */,
@@ -490,6 +494,7 @@
 				56204CC3211DAEAB0002E3C1 /* MessageSendingViewController.swift in Sources */,
 				9B090CD220061F890005D841 /* AddPrinterViewController.swift in Sources */,
 				9B090CE420065A830005D841 /* PrinterListTableViewCell.swift in Sources */,
+				9B6E4787225DF6CF00739FFF /* QRCode.swift in Sources */,
 				9B090CDA200624430005D841 /* SiriusServer.swift in Sources */,
 				9B090CDC200625130005D841 /* Result.swift in Sources */,
 				56F031CE2009123D00543500 /* Views.swift in Sources */,
@@ -526,6 +531,7 @@
 				9BDE7D232009106B0019AB81 /* PrinterManager.swift in Sources */,
 				9BDE7D15200905CA0019AB81 /* ShareViewController.swift in Sources */,
 				9B3F752F20091B29008379FC /* ShareSelectPrinterViewController.swift in Sources */,
+				9B6E4788225DF6CF00739FFF /* QRCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
