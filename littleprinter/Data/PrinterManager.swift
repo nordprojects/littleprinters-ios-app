@@ -20,6 +20,7 @@ class PrinterManager {
     init() {
         migratePrinters()
         loadSavedPrinters()
+        loadMockPrinters()
         updatePrinters()
     }
     
@@ -87,6 +88,12 @@ class PrinterManager {
     }
     
     // MARK: Private
+    private func loadMockPrinters() {
+        self.printers = [("Ben's Printer","Ben"), ("Home", "Mikey"), ("Studio", "Mikey")].map { (name, owner) -> Printer in
+            return Printer(key: "nah", info: PrinterInfo(name: name, code: "nah", owner: owner, status: .online))
+        }
+    }
+    
     private func loadSavedPrinters() {
         if let data = UserDefaults.group.value(forKey:"printers") as? Data,
             let printers = try? PropertyListDecoder().decode(Array<Printer>.self, from: data) {
