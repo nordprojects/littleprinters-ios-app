@@ -30,8 +30,8 @@
 		9B2845A920120D330061FB8D /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2845A820120D330061FB8D /* BeginViewController.swift */; };
 		9B2E02392004BECA0008AC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E02382004BECA0008AC1F /* AppDelegate.swift */; };
 		9B2E023B2004BECA0008AC1F /* PrinterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */; };
-		9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E023F2004BECA0008AC1F /* Assets.xcassets */; };
 		9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */; };
+		9B3016B92260CA8700F37A4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B3016B82260CA8700F37A4F /* Assets.xcassets */; };
 		9B3F752F20091B29008379FC /* ShareSelectPrinterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F752E20091B29008379FC /* ShareSelectPrinterViewController.swift */; };
 		9B6E4787225DF6CF00739FFF /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E4786225DF6CF00739FFF /* QRCode.swift */; };
 		9B6E4788225DF6CF00739FFF /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E4786225DF6CF00739FFF /* QRCode.swift */; };
@@ -109,9 +109,9 @@
 		9B2E02352004BECA0008AC1F /* littleprinter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = littleprinter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2E02382004BECA0008AC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B2E023A2004BECA0008AC1F /* PrinterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterListViewController.swift; sourceTree = "<group>"; };
-		9B2E023F2004BECA0008AC1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B2E02422004BECA0008AC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B2E02442004BECA0008AC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B3016B82260CA8700F37A4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B3F752E20091B29008379FC /* ShareSelectPrinterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSelectPrinterViewController.swift; sourceTree = "<group>"; };
 		9B3F7530200922A1008379FC /* littleprinter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = littleprinter.entitlements; sourceTree = "<group>"; };
 		9B3F7531200922DC008379FC /* share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = share.entitlements; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 				9B26404B2014FED200C75412 /* Printers */,
 				9B2845AA201212860061FB8D /* On Boarding */,
 				9BDE7D052008BCFD0019AB81 /* Messages */,
-				9B2E023F2004BECA0008AC1F /* Assets.xcassets */,
+				9B3016B82260CA8700F37A4F /* Assets.xcassets */,
 				9B2E02412004BECA0008AC1F /* LaunchScreen.storyboard */,
 				9B2845AB201212AB0061FB8D /* Components.swift */,
 			);
@@ -406,8 +406,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B2E02432004BECA0008AC1F /* LaunchScreen.storyboard in Resources */,
-				9B2E02402004BECA0008AC1F /* Assets.xcassets in Resources */,
 				5641D3DF2012085F002A7D08 /* BebasNeueWhatever.ttf in Resources */,
+				9B3016B92260CA8700F37A4F /* Assets.xcassets in Resources */,
 				A67C58CB211DF35C00E7CDF3 /* PermanentMarker.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
