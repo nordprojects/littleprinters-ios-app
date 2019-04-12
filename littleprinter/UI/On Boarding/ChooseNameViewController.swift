@@ -19,6 +19,16 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    lazy var privacyButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("privacy policy", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 17)!
+        button.setTitleColor(.black, for: .normal)
+        button.alpha = 0.4
+        button.addTarget(self, action: #selector(privacyPressed), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -123,6 +133,12 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
             make.width.equalTo(104)
             make.height.equalTo(44)
         }
+        
+        view.addSubview(privacyButton)
+        privacyButton.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-35)
+            make.centerX.equalToSuperview()
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -142,5 +158,10 @@ class ChooseNameViewController: UIViewController, UITextFieldDelegate {
         User.shared.name = textField.text
         let printerListViewController = PrinterListViewController()
         navigationController?.setViewControllers([printerListViewController], animated: true)
+    }
+    
+    @objc func privacyPressed() {
+        let url = URL(string: "https://nordprojects.co/projects/littleprinters/privacy")!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
