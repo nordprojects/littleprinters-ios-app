@@ -15,16 +15,7 @@ class SharePrinterViewController: UIViewController {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir-Heavy", size: 17)
-        label.text = "Sharing your printer allows your friends to message it."
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    lazy var tellLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Avenir-Heavy", size: 17)
-        label.text = "Tell your friends to paste in your Printer Key so they can message it:"
+        label.text = "Share this key so friends can message this printer!"
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -64,25 +55,10 @@ class SharePrinterViewController: UIViewController {
     lazy var copiedLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir-Heavy", size: 17)
-        label.text = "Copied!"
+        label.text = "Copied"
         label.textAlignment = .center
         label.numberOfLines = 0
         label.alpha = 0;
-        return label
-    }()
-    
-    lazy var line: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "dash")!)
-        return view
-    }()
-    
-    lazy var altLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Avenir-Heavy", size: 17)
-        label.text = "Alternatively, send your Printer Key via your preferred app"
-        label.textAlignment = .center
-        label.numberOfLines = 0
         return label
     }()
     
@@ -92,8 +68,38 @@ class SharePrinterViewController: UIViewController {
         button.borderColor = UIColor(hex: 0x89BEFE)
         button.shadowColor = UIColor(hex: 0x4177AF)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Avenir-Black", size: 14)
+        button.titleLabel?.font = UIFont(name: "Avenir-Black", size: 15)
         button.setTitle("Share now", for: .normal)
+        return button
+    }()
+    
+    lazy var line: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "dash")!)
+        return view
+    }()
+    
+    lazy var qrLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Heavy", size: 17)
+        label.text = "Or print out a QR code to share with people nearby"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.alpha = 0.7
+        return label
+    }()
+    
+    lazy var qrButton: ChunkyButton = {
+        let button = ChunkyButton()
+        button.topColor = UIColor(hex: 0xDBEBFF)
+        button.borderColor = UIColor(hex: 0xDBEBFF)
+        button.shadowColor = UIColor(hex: 0x7295BA)
+        button.setTitleColor(UIColor(hex: 0x597FA7), for: .normal)
+        button.titleLabel?.font = UIFont(name: "Avenir-Black", size: 15)
+        button.setTitle("Print code", for: .normal)
+        button.setImage(UIImage(named: "mini-qr"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 12)
+        button.adjustsImageWhenHighlighted = false
         return button
     }()
     
@@ -114,33 +120,27 @@ class SharePrinterViewController: UIViewController {
         title = printer!.info.name
         
         view.addSubview(titleLabel)
-        view.addSubview(tellLabel)
         view.addSubview(keyTextView)
         view.addSubview(keyControl)
         view.addSubview(👉Label)
         view.addSubview(👈Label)
         view.addSubview(copiedLabel)
-        view.addSubview(line)
-        view.addSubview(altLabel)
         view.addSubview(shareButton)
+        view.addSubview(line)
+        view.addSubview(qrLabel)
+        view.addSubview(qrButton)
         view.addSubview(carefulLabel)
         
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(28)
+            make.top.greaterThanOrEqualToSuperview().offset(10).priority(1000)
+            make.top.equalToSuperview().offset(60).priority(250)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
-            make.width.equalTo(300)
+            make.width.equalTo(280)
         }
-        
-        tellLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(66)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(50)
-            make.width.equalTo(300)
-        }
-        
+    
         keyTextView.snp.makeConstraints { (make) in
-            make.top.equalTo(tellLabel.snp.bottom).offset(8)
+            make.top.equalTo(titleLabel.snp.bottom).offset(44)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().offset(-140)
         }
@@ -160,32 +160,40 @@ class SharePrinterViewController: UIViewController {
         }
         
         copiedLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(keyTextView.snp.bottom).offset(12)
+            make.bottom.equalTo(keyTextView.snp.top).offset(-6)
+            make.centerX.equalToSuperview()
+        }
+        
+        shareButton.snp.makeConstraints { (make) in
+            make.top.equalTo(keyTextView.snp.bottom).offset(34)
+            make.width.equalTo(124)
+            make.height.equalTo(44)
             make.centerX.equalToSuperview()
         }
         
         line.snp.makeConstraints { (make) in
-            make.top.equalTo(keyTextView.snp.bottom).offset(60).priority(500)
+            make.top.equalTo(shareButton.snp.bottom).offset(80).priority(250)
+            make.top.greaterThanOrEqualTo(shareButton.snp.bottom).offset(10).priority(1000)
             make.left.right.equalToSuperview().inset(25)
             make.height.equalTo(3)
         }
         
-        altLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(line.snp.bottom).offset(60).priority(250)
-            make.top.greaterThanOrEqualTo(line.snp.bottom).offset(20)
+        qrLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(line.snp.bottom).offset(54).priority(250)
+            make.top.greaterThanOrEqualTo(line.snp.bottom).offset(10).priority(1000)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
-            make.width.equalTo(280)
+            make.width.equalTo(230)
         }
         
-        shareButton.snp.makeConstraints { (make) in
-            make.top.equalTo(altLabel.snp.bottom).offset(14)
-            make.width.equalTo(124)
+        qrButton.snp.makeConstraints { (make) in
+            make.top.equalTo(qrLabel.snp.bottom).offset(14)
+            make.width.equalTo(140)
             make.height.equalTo(44)
             make.centerX.equalToSuperview()
             make.bottom.lessThanOrEqualTo(carefulLabel.snp.top).offset(-20)
         }
-        
+    
         carefulLabel.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-24)
             make.centerX.equalToSuperview()
@@ -203,7 +211,8 @@ class SharePrinterViewController: UIViewController {
                                                                                    .paragraphStyle: style])
         
         shareButton.addTarget(self, action: #selector(sharePressed), for: .touchUpInside)
-        keyControl.addTarget(self, action: #selector(copyTapped), for: .touchUpInside)
+        keyControl.addTarget(self, action: #selector(copyTapped), for: .touchDown)
+        qrButton.addTarget(self, action: #selector(printQRPressed), for: .touchUpInside)
 
     }
     
