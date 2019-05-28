@@ -116,7 +116,7 @@ class AddPrinterViewController: UIViewController {
     }
     
     @objc func addPrinterPressed(_ sender: Any) {
-        guard let address = keyTextField.text,
+        guard let address = keyTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
             !address.isEmpty else {
             let alert = UIAlertController(title: "We need the adresss", message:"Please paste the printer key into the text field")
             self.present(alert, animated: true, completion: nil)
