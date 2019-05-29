@@ -124,7 +124,8 @@ class SiriusMessage {
     let request: URLRequest
     
     init(data: Data, to key: String, from username: String, contentType: String) throws {
-        guard let url = URL(string: key + "?from=" + username) else {
+        let escapedName = username.addingPercentEncoding(withAllowedCharacters: CharacterSet()) ?? "anon"
+        guard let url = URL(string: key + "?from=" + escapedName) else {
             throw SiriusServerError.InvalidURL
         }
         
