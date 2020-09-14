@@ -133,11 +133,13 @@ class PrinterListTableViewCell: UITableViewCell {
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(cardImageView).offset(11)
             make.left.equalTo(thumbnail.snp.right).offset(30)
+            make.right.equalTo(shareButton.snp.left)
         }
         
         ownerLabel.snp.makeConstraints { (make) in
             make.top.equalTo(nameLabel.snp.bottom).offset(2)
             make.left.equalTo(nameLabel)
+            make.right.equalTo(cardImageView).offset(-6)
         }
         
         statusLabel.snp.makeConstraints { (make) in
