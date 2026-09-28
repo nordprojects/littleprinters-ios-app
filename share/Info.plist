@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.1</string>
+	<string>1.0.2</string>
 	<key>CFBundleVersion</key>
-	<string>19</string>
+	<string>21</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Littleprinter uses the camera to let you send photos to printers.</string>
 	<key>NSExtension</key>
