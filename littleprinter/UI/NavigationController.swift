@@ -11,12 +11,35 @@ import UIKit
 class NavigationController: UINavigationController {
     
     override func viewDidLoad() {
-        navigationBar.setBackgroundImage(UIImage(named: "navbar"), for: .default)
-        navigationBar.shadowImage = UIImage(named: "navshadow")
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.font : UIFont(name: "Avenir-Heavy", size: 20)!,
-                                             NSAttributedString.Key.kern : 0.4]
+        super.viewDidLoad()
+        
+        let titleAttrs: [NSAttributedString.Key: Any] = [
+            .font : UIFont(name: "Avenir-Heavy", size: 20)!,
+            .kern : 0.4
+        ]
+        
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundImage = UIImage(named: "navbar")
+            appearance.shadowImage = UIImage(named: "navshadow")
+            appearance.titleTextAttributes = titleAttrs
+            appearance.setBackIndicatorImage(UIImage(named: "back"), transitionMaskImage: UIImage(named: "back"))
+            
+            navigationBar.standardAppearance = appearance
+            navigationBar.scrollEdgeAppearance = appearance
+            if #available(iOS 15.0, *) {
+                navigationBar.compactAppearance = appearance
+                navigationBar.compactScrollEdgeAppearance = appearance
+            }
+        } else {
+            navigationBar.setBackgroundImage(UIImage(named: "navbar"), for: .default)
+            navigationBar.shadowImage = UIImage(named: "navshadow")
+            navigationBar.titleTextAttributes = titleAttrs
+            navigationBar.backIndicatorImage = UIImage(named: "back")
+            navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
+        }
+        
         navigationBar.tintColor = .black
-        navigationBar.backIndicatorImage = UIImage(named: "back")
-        navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
     }
 }

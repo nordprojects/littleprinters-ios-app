@@ -54,6 +54,7 @@
 		9BDE7D26200910CA0019AB81 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B090CE1200631FE0005D841 /* Utilities.swift */; };
 		A67C58CB211DF35C00E7CDF3 /* PermanentMarker.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A67C58CA211DF35B00E7CDF3 /* PermanentMarker.ttf */; };
 		A67C58CD211DF7F100E7CDF3 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67C58CC211DF7F100E7CDF3 /* PhotoPicker.swift */; };
+		A6FB8373306435F700E153B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FB8372306435F700E153B5 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		9BDE7D19200905CA0019AB81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A67C58CA211DF35B00E7CDF3 /* PermanentMarker.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PermanentMarker.ttf; sourceTree = "<group>"; };
 		A67C58CC211DF7F100E7CDF3 /* PhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		A6FB8372306435F700E153B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B79A12B938AB7EFBF90EDCC9 /* Pods-littleprintershare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprintershare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-littleprintershare/Pods-littleprintershare.debug.xcconfig"; sourceTree = "<group>"; };
 		D65C9079B518A328D8044A26 /* Pods-littleprintershare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprintershare.release.xcconfig"; path = "Pods/Target Support Files/Pods-littleprintershare/Pods-littleprintershare.release.xcconfig"; sourceTree = "<group>"; };
 		DE014890CAD18D5ECA1559F5 /* Pods-littleprinter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littleprinter.release.xcconfig"; path = "Pods/Target Support Files/Pods-littleprinter/Pods-littleprinter.release.xcconfig"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				9B2E02442004BECA0008AC1F /* Info.plist */,
 				A67C58CA211DF35B00E7CDF3 /* PermanentMarker.ttf */,
 				5641D3DE2012085F002A7D08 /* BebasNeueWhatever.ttf */,
+				A6FB8372306435F700E153B5 /* SceneDelegate.swift */,
 			);
 			path = littleprinter;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				9B090CD6200620710005D841 /* Printer.swift in Sources */,
 				9BDE7D0D2008EF4D0019AB81 /* User.swift in Sources */,
 				5641D3E42012128B002A7D08 /* ReceiptPreviewView.swift in Sources */,
+				A6FB8373306435F700E153B5 /* SceneDelegate.swift in Sources */,
 				56204CC3211DAEAB0002E3C1 /* MessageSendingViewController.swift in Sources */,
 				9B090CD220061F890005D841 /* AddPrinterViewController.swift in Sources */,
 				9B090CE420065A830005D841 /* PrinterListTableViewCell.swift in Sources */,
@@ -687,7 +691,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3A985RNWU8;
 				INFOPLIST_FILE = littleprinter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.nordprojects.littleprinter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -709,7 +713,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3A985RNWU8;
 				INFOPLIST_FILE = littleprinter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.nordprojects.littleprinter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -727,7 +731,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3A985RNWU8;
 				INFOPLIST_FILE = share/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.nordprojects.littleprinter.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -746,7 +750,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3A985RNWU8;
 				INFOPLIST_FILE = share/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.nordprojects.littleprinter.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
