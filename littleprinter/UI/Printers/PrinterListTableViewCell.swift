@@ -30,18 +30,21 @@ class PrinterListTableViewCell: UITableViewCell {
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir-Heavy", size: 17)
+        label.textColor = .black
         return label
     }()
     
     lazy var ownerLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir-Heavy", size: 13)
+        label.textColor = .black
         return label
     }()
     
     lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir-Heavy", size: 13)
+        label.textColor = .black
         return label
     }()
     
